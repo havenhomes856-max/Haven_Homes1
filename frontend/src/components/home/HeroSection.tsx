@@ -20,12 +20,12 @@ const HeroSection: React.FC = () => {
       {/* Background Image Container */}
       <div className="absolute inset-0 w-full h-full">
         <img
-          src="https://res.cloudinary.com/dp4xt0bve/image/upload/f_webp,q_80/v1776423229/Hero_Section.jpg"
+          src={coastalRetreat}
           alt="Luxury Coastal Retreat"
           className="w-full h-full object-cover"
         />
         {/* Subtle overlay to enhance text readability while maintaining "airy" feel */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/35" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/30" />
       </div>
 
       {/* Main Content Overlay */}
