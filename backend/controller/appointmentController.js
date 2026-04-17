@@ -92,63 +92,55 @@ const getRecentActivity = async () => {
 // Views analytics
 const getViewsData = async () => {
   try {
-    const thirtyDaysAgo = new Date();
-    thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+    // Fetch last 30 daily summary documents
+    const dailyStats = await Stats.find()
+      .sort({ date: -1 })
+      .limit(30)
+      .lean();
 
-    const stats = await Stats.aggregate([
-      {
-        $match: {
-          endpoint: /^\/api\/products\/single\//,
-          method: 'GET',
-          timestamp: { $gte: thirtyDaysAgo }
-        }
-      },
-      {
-        $group: {
-          _id: {
-            $dateToString: { format: "%Y-%m-%d", date: "$timestamp" }
-          },
-          count: { $sum: 1 }
-        }
-      },
-      { $sort: { "_id": 1 } }
-    ]);
+    // Map existing data for quick lookup
+    const statsMap = new Map(dailyStats.map(s => [s.date, s.viewCount]));
 
+    // Generate dates for the last 30 days to ensure a continuous chart
     const labels = [];
     const data = [];
-    for (let i = 30; i >= 0; i--) {
+    
+    for (let i = 29; i >= 0; i--) {
       const date = new Date();
       date.setDate(date.getDate() - i);
-      const dateString = date.toISOString().split('T')[0];
-      labels.push(dateString);
+      const dateString = date.toISOString().split("T")[0];
       
-      const stat = stats.find(s => s._id === dateString);
-      data.push(stat ? stat.count : 0);
+      labels.push(dateString);
+      data.push(statsMap.get(dateString) || 0);
     }
 
     return {
       labels,
-      datasets: [{
-        label: 'Property Views',
-        data,
-        borderColor: 'rgb(75, 192, 192)',
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-        tension: 0.4,
-        fill: true
-      }]
+      datasets: [
+        {
+          label: "Property Views",
+          data,
+          borderColor: "rgb(75, 192, 192)",
+          backgroundColor: "rgba(75, 192, 192, 0.2)",
+          tension: 0.4,
+          fill: true,
+        },
+      ],
     };
   } catch (error) {
-    console.error('Error generating chart data:', error);
+    console.error("Error generating chart data:", error);
     return {
       labels: [],
-      datasets: [{
-        label: 'Property Views',
-        data: [],
-        borderColor: 'rgb(75, 192, 192)',
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-        tension: 0.4,
-        fill: true
-      }]
+      datasets: [
+        {
+          label: "Property Views",
+          data: [],
+          borderColor: "rgb(75, 192, 192)",
+          backgroundColor: "rgba(75, 192, 192, 0.2)",
+          tension: 0.4,
+          fill: true,
+        },
+      ],
     };
   }
 };

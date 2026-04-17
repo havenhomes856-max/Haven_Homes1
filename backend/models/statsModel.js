@@ -1,36 +1,31 @@
 import mongoose from 'mongoose';
 
+/**
+ * Daily Stats Schema
+ * Optimized for high performance and low storage.
+ * Stores one document per day instead of thousands of individual logs.
+ */
 const statsSchema = new mongoose.Schema({
-  endpoint: {
-    type: String,
-    required: true
-  },
-  method: {
+  date: {
     type: String,
     required: true,
-    enum: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'HEAD'] // Added HEAD
+    unique: true, // "YYYY-MM-DD"
+    index: true
   },
-  timestamp: {
+  viewCount: {
+    type: Number,
+    default: 0
+  },
+  lastUpdated: {
     type: Date,
     default: Date.now
-  },
-  responseTime: {
-    type: Number,
-    required: true
-  },
-  statusCode: {
-    type: Number,
-    required: true
   }
-}, { timestamps: true });
+}, { 
+  timestamps: true 
+});
 
-// Index for better query performance
-statsSchema.index({ endpoint: 1, timestamp: -1 });
-statsSchema.index({ method: 1 });
-statsSchema.index({ statusCode: 1 });
-
-// TTL index: delete records older than 30 days
-statsSchema.index({ createdAt: 1 }, { expireAfterSeconds: 30 * 24 * 60 * 60 });
+// TTL index: keep summaries for 90 days (much longer than individual logs since they are small)
+statsSchema.index({ createdAt: 1 }, { expireAfterSeconds: 90 * 24 * 60 * 60 });
 
 const Stats = mongoose.model('Stats', statsSchema);
 

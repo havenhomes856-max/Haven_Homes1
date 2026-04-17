@@ -249,6 +249,13 @@ const Dashboard = () => {
       accent: { bg: "bg-purple-50", icon: "text-purple-600" },
       description: "Average listing price",
     },
+    {
+      title: "Property Views",
+      value: stats?.totalViews,
+      icon: Eye,
+      accent: { bg: "bg-orange-50", icon: "text-orange-600" },
+      description: "Total platform traffic",
+    },
   ];
 
 

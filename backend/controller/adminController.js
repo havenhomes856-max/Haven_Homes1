@@ -38,14 +38,14 @@ export const getAdminStats = async (req, res) => {
       totalUsers,
       pendingAppointments,
       recentActivity,
-      viewsData,
+      viewsInfo,
     ] = await Promise.all([
       Property.countDocuments().catch(() => 0),
       Property.countDocuments({ status: "active" }).catch(() => 0),
       User.countDocuments().catch(() => 0),
       Appointment.countDocuments({ status: "pending" }).catch(() => 0),
       getRecentActivity().catch(() => []),
-      getViewsData().catch(() => ({ labels: [], datasets: [] })),
+      getViewsData().catch(() => ({ totalViews: 0, labels: [], datasets: [] })),
     ]);
 
     res.json({
@@ -56,7 +56,8 @@ export const getAdminStats = async (req, res) => {
         totalUsers,
         pendingAppointments,
         recentActivity,
-        viewsData,
+        totalViews: viewsInfo.totalViews,
+        viewsData: viewsInfo,
       },
     });
   } catch (error) {
@@ -98,42 +99,36 @@ const getRecentActivity = async () => {
 
 const getViewsData = async () => {
   try {
-    const thirtyDaysAgo = new Date();
-    thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+    // Fetch last 30 daily summary documents
+    const dailyStats = await Stats.find()
+      .sort({ date: -1 })
+      .limit(30)
+      .lean();
 
-    const stats = await Stats.aggregate([
-      {
-        $match: {
-          endpoint: /^\/api\/products\/single\//,
-          method: "GET",
-          timestamp: { $gte: thirtyDaysAgo },
-        },
-      },
-      {
-        $group: {
-          _id: {
-            $dateToString: { format: "%Y-%m-%d", date: "$timestamp" },
-          },
-          count: { $sum: 1 },
-        },
-      },
-      { $sort: { _id: 1 } },
+    // Map existing data for quick lookup
+    const statsMap = new Map(dailyStats.map(s => [s.date, s.viewCount]));
+    
+    // Calculate total views from all time (or at least all summary documents)
+    const totalViewsResult = await Stats.aggregate([
+      { $group: { _id: null, total: { $sum: "$viewCount" } } }
     ]);
+    const totalViews = totalViewsResult[0]?.total || 0;
 
-    // Generate dates for last 30 days
+    // Generate dates for the last 30 days to ensure a continuous chart
     const labels = [];
     const data = [];
-    for (let i = 30; i >= 0; i--) {
+    
+    for (let i = 29; i >= 0; i--) {
       const date = new Date();
       date.setDate(date.getDate() - i);
       const dateString = date.toISOString().split("T")[0];
+      
       labels.push(dateString);
-
-      const stat = stats.find((s) => s._id === dateString);
-      data.push(stat ? stat.count : 0);
+      data.push(statsMap.get(dateString) || 0);
     }
 
     return {
+      totalViews,
       labels,
       datasets: [
         {
@@ -149,6 +144,7 @@ const getViewsData = async () => {
   } catch (error) {
     console.error("Error generating chart data:", error);
     return {
+      totalViews: 0,
       labels: [],
       datasets: [
         {
@@ -1546,7 +1542,7 @@ export const getEnhancedOverview = async (req, res) => {
       })(),
 
       // Get views data for charts
-      getViewsData().catch(() => ({ labels: [], datasets: [] }))
+      getViewsData().catch(() => ({ totalViews: 0, labels: [], datasets: [] }))
     ]);
 
     res.json({
@@ -1560,6 +1556,7 @@ export const getEnhancedOverview = async (req, res) => {
         totalPlatformValue: totalRevenue,
         avgPropertyPrice: avgPropertyPrice,
         appointmentCompletionRate: parseFloat(appointmentCompletionRate),
+        totalViews: viewsData.totalViews,
         viewsData
       }
     });
