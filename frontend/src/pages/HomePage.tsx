@@ -4,10 +4,11 @@ import Navbar from '../components/common/Navbar';
 import Footer from '../components/common/Footer';
 import { useSEO } from '../hooks/useSEO';
 import HeroSection from '../components/home/HeroSection';
-import StatsSection from '../components/home/StatsSection';
 import CuratedListingsSection from '../components/home/CuratedListingsSection';
 import FaqSection from '../components/home/FaqSection';
 import YouTubeMarquee from '../components/home/YouTubeMarquee';
+import SocialMarquee from '../components/home/SocialMarquee';
+import ConsultationSection from '../components/home/ConsultationSection';
 
 const HomePage: React.FC = () => {
   const location = useLocation();
@@ -36,18 +37,22 @@ const HomePage: React.FC = () => {
       {/* Hero Section */}
       <HeroSection />
 
-      {/* Stats Section */}
+      {/* Social Marquee after Hero */}
+      <SocialMarquee className="my-1" />
 
+      {/* Stats Section */}
 
       {/* Curated Listings Section */}
       <CuratedListingsSection />
+      <SocialMarquee className="my-0.5" />
 
+      <ConsultationSection />
       {/* FAQ Section */}
       <YouTubeMarquee />
       <FaqSection />
 
-      {/* YouTube Marquee */}
-
+      {/* Social Marquee above Footer */}
+      <SocialMarquee className="mt-0.5" />
 
       {/* Footer */}
       <Footer />
