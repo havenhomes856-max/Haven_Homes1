@@ -153,8 +153,11 @@ const PropertyDetailsPage: React.FC = () => {
         />
       </div>
 
-      <div className="block sm:hidden px-4 pt-4">
-         <Link to="/properties" className="flex items-center gap-1 text-[#5A5856] font-manrope font-bold text-xs uppercase tracking-widest">
+      <div className="block sm:hidden px-4 py-6">
+         <Link 
+           to="/properties" 
+           className="flex items-center justify-start gap-1 text-[#5A5856] font-manrope font-bold text-xs uppercase tracking-widest border border-[#E6E0DA] py-4 px-5 rounded-xl active:bg-[#F8F6F6] transition-all bg-white shadow-sm w-fit"
+         >
             <ChevronLeft className="w-4 h-4" />
             Back to Search
          </Link>

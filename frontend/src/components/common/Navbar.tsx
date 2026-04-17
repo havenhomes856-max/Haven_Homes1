@@ -87,6 +87,14 @@ const Navbar: React.FC = () => {
             exit={{ opacity: 0, y: -20 }}
             className="absolute top-0 left-0 w-full h-screen bg-[#FAF8F4] z-[90] lg:hidden flex flex-col items-center justify-center p-8 text-center"
           >
+            {/* Close Button Inside Menu */}
+            <button 
+              onClick={() => setIsOpen(false)}
+              className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center text-[#1C1B1A]"
+            >
+              <X className="w-8 h-8" />
+            </button>
+
             <div className="space-y-8 w-full">
               {navLinks.map((link) => (
                 <Link

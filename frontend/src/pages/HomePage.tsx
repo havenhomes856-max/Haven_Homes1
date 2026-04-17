@@ -43,11 +43,11 @@ const HomePage: React.FC = () => {
       <CuratedListingsSection />
 
       {/* FAQ Section */}
-
+      <YouTubeMarquee />
       <FaqSection />
 
       {/* YouTube Marquee */}
-      <YouTubeMarquee />
+
 
       {/* Footer */}
       <Footer />

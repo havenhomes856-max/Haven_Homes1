@@ -13,6 +13,33 @@ const PropertyHeroImage: React.FC<PropertyHeroImageProps> = ({ images }) => {
     ? images 
     : ["https://images.unsplash.com/photo-1622015663381-d2e05ae91b72?w=1200"];
 
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  // Minimum swipe distance (in px)
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    if (isLeftSwipe) {
+      nextImage();
+    } else if (isRightSwipe) {
+      prevImage();
+    }
+  };
+
   const nextImage = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % displayImages.length);
   };
@@ -31,6 +58,9 @@ const PropertyHeroImage: React.FC<PropertyHeroImageProps> = ({ images }) => {
              if ((e.target as HTMLElement).closest('button')) return;
              setIsModalOpen(true);
           }}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
         >
           <div className="w-full h-full sm:rounded-2xl overflow-hidden shadow-2xl relative">
             <img 
