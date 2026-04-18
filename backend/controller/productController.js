@@ -2,6 +2,7 @@ import fs from "fs";
 import imagekit from "../config/imagekit.js";
 import Property from "../models/propertyModel.js";
 import { deleteImagesFromImageKit } from "../utils/imageKitCleanup.js";
+import { getMapEmbedFromSharedLink } from "../utils/mapUtils.js";
 
 const addproperty = async (req, res) => {
     try {
@@ -28,6 +29,20 @@ const addproperty = async (req, res) => {
                 return result.url;
             })
         );
+        
+        // Resolve Google Maps link if provided
+        let mapEmbedUrl = '';
+        let coordinates = { lat: '', lng: '' };
+        if (googleMapLink) {
+            try {
+                const mapData = await getMapEmbedFromSharedLink(googleMapLink);
+                if (mapData) {
+                    mapEmbedUrl = mapData.embedUrl;
+                }
+            } catch (err) {
+                console.warn("Failed to resolve map link during property creation:", err.message);
+            }
+        }
 
         // Create a new product
         const product = new Property({
@@ -45,6 +60,7 @@ const addproperty = async (req, res) => {
             image: imageUrls,
             phone,
             googleMapLink: googleMapLink || '',
+            mapEmbedUrl,
             city: city || '',
             instagramLink: instagramLink || '',
             youtubeLink: youtubeLink || '',
@@ -149,7 +165,22 @@ const updateproperty = async (req, res) => {
             property.description = description;
             property.amenities = amenities;
             property.phone = phone;
+            // Re-resolve map if link changed OR if embed URL is missing
+            if (googleMapLink && (googleMapLink !== property.googleMapLink || !property.mapEmbedUrl)) {
+                try {
+                    const mapData = await getMapEmbedFromSharedLink(googleMapLink);
+                    if (mapData) {
+                        property.mapEmbedUrl = mapData.embedUrl;
+                    }
+                } catch (err) {
+                    console.warn("Failed to resolve map link during property update:", err.message);
+                }
+            } else if (!googleMapLink) {
+                property.mapEmbedUrl = '';
+            }
+
             property.googleMapLink = googleMapLink || '';
+
             property.city = city || '';
             property.instagramLink = instagramLink || '';
             property.youtubeLink = youtubeLink || '';
@@ -161,6 +192,7 @@ const updateproperty = async (req, res) => {
                 property.image = existingImages;
             }
             
+            console.log("Saving property. mapEmbedUrl:", property.mapEmbedUrl);
             await property.save();
             return res.json({ message: "Property updated successfully", success: true });
         }
@@ -218,12 +250,28 @@ const updateproperty = async (req, res) => {
         property.amenities = amenities;
         property.image = finalImages.length > 0 ? finalImages : property.image;
         property.phone = phone;
+        // Re-resolve map if link changed OR if embed URL is missing
+        if (googleMapLink && (googleMapLink !== property.googleMapLink || !property.mapEmbedUrl)) {
+            try {
+                const mapData = await getMapEmbedFromSharedLink(googleMapLink);
+                if (mapData) {
+                    property.mapEmbedUrl = mapData.embedUrl;
+                }
+            } catch (err) {
+                console.warn("Failed to resolve map link during property update:", err.message);
+            }
+        } else if (!googleMapLink) {
+            property.mapEmbedUrl = '';
+        }
+
         property.googleMapLink = googleMapLink || '';
+
         property.city = city || '';
         property.instagramLink = instagramLink || '';
         property.youtubeLink = youtubeLink || '';
         property.facing = facing || '';
 
+        console.log("Saving property (with images). mapEmbedUrl:", property.mapEmbedUrl);
         await property.save();
         res.json({ message: "Property updated successfully", success: true });
     } catch (error) {
@@ -239,6 +287,7 @@ const singleproperty = async (req, res) => {
         if (!property) {
             return res.status(404).json({ message: "Property not found", success: false });
         }
+        console.log("Fetching property. mapEmbedUrl in DB:", property.mapEmbedUrl);
         // Block public access to listings that are not yet approved or have been
         // rejected/expired. Legacy docs without a status field are always visible.
         if (property.status && property.status !== 'active') {

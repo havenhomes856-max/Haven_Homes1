@@ -33,6 +33,7 @@ interface PropertyData {
   amenities: string[];
   phone: string;
   googleMapLink?: string;
+  mapEmbedUrl?: string;
   city?: string;
   instagramLink?: string;
   youtubeLink?: string;
@@ -201,6 +202,7 @@ const PropertyDetailsPage: React.FC = () => {
                        location={property.location}
                        propertyName={property.title}
                        googleMapLink={property.googleMapLink}
+                       mapEmbedUrl={property.mapEmbedUrl}
                      />
                   </div>
                </div>

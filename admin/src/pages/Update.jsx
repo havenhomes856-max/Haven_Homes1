@@ -34,6 +34,7 @@ const Update = () => {
     amenities: [], googleMapLink: '', city: '', instagramLink: '', youtubeLink: '', facing: '', images: [],
   });
   const [previewUrls, setPreviewUrls] = useState([]);
+  const [mapPreview, setMapPreview] = useState('');
   const [loading, setLoading] = useState(false);
   const [fetching, setFetching] = useState(true);
   const [newAmenity, setNewAmenity] = useState('');
@@ -58,6 +59,7 @@ const Update = () => {
             youtubeLink: property.youtubeLink || '', facing: property.facing || '', images: property.image,
           });
           setPreviewUrls(property.image);
+          if (property.mapEmbedUrl) setMapPreview(property.mapEmbedUrl);
         } else {
           toast.error(response.data.message);
         }
@@ -253,15 +255,49 @@ const Update = () => {
                     value={formData.phone} onChange={handleInputChange} className={cn(inputClass, 'pl-10')} />
                 </div>
               </div>
-              <div>
+              <div className="col-span-2">
                 <label htmlFor="googleMapLink" className={labelClass}>
                   Google Maps Link <span className="text-[#9CA3AF] font-normal">(optional)</span>
                 </label>
-                <div className="relative">
-                  <LinkIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#9CA3AF]" />
-                  <input type="url" id="googleMapLink" name="googleMapLink"
-                    value={formData.googleMapLink} onChange={handleInputChange} className={cn(inputClass, 'pl-10')} />
+                <div className="flex gap-2">
+                  <div className="relative flex-1">
+                    <LinkIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#9CA3AF]" />
+                    <input type="url" id="googleMapLink" name="googleMapLink"
+                      value={formData.googleMapLink} onChange={handleInputChange}
+                      placeholder="Paste Google Maps shared link here..." className={cn(inputClass, 'pl-10')} />
+                  </div>
+                  <button
+                    type="button"
+                    onClick={async () => {
+                      if (!formData.googleMapLink) return;
+                      const t = toast.loading('Resolving map...');
+                      try {
+                        const res = await apiClient.post('/api/admin/resolve-map', { url: formData.googleMapLink });
+                        if (res.data.success) {
+                          setMapPreview(res.data.data.embedUrl);
+                          toast.success('Map resolved successfully', { id: t });
+                        }
+                      } catch (err) {
+                        toast.error('Failed to resolve map link', { id: t });
+                      }
+                    }}
+                    className="px-4 py-2 bg-[#1C1B1A] text-white rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-[#D4755B] transition-colors"
+                  >
+                    Verify
+                  </button>
                 </div>
+                {mapPreview && (
+                  <div className="mt-4 rounded-xl overflow-hidden border border-[#E6D5C3] aspect-video">
+                    <iframe
+                      src={mapPreview}
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                    ></iframe>
+                  </div>
+                )}
               </div>
               <div>
                 <label htmlFor="instagramLink" className={labelClass}>

@@ -27,6 +27,7 @@ import {
   getPropertyStats,
   getEnhancedOverview,
 } from '../controller/adminController.js';
+import { resolveMapLink } from '../controller/mapController.js';
 import { adminProtect } from '../middleware/authMiddleware.js';
 import { registry } from '../utils/circuitBreaker.js';
 
@@ -69,6 +70,9 @@ router.get('/activity-logs/export', exportActivityLogs);
 router.get('/stats/users', getUserStats);
 router.get('/stats/properties', getPropertyStats);
 router.get('/stats/overview', getEnhancedOverview);
+
+// Map Utilities
+router.post('/resolve-map', resolveMapLink);
 
 // Circuit breaker monitoring endpoint
 router.get('/circuit-breakers', (req, res) => {

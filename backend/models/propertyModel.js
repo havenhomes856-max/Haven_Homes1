@@ -60,6 +60,10 @@ const propertySchema = new mongoose.Schema(
       type: String,
       default: "",
     },
+    mapEmbedUrl: {
+      type: String,
+      default: "",
+    },
     city: {
       type: String,
       default: "",

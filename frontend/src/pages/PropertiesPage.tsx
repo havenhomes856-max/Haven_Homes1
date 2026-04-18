@@ -26,6 +26,8 @@ export interface Property {
   amenities: string[];
   phone: string;
   city?: string;
+  googleMapLink?: string;
+  mapEmbedUrl?: string;
   instagramLink?: string;
   youtubeLink?: string;
 }

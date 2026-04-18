@@ -8,71 +8,30 @@ interface PropertyLocationProps {
   zipcode?: string;
   location?: string;
   propertyName?: string;
-  googleMapLink?: string;
+  mapEmbedUrl?: string;
 }
 
-function getEmbedUrl(link: string | undefined, fallbackAddress: string): string | null {
-  const trimmed = (link || '').trim();
 
-  // If there's no link provided, fallback to the address
-  if (!trimmed) {
-    if (fallbackAddress) {
-      return `https://maps.google.com/maps?q=${encodeURIComponent(fallbackAddress)}&output=embed`;
-    }
-    return null;
-  }
-
-  // Extract src from iframe tag if they pasted the whole embed HTML snippet
-  const iframeMatch = trimmed.match(/src="([^"]+)"/);
-  if (iframeMatch) {
-    return iframeMatch[1];
-  }
-
-  // If it's already an embed link
-  if (trimmed.includes('/maps/embed')) return trimmed;
-
-  // Extract place from regular Google Maps URL
-  const placeMatch = trimmed.match(/\/maps\/place\/([^/@?]+)/);
-  if (placeMatch) {
-    const query = decodeURIComponent(placeMatch[1].replace(/\+/g, ' '));
-    return `https://maps.google.com/maps?q=${encodeURIComponent(query)}&output=embed`;
-  }
-
-  // Extract from @lat,lng format
-  const coordMatch = trimmed.match(/@(-?\d+\.\d+),(-?\d+\.\d+)/);
-  if (coordMatch) {
-    return `https://maps.google.com/maps?q=${coordMatch[1]},${coordMatch[2]}&output=embed`;
-  }
-
-  // Extract from q= parameter
-  const qMatch = trimmed.match(/[?&]q=([^&]+)/);
-  if (qMatch) {
-    return `https://maps.google.com/maps?q=${qMatch[1]}&output=embed`;
-  }
-
-  // If it's a short link or another unparseable HTTP url, 
-  // an iframe embed of `q=URL` will just result in a blank World Map.
-  // In this edge case, we MUST fallback to the textual location address,
-  // while the "Open in Maps" button above will still take the user exactly to their provided link.
-  if (trimmed.startsWith('http')) {
-    if (fallbackAddress) {
-      return `https://maps.google.com/maps?q=${encodeURIComponent(fallbackAddress)}&output=embed`;
-    }
-  }
-
-  // For anything else, use it directly as the query
-  return `https://maps.google.com/maps?q=${encodeURIComponent(trimmed)}&output=embed`;
-}
-
-const PropertyLocation: React.FC<PropertyLocationProps> = ({ address, city, state, zipcode, location, propertyName, googleMapLink }) => {
+const PropertyLocation: React.FC<PropertyLocationProps> = ({ address, city, state, zipcode, location, propertyName, mapEmbedUrl }) => {
   const displayTitle = city || location?.split(',').pop()?.trim() || 'Location';
   const displayAddress = address
     ? `${address}, ${city || ''}, ${state || ''} ${zipcode || ''}`.replace(/,\s*,/g, ',').replace(/\s+/g, ' ').trim()
     : location || '';
 
-  const embedUrl = getEmbedUrl(googleMapLink, displayAddress);
-  const hasMap = !!embedUrl;
-  
+  console.log('PropertyLocation mapEmbedUrl:', mapEmbedUrl);
+  // Strictly use the backend-resolved embed URL
+  let embedUrl = mapEmbedUrl;
+
+  // If the link is a full iframe tag, extract the src URL
+  if (embedUrl && embedUrl.includes('<iframe')) {
+    const match = embedUrl.match(/src="([^"]+)"/);
+    if (match) {
+      embedUrl = match[1];
+    }
+  }
+
+  const hasMap = !!embedUrl && embedUrl.trim() !== "";
+
   return (
     <div className="mb-12">
       {/* Section Header */}
@@ -97,17 +56,6 @@ const PropertyLocation: React.FC<PropertyLocationProps> = ({ address, city, stat
               {displayAddress}
             </p>
           </div>
-          {googleMapLink && (
-            <a
-              href={googleMapLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-[#D4755B] hover:text-[#B86851] font-red-hat text-sm font-bold shrink-0 transition-colors"
-            >
-              Open in Maps
-              <ExternalLink className="w-4 h-4" />
-            </a>
-          )}
         </div>
       </div>
 

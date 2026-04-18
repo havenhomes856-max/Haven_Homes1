@@ -8,6 +8,7 @@ import SearchCache from '../models/searchCacheModel.js';
 import { coalesce, getInFlightCount } from '../utils/requestCoalescer.js';
 import logger from '../utils/logger.js';
 import { deleteImagesFromImageKit } from '../utils/imageKitCleanup.js';
+import { getMapEmbedFromSharedLink } from '../utils/mapUtils.js';
 
 // ── MongoDB-based cache (10-minute TTL via TTL index) ────────────────────────
 // Replaces in-memory cache - works across all server instances
@@ -519,6 +520,20 @@ export const createUserListing = async (req, res) => {
 
         const expiresAt = new Date(Date.now() + EXPIRY_DAYS * 24 * 60 * 60 * 1000);
 
+        // Resolve Google Maps link if provided
+        let mapEmbedUrl = '';
+        let coordinates = { lat: '', lng: '' };
+        if (googleMapLink) {
+            try {
+                const mapData = await getMapEmbedFromSharedLink(googleMapLink);
+                if (mapData) {
+                    mapEmbedUrl = mapData.embedUrl;
+                }
+            } catch (err) {
+                console.warn("Failed to resolve map link during user listing creation:", err.message);
+            }
+        }
+
         const property = await Property.create({
             title,
             location,
@@ -534,6 +549,7 @@ export const createUserListing = async (req, res) => {
             image: imageUrls,
             phone,
             googleMapLink: googleMapLink || '',
+            mapEmbedUrl,
             facing: facing || '',
             status: 'pending',
             postedBy: req.user._id,
@@ -636,6 +652,13 @@ export const updateUserListing = async (req, res) => {
             facing: facing ?? property.facing,
             amenities,
             image: imageUrls,
+            googleMapLink: googleMapLink || '',
+            
+            // Re-resolve map if link changed OR if embed URL is missing
+            ...(googleMapLink && (googleMapLink !== property.googleMapLink || !property.mapEmbedUrl) && {
+                mapEmbedUrl: (await getMapEmbedFromSharedLink(googleMapLink).catch(() => ({}))).embedUrl || '',
+            }),
+            
             // Any edit resets to pending so admin re-reviews
             status: 'pending',
             rejectionReason: '',
