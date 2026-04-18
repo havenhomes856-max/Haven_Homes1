@@ -53,15 +53,15 @@ const AITopMatchesSection: React.FC = () => {
               Top Matches
             </h2>
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-[#D4755B] rounded-full animate-pulse" />
-              <span className="font-space-mono font-bold text-2xl text-[#D4755B]">
+              <div className="w-2 h-2 bg-[#C5A059] rounded-full animate-pulse" />
+              <span className="font-space-mono font-bold text-2xl text-[#C5A059]">
                 97%
               </span>
               <span className="font-space-mono text-sm text-[#6b7280]">Average Match Rate</span>
             </div>
           </div>
 
-          <button className="font-space-mono text-sm text-[#221410] border-b border-[#221410] hover:text-[#D4755B] hover:border-[#D4755B] transition-colors pb-1">
+          <button className="font-space-mono text-sm text-[#221410] border-b border-[#221410] hover:text-[#C5A059] hover:border-[#C5A059] transition-colors pb-1">
             View All → See more
           </button>
         </div>
@@ -84,7 +84,7 @@ const AITopMatchesSection: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent h-12" />
 
                 {/* Badge */}
-                <div className="absolute top-4 left-4 bg-[#D4755B] text-white font-space-mono text-xs px-3 py-1.5 rounded-full shadow-lg">
+                <div className="absolute top-4 left-4 bg-[#C5A059] text-white font-space-mono text-xs px-3 py-1.5 rounded-full shadow-lg">
                   {property.badge}
                 </div>
 
@@ -105,7 +105,7 @@ const AITopMatchesSection: React.FC = () => {
                 <h3 className="font-syne text-xl text-[#221410] mb-2">
                   {property.name}
                 </h3>
-                <p className="font-space-mono font-bold text-lg text-[#D4755B] mb-4">
+                <p className="font-space-mono font-bold text-lg text-[#C5A059] mb-4">
                   {property.price}
                 </p>
 

@@ -93,7 +93,7 @@ const PropertyDetailsPage: React.FC = () => {
         <div className="flex items-center justify-center py-32 px-4 shadow-sm">
           <div className="text-center max-w-md bg-white p-8 rounded-3xl border border-[#E6E0DA]">
             <div className="w-16 h-16 bg-[#F8F6F6] rounded-full flex items-center justify-center mx-auto mb-6">
-               <span className="material-icons text-3xl text-[#D4755B]">error_outline</span>
+               <span className="material-icons text-3xl text-[#C5A059]">error_outline</span>
             </div>
             <h2 className="font-fraunces text-2xl text-[#1C1B1A] mb-2">{error || 'Property Not Found'}</h2>
             <p className="font-red-hat text-[#5A5856] mb-8">This property listing may have been removed or is currently unavailable.</p>

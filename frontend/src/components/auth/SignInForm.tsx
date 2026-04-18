@@ -42,7 +42,7 @@ const SignInForm: React.FC<SignInFormProps> = ({ onSubmit }) => {
             value={formData.email}
             onChange={handleInputChange}
             placeholder="john.doe@example.com"
-            className="w-full bg-[#F5F1E8] border border-[#E6E0DA] rounded-lg pl-12 pr-4 py-3.5 font-manrope font-extralight text-sm text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#D4755B] transition-colors"
+            className="w-full bg-[#F5F1E8] border border-[#E6E0DA] rounded-lg pl-12 pr-4 py-3.5 font-manrope font-extralight text-sm text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#C5A059] transition-colors"
             required
           />
         </div>
@@ -61,13 +61,13 @@ const SignInForm: React.FC<SignInFormProps> = ({ onSubmit }) => {
             value={formData.password}
             onChange={handleInputChange}
             placeholder="Enter your password"
-            className="w-full bg-[#F5F1E8] border border-[#E6E0DA] rounded-lg pl-12 pr-12 py-3.5 font-manrope font-extralight text-sm text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#D4755B] transition-colors"
+            className="w-full bg-[#F5F1E8] border border-[#E6E0DA] rounded-lg pl-12 pr-12 py-3.5 font-manrope font-extralight text-sm text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#C5A059] transition-colors"
             required
           />
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
-            className="absolute right-4 top-1/2 -translate-y-1/2 text-[#94A3B8] hover:text-[#D4755B] transition-colors"
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-[#94A3B8] hover:text-[#C5A059] transition-colors"
           >
             {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
           </button>
@@ -82,7 +82,7 @@ const SignInForm: React.FC<SignInFormProps> = ({ onSubmit }) => {
             name="rememberMe"
             checked={formData.rememberMe}
             onChange={handleInputChange}
-            className="w-4 h-4 rounded border-[#E6E0DA] text-[#D4755B] focus:ring-[#D4755B]"
+            className="w-4 h-4 rounded border-[#E6E0DA] text-[#C5A059] focus:ring-[#C5A059]"
           />
           <span className="font-manrope font-extralight text-sm text-[#4B5563]">
             Remember me
@@ -90,7 +90,7 @@ const SignInForm: React.FC<SignInFormProps> = ({ onSubmit }) => {
         </label>
         <Link
           to="/forgot-password"
-          className="font-manrope font-medium text-sm text-[#D4755B] hover:text-[#C05621] transition-colors"
+          className="font-manrope font-medium text-sm text-[#C5A059] hover:text-[#C05621] transition-colors"
         >
           Forgot Password?
         </Link>
@@ -99,7 +99,7 @@ const SignInForm: React.FC<SignInFormProps> = ({ onSubmit }) => {
       {/* Submit Button */}
       <button
         type="submit"
-        className="w-full bg-[#D4755B] hover:bg-[#C05621] text-white font-manrope font-bold text-base py-3.5 rounded-xl transition-all shadow-lg hover:shadow-xl"
+        className="w-full bg-[#C5A059] hover:bg-[#C05621] text-white font-manrope font-bold text-base py-3.5 rounded-xl transition-all shadow-lg hover:shadow-xl"
       >
         Sign In
       </button>

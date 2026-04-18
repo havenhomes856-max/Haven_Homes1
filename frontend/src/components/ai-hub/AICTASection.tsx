@@ -7,8 +7,8 @@ const AICTASection: React.FC = () => {
     <section className="bg-gradient-to-br from-[#221410] to-[#3d2519] py-20 relative overflow-hidden">
       {/* Decorative blobs */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden>
-        <div className="absolute top-10 right-20 w-64 h-64 bg-[#D4755B]/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 left-20 w-48 h-48 bg-[#D4755B]/5 rounded-full blur-3xl" />
+        <div className="absolute top-10 right-20 w-64 h-64 bg-[#C5A059]/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-10 left-20 w-48 h-48 bg-[#C5A059]/5 rounded-full blur-3xl" />
       </div>
 
       <div className="max-w-[800px] mx-auto px-6 text-center relative z-10">
@@ -22,7 +22,7 @@ const AICTASection: React.FC = () => {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             to="/properties"
-            className="inline-flex items-center justify-center gap-2 bg-[#1C1B1A] hover:bg-[#D4755B] text-white font-manrope font-semibold px-8 py-4 rounded-xl transition-all uppercase tracking-widest shadow-lg"
+            className="inline-flex items-center justify-center gap-2 bg-[#1C1B1A] hover:bg-[#C5A059] text-white font-manrope font-semibold px-8 py-4 rounded-xl transition-all uppercase tracking-widest shadow-lg"
           >
             Browse Properties
             <ArrowRight className="w-4 h-4" />

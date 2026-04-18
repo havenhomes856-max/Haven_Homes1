@@ -28,21 +28,20 @@ const Navbar: React.FC = () => {
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
-      scrolled ? 'bg-[#1C1B1A]/95 backdrop-blur-md shadow-lg h-16' : 'bg-[#1C1B1A] h-20'
-    }`}>
+    <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${scrolled ? 'bg-[#1C1B1A]/95 backdrop-blur-md shadow-lg h-16' : 'bg-[#1C1B1A] h-20'
+      }`}>
       <div className="max-w-[1440px] mx-auto h-full px-4 sm:px-8 flex items-center justify-between relative">
         {/* Brand Logo */}
-        <Link 
-          to="/" 
+        <Link
+          to="/"
           className="flex items-center gap-3 h-full py-0 lg:static absolute left-1/2 -translate-x-1/2 lg:left-0 lg:translate-x-0"
         >
-           <img 
-             src="https://res.cloudinary.com/dp4xt0bve/image/upload/f_webp,q_auto/v1776491805/logo-Photoroom.png" 
-             alt="Haven Homes Logo" 
-             className="h-full w-auto object-contain brightness-0 invert"
-           />
-           <span className="font-fraunces font-bold text-xl sm:text-2xl text-white tracking-tight hidden lg:block">Haven Homes</span>
+          <img
+            src="https://res.cloudinary.com/dp4xt0bve/image/upload/f_webp,q_auto,e_tint:100:D4AF37/v1776492125/logo-Photoroom.png"
+            alt="Haven Homes Logo"
+            className="h-full w-auto object-contain"
+          />
+          <span className="font-fraunces font-bold text-xl sm:text-2xl text-[#C5A059] tracking-tight hidden lg:block">Haven Homes</span>
         </Link>
 
         {/* Desktop Nav */}
@@ -51,24 +50,23 @@ const Navbar: React.FC = () => {
             <Link
               key={link.title}
               to={link.path}
-              className={`font-red-hat text-sm font-bold uppercase tracking-widest transition-all duration-300 relative py-1 ${
-                location.pathname === link.path 
-                  ? 'text-white' 
-                  : 'text-gray-400 hover:text-white'
-              }`}
+              className={`font-red-hat text-sm font-bold uppercase tracking-widest transition-all duration-300 relative py-1 ${location.pathname === link.path
+                ? 'text-[#C5A059]'
+                : 'text-gray-400 hover:text-[#C5A059]'
+                }`}
             >
               {link.title}
               {location.pathname === link.path && (
-                <motion.div 
+                <motion.div
                   layoutId="navUnderline"
-                  className="absolute bottom-0 left-0 w-full h-[2px] bg-[#D4755B]" 
+                  className="absolute bottom-0 left-0 w-full h-[2px] bg-[#C5A059]"
                 />
               )}
             </Link>
           ))}
-          <Link 
+          <Link
             to="/properties"
-            className="bg-white text-[#1C1B1A] font-red-hat text-xs font-bold uppercase tracking-widest px-8 py-3.5 rounded-xl hover:bg-[#D4755B] hover:text-white transition-all duration-300 shadow-md"
+            className="bg-white text-[#1C1B1A] font-red-hat text-xs font-bold uppercase tracking-widest px-8 py-3.5 rounded-xl hover:bg-[#C5A059] hover:text-[#C5A059] transition-all duration-300 shadow-md"
           >
             Explore Listings
           </Link>
@@ -77,7 +75,7 @@ const Navbar: React.FC = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="lg:hidden w-10 h-10 flex items-center justify-center text-white"
+          className="lg:hidden w-10 h-10 flex items-center justify-center text-[#C5A059]"
         >
           {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
@@ -93,9 +91,9 @@ const Navbar: React.FC = () => {
             className="absolute top-0 left-0 w-full h-screen bg-[#1C1B1A] z-[90] lg:hidden flex flex-col items-center justify-center p-8 text-center"
           >
             {/* Close Button Inside Menu */}
-            <button 
+            <button
               onClick={() => setIsOpen(false)}
-              className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center text-white"
+              className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center text-[#C5A059]"
             >
               <X className="w-8 h-8" />
             </button>
@@ -107,24 +105,24 @@ const Navbar: React.FC = () => {
                   to={link.path}
                   className="flex items-center justify-center gap-4 group"
                 >
-                   <link.icon className="w-5 h-5 text-[#D4755B]" />
-                   <span className="font-fraunces text-3xl font-bold text-white hover:text-[#D4755B] transition-colors">{link.title}</span>
+                  <link.icon className="w-5 h-5 text-[#C5A059]" />
+                  <span className="font-fraunces text-3xl font-bold text-[#C5A059] hover:text-[#C5A059] transition-colors">{link.title}</span>
                 </Link>
               ))}
               <div className="pt-12">
-                <Link 
+                <Link
                   to="/properties"
-                  className="block w-full bg-white text-[#1C1B1A] font-red-hat text-sm font-bold uppercase tracking-widest py-5 rounded-2xl shadow-xl"
+                  className="block w-full bg-[#C5A059] text-[#1C1B1A] font-red-hat text-sm font-bold uppercase tracking-widest py-5 rounded-2xl shadow-xl"
                 >
                   View All listings
                 </Link>
               </div>
             </div>
-            
+
             {/* Contact Support */}
             <div className="absolute bottom-12 text-center w-full">
-               <p className="font-red-hat text-xs text-gray-500 uppercase tracking-widest mb-2 opacity-60">Need Assistance?</p>
-               <p className="font-fraunces text-xl font-bold text-white">95014-90002</p>
+              <p className="font-red-hat text-xs text-gray-500 uppercase tracking-widest mb-2 opacity-60">Need Assistance?</p>
+              <p className="font-fraunces text-xl font-bold text-[#C5A059]">95014-90002</p>
             </div>
           </motion.div>
         )}

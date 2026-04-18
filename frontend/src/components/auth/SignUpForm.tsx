@@ -54,7 +54,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onSubmit }) => {
               value={formData.firstName}
               onChange={handleInputChange}
               placeholder="John"
-              className="w-full bg-[#F5F1E8] border border-[#E6E0DA] rounded-lg pl-12 pr-4 py-3.5 font-manrope font-extralight text-sm text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#D4755B] transition-colors"
+              className="w-full bg-[#F5F1E8] border border-[#E6E0DA] rounded-lg pl-12 pr-4 py-3.5 font-manrope font-extralight text-sm text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#C5A059] transition-colors"
               required
             />
           </div>
@@ -72,7 +72,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onSubmit }) => {
               value={formData.lastName}
               onChange={handleInputChange}
               placeholder="Doe"
-              className="w-full bg-[#F5F1E8] border border-[#E6E0DA] rounded-lg pl-12 pr-4 py-3.5 font-manrope font-extralight text-sm text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#D4755B] transition-colors"
+              className="w-full bg-[#F5F1E8] border border-[#E6E0DA] rounded-lg pl-12 pr-4 py-3.5 font-manrope font-extralight text-sm text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#C5A059] transition-colors"
               required
             />
           </div>
@@ -92,7 +92,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onSubmit }) => {
             value={formData.email}
             onChange={handleInputChange}
             placeholder="john.doe@example.com"
-            className="w-full bg-[#F5F1E8] border border-[#E6E0DA] rounded-lg pl-12 pr-4 py-3.5 font-manrope font-extralight text-sm text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#D4755B] transition-colors"
+            className="w-full bg-[#F5F1E8] border border-[#E6E0DA] rounded-lg pl-12 pr-4 py-3.5 font-manrope font-extralight text-sm text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#C5A059] transition-colors"
             required
           />
         </div>
@@ -111,14 +111,14 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onSubmit }) => {
             value={formData.password}
             onChange={handleInputChange}
             placeholder="Create a strong password"
-            className="w-full bg-[#F5F1E8] border border-[#E6E0DA] rounded-lg pl-12 pr-12 py-3.5 font-manrope font-extralight text-sm text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#D4755B] transition-colors"
+            className="w-full bg-[#F5F1E8] border border-[#E6E0DA] rounded-lg pl-12 pr-12 py-3.5 font-manrope font-extralight text-sm text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#C5A059] transition-colors"
             required
             minLength={8}
           />
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
-            className="absolute right-4 top-1/2 -translate-y-1/2 text-[#94A3B8] hover:text-[#D4755B] transition-colors"
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-[#94A3B8] hover:text-[#C5A059] transition-colors"
           >
             {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
           </button>
@@ -138,13 +138,13 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onSubmit }) => {
             value={formData.confirmPassword}
             onChange={handleInputChange}
             placeholder="Re-enter your password"
-            className="w-full bg-[#F5F1E8] border border-[#E6E0DA] rounded-lg pl-12 pr-12 py-3.5 font-manrope font-extralight text-sm text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#D4755B] transition-colors"
+            className="w-full bg-[#F5F1E8] border border-[#E6E0DA] rounded-lg pl-12 pr-12 py-3.5 font-manrope font-extralight text-sm text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#C5A059] transition-colors"
             required
           />
           <button
             type="button"
             onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-            className="absolute right-4 top-1/2 -translate-y-1/2 text-[#94A3B8] hover:text-[#D4755B] transition-colors"
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-[#94A3B8] hover:text-[#C5A059] transition-colors"
           >
             {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
           </button>
@@ -159,16 +159,16 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onSubmit }) => {
             name="agreeToTerms"
             checked={formData.agreeToTerms}
             onChange={handleInputChange}
-            className="w-4 h-4 mt-0.5 rounded border-[#E6E0DA] text-[#D4755B] focus:ring-[#D4755B]"
+            className="w-4 h-4 mt-0.5 rounded border-[#E6E0DA] text-[#C5A059] focus:ring-[#C5A059]"
             required
           />
           <span className="font-manrope font-extralight text-sm text-[#4B5563] leading-relaxed">
             I agree to the{' '}
-            <Link to="/terms" className="text-[#D4755B] hover:text-[#C05621] font-medium">
+            <Link to="/terms" className="text-[#C5A059] hover:text-[#C05621] font-medium">
               Terms & Conditions
             </Link>
             {' '}and{' '}
-            <Link to="/privacy" className="text-[#D4755B] hover:text-[#C05621] font-medium">
+            <Link to="/privacy" className="text-[#C5A059] hover:text-[#C05621] font-medium">
               Privacy Policy
             </Link>
           </span>
@@ -178,7 +178,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onSubmit }) => {
       {/* Submit Button */}
       <button
         type="submit"
-        className="w-full bg-[#D4755B] hover:bg-[#C05621] text-white font-manrope font-bold text-base py-3.5 rounded-xl transition-all shadow-lg hover:shadow-xl"
+        className="w-full bg-[#C5A059] hover:bg-[#C05621] text-white font-manrope font-bold text-base py-3.5 rounded-xl transition-all shadow-lg hover:shadow-xl"
       >
         Create Account
       </button>

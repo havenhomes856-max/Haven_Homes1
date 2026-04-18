@@ -8,10 +8,10 @@ const ProcessSection: React.FC = () => {
           {/* Left - Sticky Content */}
           <div className="lg:col-span-4">
             <div className="lg:sticky lg:top-24">
-              <div className="font-space-mono text-sm text-[#D4755B] uppercase tracking-widest mb-6">Process</div>
+              <div className="font-space-mono text-sm text-[#C5A059] uppercase tracking-widest mb-6">Process</div>
               <h2 className="font-fraunces text-3xl sm:text-5xl text-[#111827] mb-6 leading-tight">
                 The Path to Your<br />
-                <span className="italic text-[#D4755B]">New Beginning</span>
+                <span className="italic text-[#C5A059]">New Beginning</span>
               </h2>
 
               <button className="bg-[#111827] text-white font-manrope font-medium px-8 py-3 rounded-lg shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.1)] hover:bg-[#1f2937] transition-all">

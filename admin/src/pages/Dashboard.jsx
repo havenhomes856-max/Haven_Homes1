@@ -50,7 +50,7 @@ const QuickActionCard = ({ title, count, icon: Icon, accent, to, index }) => (
   >
     <Link
       to={to}
-      className="block bg-white rounded-xl p-4 border border-[#E6D5C3] shadow-card hover:shadow-card-hover hover:border-[#D4755B] transition-all duration-200 group"
+      className="block bg-white rounded-xl p-4 border border-[#E6D5C3] shadow-card hover:shadow-card-hover hover:border-[#C5A059] transition-all duration-200 group"
     >
       <div className="flex items-center justify-between">
         <div>
@@ -63,7 +63,7 @@ const QuickActionCard = ({ title, count, icon: Icon, accent, to, index }) => (
           <Icon className={cn("w-5 h-5", accent.icon)} />
         </div>
       </div>
-      <div className="mt-3 flex items-center text-xs font-medium text-[#D4755B] group-hover:text-[#C05E44] transition-colors">
+      <div className="mt-3 flex items-center text-xs font-medium text-[#C5A059] group-hover:text-[#C05E44] transition-colors">
         View details
         <ExternalLink className="w-3 h-3 ml-1 transition-transform group-hover:translate-x-0.5" />
       </div>
@@ -84,11 +84,11 @@ const ActivityItem = ({ item }) => {
       if (item.action.includes('reject')) return <Building2 className="w-4 h-4 text-red-600" />;
       if (item.action.includes('suspend') || item.action.includes('ban')) return <UserMinus className="w-4 h-4 text-amber-600" />;
       if (item.action.includes('user')) return <Users className="w-4 h-4 text-blue-600" />;
-      if (item.action.includes('property')) return <Building2 className="w-4 h-4 text-[#D4755B]" />;
+      if (item.action.includes('property')) return <Building2 className="w-4 h-4 text-[#C5A059]" />;
     }
 
     return isProperty
-      ? <Building2 className="w-4 h-4 text-[#D4755B]" />
+      ? <Building2 className="w-4 h-4 text-[#C5A059]" />
       : <Calendar className="w-4 h-4 text-blue-500" />;
   };
 
@@ -98,10 +98,10 @@ const ActivityItem = ({ item }) => {
       if (item.action.includes('reject')) return "bg-red-50";
       if (item.action.includes('suspend') || item.action.includes('ban')) return "bg-amber-50";
       if (item.action.includes('user')) return "bg-blue-50";
-      if (item.action.includes('property')) return "bg-[#D4755B]/10";
+      if (item.action.includes('property')) return "bg-[#C5A059]/10";
     }
 
-    return isProperty ? "bg-[#D4755B]/10" : "bg-blue-50";
+    return isProperty ? "bg-[#C5A059]/10" : "bg-blue-50";
   };
 
   const formatActionText = (action) => {
@@ -232,7 +232,7 @@ const Dashboard = () => {
       title: "Total Properties",
       value: stats?.totalProperties,
       icon: Home,
-      accent: { bg: "bg-[#D4755B]/10", icon: "text-[#D4755B]" },
+      accent: { bg: "bg-[#C5A059]/10", icon: "text-[#C5A059]" },
       description: "All listed properties",
     },
     {
@@ -270,7 +270,7 @@ const Dashboard = () => {
         label: "Property Views",
         data: stats?.viewsData?.datasets?.[0]?.data ?? [0, 0, 0, 0, 0, 0, 0],
         backgroundColor: "rgba(212, 117, 91, 0.15)",
-        borderColor: "#D4755B",
+        borderColor: "#C5A059",
         borderWidth: 2,
         borderRadius: 6,
         borderSkipped: false,
@@ -288,7 +288,7 @@ const Dashboard = () => {
           stats?.activeListings ?? 0,
           Math.max(0, (stats?.totalProperties ?? 0) - (stats?.activeListings ?? 0)),
         ],
-        backgroundColor: ["#D4755B", "#E6D5C3"],
+        backgroundColor: ["#C5A059", "#E6D5C3"],
         borderColor: ["#C05E44", "#D4B99A"],
         borderWidth: 1,
         hoverOffset: 6,
@@ -386,7 +386,7 @@ const Dashboard = () => {
           <h3 className="text-lg font-bold text-[#1C1B1A] mb-2">Failed to load dashboard</h3>
           <p className="text-[#5A5856] mb-6 text-sm">{error}</p>
           <button onClick={() => fetchStats()}
-            className="px-6 py-3 bg-[#D4755B] text-white rounded-xl font-semibold text-sm hover:bg-[#C05E44] transition-colors">
+            className="px-6 py-3 bg-[#C5A059] text-white rounded-xl font-semibold text-sm hover:bg-[#C05E44] transition-colors">
             Try Again
           </button>
         </div>
@@ -410,7 +410,7 @@ const Dashboard = () => {
             disabled={refreshing || isRequestInProgress}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="flex items-center gap-2 px-4 py-2.5 bg-white border border-[#E6D5C3] text-[#1C1B1A] rounded-xl text-sm font-medium hover:border-[#D4755B] hover:text-[#D4755B] transition-all duration-200 shadow-card disabled:opacity-60 disabled:cursor-not-allowed"
+            className="flex items-center gap-2 px-4 py-2.5 bg-white border border-[#E6D5C3] text-[#1C1B1A] rounded-xl text-sm font-medium hover:border-[#C5A059] hover:text-[#C5A059] transition-all duration-200 shadow-card disabled:opacity-60 disabled:cursor-not-allowed"
           >
             <RefreshCw className={cn("w-4 h-4", (refreshing || isRequestInProgress) && "animate-spin")} />
             {refreshing || isRequestInProgress ? "Refreshing..." : "Refresh"}
@@ -439,7 +439,7 @@ const Dashboard = () => {
                 <h3 className="text-base font-bold text-[#1C1B1A]">Property Views</h3>
                 <p className="text-xs text-[#9CA3AF] mt-0.5">Weekly view activity</p>
               </div>
-              <div className="flex items-center gap-1.5 text-xs text-[#D4755B] font-medium">
+              <div className="flex items-center gap-1.5 text-xs text-[#C5A059] font-medium">
                 <BarChart3 className="w-4 h-4" />
                 This Week
               </div>
@@ -476,12 +476,12 @@ const Dashboard = () => {
         >
           <div className="flex items-center justify-between mb-5">
             <div className="flex items-center gap-2">
-              <Activity className="w-5 h-5 text-[#D4755B]" />
+              <Activity className="w-5 h-5 text-[#C5A059]" />
               <h3 className="text-base font-bold text-[#1C1B1A]">Recent Admin Activity</h3>
             </div>
             <Link
               to="/activity-logs"
-              className="text-xs text-[#D4755B] hover:text-[#C05E44] font-medium transition-colors"
+              className="text-xs text-[#C5A059] hover:text-[#C05E44] font-medium transition-colors"
             >
               View all
             </Link>

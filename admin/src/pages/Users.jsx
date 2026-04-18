@@ -275,7 +275,7 @@ const UsersManagement = () => {
           <p className="text-[#5A5856] mb-6 text-sm">{error}</p>
           <button
             onClick={() => fetchUsers()}
-            className="px-6 py-3 bg-[#D4755B] text-white rounded-xl font-semibold text-sm hover:bg-[#C05E44] transition-colors"
+            className="px-6 py-3 bg-[#C5A059] text-white rounded-xl font-semibold text-sm hover:bg-[#C05E44] transition-colors"
           >
             Try Again
           </button>
@@ -304,7 +304,7 @@ const UsersManagement = () => {
             disabled={refreshing}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="flex items-center gap-2 px-4 py-2.5 bg-white border border-[#E6D5C3] text-[#1C1B1A] rounded-xl text-sm font-medium hover:border-[#D4755B] hover:text-[#D4755B] transition-all duration-200 shadow-card disabled:opacity-60"
+            className="flex items-center gap-2 px-4 py-2.5 bg-white border border-[#E6D5C3] text-[#1C1B1A] rounded-xl text-sm font-medium hover:border-[#C5A059] hover:text-[#C5A059] transition-all duration-200 shadow-card disabled:opacity-60"
           >
             <RefreshCw className={cn("w-4 h-4", refreshing && "animate-spin")} />
             {refreshing ? "Refreshing..." : "Refresh"}
@@ -325,7 +325,7 @@ const UsersManagement = () => {
                   className={cn(
                     "px-4 py-2 rounded-xl text-sm font-medium transition-all",
                     statusFilter === tab.key
-                      ? "bg-[#D4755B] text-white"
+                      ? "bg-[#C5A059] text-white"
                       : "bg-[#F5F1E8] text-[#5A5856] hover:bg-[#E6D5C3]"
                   )}
                 >
@@ -352,7 +352,7 @@ const UsersManagement = () => {
                   setSearchTerm(e.target.value);
                   setCurrentPage(1);
                 }}
-                className="w-full pl-10 pr-4 py-2.5 border border-[#E6D5C3] rounded-xl bg-white text-[#1C1B1A] placeholder:text-[#9CA3AF] focus:outline-none focus:ring-2 focus:ring-[#D4755B]/20 focus:border-[#D4755B] transition-all"
+                className="w-full pl-10 pr-4 py-2.5 border border-[#E6D5C3] rounded-xl bg-white text-[#1C1B1A] placeholder:text-[#9CA3AF] focus:outline-none focus:ring-2 focus:ring-[#C5A059]/20 focus:border-[#C5A059] transition-all"
               />
             </div>
             <div className="flex gap-3">
@@ -362,7 +362,7 @@ const UsersManagement = () => {
                   setSortBy(e.target.value);
                   setCurrentPage(1);
                 }}
-                className="px-4 py-2.5 border border-[#E6D5C3] rounded-xl bg-white text-[#1C1B1A] focus:outline-none focus:ring-2 focus:ring-[#D4755B]/20 focus:border-[#D4755B] transition-all"
+                className="px-4 py-2.5 border border-[#E6D5C3] rounded-xl bg-white text-[#1C1B1A] focus:outline-none focus:ring-2 focus:ring-[#C5A059]/20 focus:border-[#C5A059] transition-all"
               >
                 <option value="createdAt">Date Joined</option>
                 <option value="lastActive">Last Active</option>
@@ -392,7 +392,7 @@ const UsersManagement = () => {
                       type="checkbox"
                       checked={selectedUsers.size === users.length && users.length > 0}
                       onChange={handleSelectAll}
-                      className="w-4 h-4 text-[#D4755B] rounded border-[#E6D5C3] focus:ring-[#D4755B]/20"
+                      className="w-4 h-4 text-[#C5A059] rounded border-[#E6D5C3] focus:ring-[#C5A059]/20"
                     />
                   </th>
                   <th className="px-6 py-4 text-left text-sm font-semibold text-[#1C1B1A]">User</th>
@@ -416,13 +416,13 @@ const UsersManagement = () => {
                         type="checkbox"
                         checked={selectedUsers.has(user._id)}
                         onChange={() => handleSelectUser(user._id)}
-                        className="w-4 h-4 text-[#D4755B] rounded border-[#E6D5C3] focus:ring-[#D4755B]/20"
+                        className="w-4 h-4 text-[#C5A059] rounded border-[#E6D5C3] focus:ring-[#C5A059]/20"
                       />
                     </td>
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-[#D4755B]/10 rounded-full flex items-center justify-center">
-                          <Users className="w-5 h-5 text-[#D4755B]" />
+                        <div className="w-10 h-10 bg-[#C5A059]/10 rounded-full flex items-center justify-center">
+                          <Users className="w-5 h-5 text-[#C5A059]" />
                         </div>
                         <div>
                           <p className="font-semibold text-[#1C1B1A]">{user.name}</p>

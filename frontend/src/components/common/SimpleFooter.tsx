@@ -6,7 +6,7 @@ const SimpleFooter: React.FC = () => {
       <div className="max-w-[1280px] mx-auto px-8 text-center">
         {/* Logo */}
         <div className="flex items-center gap-3 mb-3">
-          <div className="w-2 h-2 bg-[#D4755B] rounded-full" />
+          <div className="w-2 h-2 bg-[#C5A059] rounded-full" />
           <span className="font-red-hat font-bold text-sm text-[#1C1B1A] uppercase tracking-[4px]">
             Haven Homes
           </span>

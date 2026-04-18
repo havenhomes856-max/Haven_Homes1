@@ -40,10 +40,10 @@ const WhyChooseSection: React.FC = () => {
       <div className="max-w-[1280px] mx-auto px-8">
         {/* Section Header */}
         <div className="text-center mb-20">
-          <p className="font-red-hat text-xs uppercase tracking-[4px] text-[#D4755B] mb-4 font-bold">
+          <p className="font-red-hat text-xs uppercase tracking-[4px] text-[#C5A059] mb-4 font-bold">
             Why Choose Us?
           </p>
-          <div className="w-12 h-0.5 bg-[#D4755B] mx-auto" />
+          <div className="w-12 h-0.5 bg-[#C5A059] mx-auto" />
         </div>
 
         {/* Reasons Grid */}
@@ -51,8 +51,8 @@ const WhyChooseSection: React.FC = () => {
           {reasons.map((item, index) => (
             <div key={index} className="flex flex-col items-center text-center group">
               {/* Icon Circle */}
-              <div className="w-20 h-20 rounded-full border border-[#D4755B]/30 flex items-center justify-center mb-8 group-hover:bg-[#D4755B] group-hover:border-[#D4755B] transition-all duration-500">
-                <item.icon className="w-8 h-8 text-[#D4755B] group-hover:text-white transition-colors duration-500" strokeWidth={1.5} />
+              <div className="w-20 h-20 rounded-full border border-[#C5A059]/30 flex items-center justify-center mb-8 group-hover:bg-[#C5A059] group-hover:border-[#C5A059] transition-all duration-500">
+                <item.icon className="w-8 h-8 text-[#C5A059] group-hover:text-white transition-colors duration-500" strokeWidth={1.5} />
               </div>
 
               {/* Title */}

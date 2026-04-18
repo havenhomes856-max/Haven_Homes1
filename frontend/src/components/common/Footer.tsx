@@ -32,11 +32,11 @@ const Footer: React.FC = () => {
           <div className="lg:col-span-2 space-y-8">
             <Link to="/" className="flex items-center gap-3">
               <img 
-                src="https://res.cloudinary.com/dp4xt0bve/image/upload/f_webp,q_auto/v1776491805/logo-Photoroom.png" 
+                src="https://res.cloudinary.com/dp4xt0bve/image/upload/f_webp,q_auto,e_tint:100:C5A059/v1776492125/logo-Photoroom.png" 
                 alt="Haven Homes Logo" 
-                className="h-20 w-auto object-contain brightness-0 invert"
+                className="h-20 w-auto object-contain"
               />
-              <span className="font-fraunces font-bold text-3xl tracking-tight">Haven Homes</span>
+              <span className="font-fraunces font-bold text-3xl tracking-tight text-[#C5A059]">Haven Homes</span>
             </Link>
             <p className="font-red-hat text-base text-gray-400 max-w-sm leading-relaxed">
               Curating luxury living spaces and premium investment opportunities across India's most prestigious locations.

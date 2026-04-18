@@ -165,24 +165,24 @@ const AIHeroSection: React.FC<AIHeroSectionProps> = ({ onSearch, loading, extern
     <section className="relative bg-[#FAF8F4] overflow-hidden">
       {/* Background gradients */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden>
-        <div className="absolute top-0 inset-x-0 h-[800px] bg-gradient-to-b from-[#D4755B]/10 to-transparent" />
-        <div className="absolute top-20 left-10 w-[500px] h-[500px] bg-[#D4755B]/10 rounded-full blur-[100px]" />
+        <div className="absolute top-0 inset-x-0 h-[800px] bg-gradient-to-b from-[#C5A059]/10 to-transparent" />
+        <div className="absolute top-20 left-10 w-[500px] h-[500px] bg-[#C5A059]/10 rounded-full blur-[100px]" />
         <div className="absolute right-0 top-0 w-1/2 h-full bg-[radial-gradient(circle_at_top_right,rgba(212,117,91,0.08),transparent_60%)]" />
       </div>
 
       <div className="relative pt-32 pb-24 max-w-[1200px] mx-auto px-6">
         {/* ── Heading ──────────────────────────────── */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-white/60 backdrop-blur-sm border border-[#D4755B]/20 rounded-full px-4 py-2 mb-6 shadow-sm">
-            <Sparkles className="w-4 h-4 text-[#D4755B]" />
-            <span className="font-space-mono text-xs text-[#D4755B] uppercase tracking-wider font-semibold">
+          <div className="inline-flex items-center gap-2 bg-white/60 backdrop-blur-sm border border-[#C5A059]/20 rounded-full px-4 py-2 mb-6 shadow-sm">
+            <Sparkles className="w-4 h-4 text-[#C5A059]" />
+            <span className="font-space-mono text-xs text-[#C5A059] uppercase tracking-wider font-semibold">
               AI-Powered Search
             </span>
           </div>
 
           <h1 className="font-fraunces text-5xl md:text-6xl lg:text-7xl leading-tight text-[#221410] mb-6">
             Find Properties with<br />
-            <span className="text-[#D4755B]">AI Intelligence</span>
+            <span className="text-[#C5A059]">AI Intelligence</span>
           </h1>
 
           <p className="font-manrope text-lg text-[#6B7280] max-w-[600px] mx-auto leading-relaxed">
@@ -233,8 +233,8 @@ const AIHeroSection: React.FC<AIHeroSectionProps> = ({ onSearch, loading, extern
                 Where do you want to live?
               </label>
               <div className="relative">
-                <div className="relative bg-white border border-[#E6E0DA] rounded-xl p-4 flex items-center gap-3 focus-within:ring-2 focus-within:ring-[#D4755B]/30 focus-within:border-[#D4755B] transition-all shadow-sm">
-                  <MapPin className="w-5 h-5 text-[#D4755B] shrink-0" />
+                <div className="relative bg-white border border-[#E6E0DA] rounded-xl p-4 flex items-center gap-3 focus-within:ring-2 focus-within:ring-[#C5A059]/30 focus-within:border-[#C5A059] transition-all shadow-sm">
+                  <MapPin className="w-5 h-5 text-[#C5A059] shrink-0" />
                   <input
                     ref={cityInputRef}
                     type="text"
@@ -266,7 +266,7 @@ const AIHeroSection: React.FC<AIHeroSectionProps> = ({ onSearch, loading, extern
                           : 'text-[#6B7280] hover:bg-[#FAF8F4] hover:text-[#221410]'
                           }`}
                       >
-                        <MapPin className="w-4 h-4 text-[#D4755B] shrink-0" />
+                        <MapPin className="w-4 h-4 text-[#C5A059] shrink-0" />
                         <span className="font-manrope text-sm font-medium">{c}</span>
                       </button>
                     ))}
@@ -282,8 +282,8 @@ const AIHeroSection: React.FC<AIHeroSectionProps> = ({ onSearch, loading, extern
                     type="button"
                     onClick={() => selectCity(c)}
                     className={`font-manrope text-xs px-4 py-1.5 rounded-full border transition-all ${city === c
-                      ? 'bg-[#D4755B] border-[#D4755B] text-white font-medium shadow-sm'
-                      : 'bg-white border-[#E6E0DA] text-[#6B7280] hover:border-[#D4755B]/50 hover:text-[#D4755B]'
+                      ? 'bg-[#C5A059] border-[#C5A059] text-white font-medium shadow-sm'
+                      : 'bg-white border-[#E6E0DA] text-[#6B7280] hover:border-[#C5A059]/50 hover:text-[#C5A059]'
                       }`}
                   >
                     {c}
@@ -297,7 +297,7 @@ const AIHeroSection: React.FC<AIHeroSectionProps> = ({ onSearch, loading, extern
               <label className="block font-space-mono text-[11px] text-[#6B7280] font-semibold uppercase tracking-widest mb-2 ml-1">
                 Specific Area <span className="font-normal normal-case text-[#9CA3AF]">(optional — highest impact on results)</span>
               </label>
-              <div className="relative bg-white border border-[#E6E0DA] rounded-xl p-4 flex items-center gap-3 focus-within:ring-2 focus-within:ring-[#D4755B]/30 focus-within:border-[#D4755B] transition-all shadow-sm">
+              <div className="relative bg-white border border-[#E6E0DA] rounded-xl p-4 flex items-center gap-3 focus-within:ring-2 focus-within:ring-[#C5A059]/30 focus-within:border-[#C5A059] transition-all shadow-sm">
                 <MapPin className="w-5 h-5 text-[#9CA3AF] shrink-0" />
                 <input
                   type="text"
@@ -335,7 +335,7 @@ const AIHeroSection: React.FC<AIHeroSectionProps> = ({ onSearch, loading, extern
                           }
                         }}
                         className={`font-space-mono text-[10px] uppercase font-bold px-2.5 py-1 transition-all rounded-sm ${budgetUnit === unit
-                          ? 'bg-white shadow-sm text-[#D4755B]'
+                          ? 'bg-white shadow-sm text-[#C5A059]'
                           : 'text-[#9CA3AF] hover:text-[#6B7280]'
                           }`}
                       >
@@ -344,8 +344,8 @@ const AIHeroSection: React.FC<AIHeroSectionProps> = ({ onSearch, loading, extern
                     ))}
                   </div>
                 </div>
-                <div className="relative bg-white border border-[#E6E0DA] rounded-xl p-4 flex items-center gap-3 focus-within:ring-2 focus-within:ring-[#D4755B]/30 focus-within:border-[#D4755B] transition-all shadow-sm">
-                  <IndianRupee className="w-5 h-5 text-[#D4755B] shrink-0" />
+                <div className="relative bg-white border border-[#E6E0DA] rounded-xl p-4 flex items-center gap-3 focus-within:ring-2 focus-within:ring-[#C5A059]/30 focus-within:border-[#C5A059] transition-all shadow-sm">
+                  <IndianRupee className="w-5 h-5 text-[#C5A059] shrink-0" />
                   <input
                     type="number"
                     value={maxBudget}
@@ -364,8 +364,8 @@ const AIHeroSection: React.FC<AIHeroSectionProps> = ({ onSearch, loading, extern
                 <label className="block font-space-mono text-[11px] text-[#6B7280] font-semibold uppercase tracking-widest mb-2 ml-1">
                   Property Type
                 </label>
-                <div className="relative bg-white border border-[#E6E0DA] rounded-xl p-4 flex items-center gap-3 focus-within:ring-2 focus-within:ring-[#D4755B]/30 focus-within:border-[#D4755B] transition-all shadow-sm">
-                  <Home className="w-5 h-5 text-[#D4755B] shrink-0" />
+                <div className="relative bg-white border border-[#E6E0DA] rounded-xl p-4 flex items-center gap-3 focus-within:ring-2 focus-within:ring-[#C5A059]/30 focus-within:border-[#C5A059] transition-all shadow-sm">
+                  <Home className="w-5 h-5 text-[#C5A059] shrink-0" />
                   <select
                     value={propertyType}
                     onChange={(e) => setPropertyType(e.target.value)}
@@ -383,8 +383,8 @@ const AIHeroSection: React.FC<AIHeroSectionProps> = ({ onSearch, loading, extern
                 <label className="block font-space-mono text-[11px] text-[#6B7280] font-semibold uppercase tracking-widest mb-2 ml-1">
                   Category
                 </label>
-                <div className="relative bg-white border border-[#E6E0DA] rounded-xl p-4 flex items-center gap-3 focus-within:ring-2 focus-within:ring-[#D4755B]/30 focus-within:border-[#D4755B] transition-all shadow-sm">
-                  <Building2 className="w-5 h-5 text-[#D4755B] shrink-0" />
+                <div className="relative bg-white border border-[#E6E0DA] rounded-xl p-4 flex items-center gap-3 focus-within:ring-2 focus-within:ring-[#C5A059]/30 focus-within:border-[#C5A059] transition-all shadow-sm">
+                  <Building2 className="w-5 h-5 text-[#C5A059] shrink-0" />
                   <select
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
@@ -411,8 +411,8 @@ const AIHeroSection: React.FC<AIHeroSectionProps> = ({ onSearch, loading, extern
                     onClick={() => setBhk(option)}
                     className={`font-manrope text-sm font-medium px-5 py-2.5 rounded-xl border transition-all ${
                       bhk === option
-                        ? 'bg-[#D4755B] border-[#D4755B] text-white shadow-sm'
-                        : 'bg-white border-[#E6E0DA] text-[#6B7280] hover:border-[#D4755B]/50 hover:text-[#D4755B]'
+                        ? 'bg-[#C5A059] border-[#C5A059] text-white shadow-sm'
+                        : 'bg-white border-[#E6E0DA] text-[#6B7280] hover:border-[#C5A059]/50 hover:text-[#C5A059]'
                     }`}
                   >
                     {option === 'Any' ? 'Any BHK' : option}
@@ -453,7 +453,7 @@ const AIHeroSection: React.FC<AIHeroSectionProps> = ({ onSearch, loading, extern
               <button
                 type="submit"
                 disabled={loading || !city.trim() || !keysReady}
-                className="w-full bg-[#1C1B1A] hover:bg-[#D4755B] disabled:opacity-50 disabled:cursor-not-allowed text-white font-manrope font-semibold text-lg py-4 rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-xl mt-2 uppercase tracking-widest"
+                className="w-full bg-[#1C1B1A] hover:bg-[#C5A059] disabled:opacity-50 disabled:cursor-not-allowed text-white font-manrope font-semibold text-lg py-4 rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-xl mt-2 uppercase tracking-widest"
               >
                 {loading ? (
                   <>
@@ -494,8 +494,8 @@ const AIHeroSection: React.FC<AIHeroSectionProps> = ({ onSearch, loading, extern
                       <div key={s.label} className={`flex items-start gap-3 transition-opacity duration-500 ${isPending ? 'opacity-35' : 'opacity-100'}`}>
                         <div className="mt-0.5 shrink-0 w-5 h-5 flex items-center justify-center">
                           {isDone   ? <CheckCircle2 className="w-5 h-5 text-emerald-500" />
-                          : isActive ? <Loader2 className="w-5 h-5 text-[#D4755B] animate-spin" />
-                          :            <div className="w-4 h-4 rounded-full border-2 border-[#D4755B]/30" />}
+                          : isActive ? <Loader2 className="w-5 h-5 text-[#C5A059] animate-spin" />
+                          :            <div className="w-4 h-4 rounded-full border-2 border-[#C5A059]/30" />}
                         </div>
                         <div>
                           <p className={`font-manrope text-sm font-semibold ${isDone ? 'text-[#6B7280] line-through decoration-[#9CA3AF]' : isActive ? 'text-[#221410]' : 'text-[#9CA3AF]'}`}>

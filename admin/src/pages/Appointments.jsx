@@ -123,7 +123,7 @@ const Appointments = () => {
     return (
       <div className="min-h-screen pt-8 flex items-center justify-center bg-[#FAF8F4]">
         <div className="text-center">
-          <div className="w-12 h-12 border-2 border-[#D4755B] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+          <div className="w-12 h-12 border-2 border-[#C5A059] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
           <p className="text-[#5A5856] font-medium">Loading appointments...</p>
         </div>
       </div>
@@ -149,7 +149,7 @@ const Appointments = () => {
             whileTap={{ scale: 0.98 }}
             onClick={() => fetchAppointments(true)}
             disabled={refreshing}
-            className="flex items-center gap-2 px-4 py-2.5 bg-white border border-[#E6D5C3] text-[#1C1B1A] rounded-xl text-sm font-medium hover:border-[#D4755B] hover:text-[#D4755B] transition-all shadow-sm disabled:opacity-60"
+            className="flex items-center gap-2 px-4 py-2.5 bg-white border border-[#E6D5C3] text-[#1C1B1A] rounded-xl text-sm font-medium hover:border-[#C5A059] hover:text-[#C5A059] transition-all shadow-sm disabled:opacity-60"
           >
             <RefreshCw className={cn("w-4 h-4", refreshing && "animate-spin")} />
             {refreshing ? "Refreshing..." : "Refresh"}
@@ -193,7 +193,7 @@ const Appointments = () => {
                 placeholder="Search property, name, email..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-9 pr-4 py-2.5 bg-[#FAF8F4] border border-[#E6D5C3] rounded-xl text-sm text-[#1C1B1A] placeholder-[#9CA3AF] outline-none focus:border-[#D4755B] focus:ring-2 focus:ring-[#D4755B]/15 transition-all"
+                className="w-full pl-9 pr-4 py-2.5 bg-[#FAF8F4] border border-[#E6D5C3] rounded-xl text-sm text-[#1C1B1A] placeholder-[#9CA3AF] outline-none focus:border-[#C5A059] focus:ring-2 focus:ring-[#C5A059]/15 transition-all"
               />
             </div>
           </div>
@@ -226,7 +226,7 @@ const Appointments = () => {
                 >
                   {/* Property Banner */}
                   <div className="bg-[#1C1B1A] px-5 py-4 flex items-start gap-3">
-                    <div className="w-9 h-9 bg-[#D4755B] rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <div className="w-9 h-9 bg-[#C5A059] rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
                       <Building2 className="w-4 h-4 text-white" />
                     </div>
                     <div className="flex-1 min-w-0">
@@ -270,7 +270,7 @@ const Appointments = () => {
                         </div>
                         <a
                           href={`mailto:${apt.clientEmail}`}
-                          className="text-sm text-[#D4755B] hover:text-[#C05E44] truncate font-medium transition-colors"
+                          className="text-sm text-[#C5A059] hover:text-[#C05E44] truncate font-medium transition-colors"
                         >
                           {apt.clientEmail}
                         </a>
@@ -285,7 +285,7 @@ const Appointments = () => {
                         </div>
                         <a
                           href={`tel:${apt.clientPhone}`}
-                          className="text-sm text-[#1C1B1A] hover:text-[#D4755B] font-medium transition-colors"
+                          className="text-sm text-[#1C1B1A] hover:text-[#C5A059] font-medium transition-colors"
                         >
                           {apt.clientPhone}
                         </a>
@@ -323,11 +323,11 @@ const Appointments = () => {
                           value={meetingLink}
                           onChange={(e) => setMeetingLink(e.target.value)}
                           placeholder="Paste meeting link..."
-                          className="flex-1 px-3 py-1.5 border border-[#E6D5C3] rounded-lg text-xs outline-none focus:border-[#D4755B] focus:ring-1 focus:ring-[#D4755B]/20"
+                          className="flex-1 px-3 py-1.5 border border-[#E6D5C3] rounded-lg text-xs outline-none focus:border-[#C5A059] focus:ring-1 focus:ring-[#C5A059]/20"
                         />
                         <button
                           onClick={() => handleMeetingLinkUpdate(apt._id)}
-                          className="p-1.5 bg-[#D4755B] text-white rounded-lg hover:bg-[#C05E44] transition-colors"
+                          className="p-1.5 bg-[#C5A059] text-white rounded-lg hover:bg-[#C05E44] transition-colors"
                         >
                           <Send className="w-3.5 h-3.5" />
                         </button>
@@ -345,7 +345,7 @@ const Appointments = () => {
                             href={apt.meetingLink}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center gap-1.5 text-xs text-[#D4755B] hover:text-[#C05E44] font-medium underline underline-offset-2"
+                            className="flex items-center gap-1.5 text-xs text-[#C5A059] hover:text-[#C05E44] font-medium underline underline-offset-2"
                           >
                             <LinkIcon className="w-3.5 h-3.5" />
                             View Meeting Link
@@ -356,7 +356,7 @@ const Appointments = () => {
                         {apt.status === "confirmed" && (
                           <button
                             onClick={() => { setEditingMeetingLink(apt._id); setMeetingLink(apt.meetingLink || ""); }}
-                            className="text-xs text-[#D4755B] hover:text-[#C05E44] font-medium flex items-center gap-1 transition-colors"
+                            className="text-xs text-[#C5A059] hover:text-[#C05E44] font-medium flex items-center gap-1 transition-colors"
                           >
                             <LinkIcon className="w-3 h-3" />
                             {apt.meetingLink ? "Edit" : "Add Link"}

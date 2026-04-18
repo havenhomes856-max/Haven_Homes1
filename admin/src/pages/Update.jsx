@@ -10,13 +10,13 @@ import { convertToWebP } from '../lib/imageUtils';
 
 const PROPERTY_TYPES = ['House', 'Apartment', 'Office', 'Villa', 'Plot'];
 
-const inputClass = "w-full px-4 py-3 bg-white border border-[#E6D5C3] rounded-xl text-[#1C1B1A] placeholder-[#9CA3AF] text-sm font-red-hat transition-all duration-200 outline-none focus:border-[#D4755B] focus:ring-2 focus:ring-[#D4755B]/15";
+const inputClass = "w-full px-4 py-3 bg-white border border-[#E6D5C3] rounded-xl text-[#1C1B1A] placeholder-[#9CA3AF] text-sm font-red-hat transition-all duration-200 outline-none focus:border-[#C5A059] focus:ring-2 focus:ring-[#C5A059]/15";
 const labelClass = "block text-sm font-bold font-red-hat text-[#1C1B1A] mb-2 uppercase tracking-wide";
 
 const SectionHeader = ({ icon: Icon, title, subtitle }) => (
   <div className="flex items-center gap-3 mb-5">
-    <div className="w-9 h-9 bg-[#D4755B]/10 rounded-xl flex items-center justify-center">
-      <Icon className="w-4.5 h-4.5 text-[#D4755B]" />
+    <div className="w-9 h-9 bg-[#C5A059]/10 rounded-xl flex items-center justify-center">
+      <Icon className="w-4.5 h-4.5 text-[#C5A059]" />
     </div>
     <div>
       <h3 className="text-lg font-bold font-fraunces text-[#1C1B1A]">{title}</h3>
@@ -167,7 +167,7 @@ const Update = () => {
     return (
       <div className="min-h-screen pt-8 flex items-center justify-center bg-[#FAF8F4]">
         <div className="text-center">
-          <div className="w-12 h-12 border-3 border-[#D4755B] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+          <div className="w-12 h-12 border-3 border-[#C5A059] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
           <p className="text-[#5A5856] font-medium">Loading property details...</p>
         </div>
       </div>
@@ -180,7 +180,7 @@ const Update = () => {
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: -16 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
           <button onClick={() => navigate('/list')}
-            className="flex items-center gap-2 text-sm text-[#5A5856] hover:text-[#D4755B] mb-4 transition-colors">
+            className="flex items-center gap-2 text-sm text-[#5A5856] hover:text-[#C5A059] mb-4 transition-colors">
             <ArrowLeft className="w-4 h-4" />
             Back to Properties
           </button>
@@ -281,7 +281,7 @@ const Update = () => {
                         toast.error('Failed to resolve map link', { id: t });
                       }
                     }}
-                    className="px-4 py-2 bg-[#1C1B1A] text-white rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-[#D4755B] transition-colors"
+                    className="px-4 py-2 bg-[#1C1B1A] text-white rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-[#C5A059] transition-colors"
                   >
                     Verify
                   </button>
@@ -358,7 +358,7 @@ const Update = () => {
             {/* Auto sqft preview */}
             {formData.length && formData.breadth ? (
               <div className="mt-3 px-4 py-2 bg-[#FAF8F4] border border-[#E6D5C3] rounded-xl flex items-center gap-2">
-                <Maximize className="w-4 h-4 text-[#D4755B]" />
+                <Maximize className="w-4 h-4 text-[#C5A059]" />
                 <span className="text-sm font-space-mono text-[#5A5856]">
                   Auto sqft: <span className="font-bold text-[#1C1B1A]">{Number(formData.length) * Number(formData.breadth)}</span> sq ft
                 </span>
@@ -394,8 +394,8 @@ const Update = () => {
                         className={cn(
                           'flex flex-col items-center gap-1 py-3 px-2 rounded-xl border text-sm font-semibold transition-all duration-200',
                           selected
-                            ? 'bg-[#D4755B] text-white border-[#D4755B] shadow-sm'
-                            : 'bg-[#FAF8F4] text-[#5A5856] border-[#E6D5C3] hover:border-[#D4755B] hover:text-[#D4755B]'
+                            ? 'bg-[#C5A059] text-white border-[#C5A059] shadow-sm'
+                            : 'bg-[#FAF8F4] text-[#5A5856] border-[#E6D5C3] hover:border-[#C5A059] hover:text-[#C5A059]'
                         )}
                       >
                         <span className="text-lg font-space-mono">{dir}</span>
@@ -405,7 +405,7 @@ const Update = () => {
                   })}
                 </div>
                 {formData.facing && (
-                  <p className="mt-3 text-sm text-[#D4755B] font-medium font-red-hat">
+                  <p className="mt-3 text-sm text-[#C5A059] font-medium font-red-hat">
                     ✓ Selected: {FACING_LABELS[formData.facing]} facing
                   </p>
                 )}
@@ -424,8 +424,8 @@ const Update = () => {
                     className={cn(
                       'flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200',
                       selected
-                        ? 'bg-[#D4755B] text-white shadow-sm'
-                        : 'bg-[#FAF8F4] text-[#5A5856] border border-[#E6D5C3] hover:border-[#D4755B] hover:text-[#D4755B]'
+                        ? 'bg-[#C5A059] text-white shadow-sm'
+                        : 'bg-[#FAF8F4] text-[#5A5856] border border-[#E6D5C3] hover:border-[#C5A059] hover:text-[#C5A059]'
                     )}>
                     {selected ? <CheckSquare className="w-3.5 h-3.5" /> : <Square className="w-3.5 h-3.5" />}
                     {amenity}
@@ -438,7 +438,7 @@ const Update = () => {
                 onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), handleAddAmenity())}
                 placeholder="Add custom amenity..." className={cn(inputClass, 'flex-1')} />
               <button type="button" onClick={handleAddAmenity}
-                className="flex items-center gap-1.5 px-4 py-2.5 bg-[#1C1B1A] text-white rounded-xl text-sm font-medium hover:bg-[#D4755B] transition-colors">
+                className="flex items-center gap-1.5 px-4 py-2.5 bg-[#1C1B1A] text-white rounded-xl text-sm font-medium hover:bg-[#C5A059] transition-colors">
                 <Plus className="w-4 h-4" /> Add
               </button>
             </div>
@@ -446,7 +446,7 @@ const Update = () => {
               <div className="mt-3 flex flex-wrap gap-2">
                 {formData.amenities.filter((a) => !AMENITIES_LIST.includes(a)).map((amenity) => (
                   <span key={amenity}
-                    className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#D4755B]/10 text-[#D4755B] rounded-full text-sm font-medium">
+                    className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#C5A059]/10 text-[#C5A059] rounded-full text-sm font-medium">
                     {amenity}
                     <button type="button" onClick={() => handleAmenityToggle(amenity)}
                       className="hover:text-[#C05E44]"><X size={13} /></button>
@@ -475,9 +475,9 @@ const Update = () => {
               </div>
             )}
             <label htmlFor="images"
-              className="flex flex-col items-center justify-center w-full h-28 border-2 border-dashed border-[#E6D5C3] rounded-xl cursor-pointer bg-[#FAF8F4] hover:border-[#D4755B] hover:bg-[#D4755B]/5 transition-all duration-200 group">
-              <Upload className="w-6 h-6 text-[#9CA3AF] group-hover:text-[#D4755B] mb-1.5 transition-colors" />
-              <span className="text-sm font-medium text-[#5A5856] group-hover:text-[#D4755B] transition-colors">
+              className="flex flex-col items-center justify-center w-full h-28 border-2 border-dashed border-[#E6D5C3] rounded-xl cursor-pointer bg-[#FAF8F4] hover:border-[#C5A059] hover:bg-[#C5A059]/5 transition-all duration-200 group">
+              <Upload className="w-6 h-6 text-[#9CA3AF] group-hover:text-[#C5A059] mb-1.5 transition-colors" />
+              <span className="text-sm font-medium text-[#5A5856] group-hover:text-[#C5A059] transition-colors">
                 Add more images
               </span>
               <input id="images" name="images" type="file" multiple accept="image/*"
@@ -493,7 +493,7 @@ const Update = () => {
             </button>
             <motion.button type="submit" disabled={loading}
               whileHover={{ scale: loading ? 1 : 1.01 }} whileTap={{ scale: loading ? 1 : 0.99 }}
-              className="flex-1 flex items-center justify-center gap-2 py-4 bg-[#1C1B1A] hover:bg-[#D4755B] text-[#FAF8F4] rounded-xl font-bold font-red-hat text-base transition-all duration-300 shadow-lg hover:shadow-terracotta disabled:opacity-60 disabled:cursor-not-allowed uppercase tracking-widest">
+              className="flex-1 flex items-center justify-center gap-2 py-4 bg-[#1C1B1A] hover:bg-[#C5A059] text-[#FAF8F4] rounded-xl font-bold font-red-hat text-base transition-all duration-300 shadow-lg hover:shadow-terracotta disabled:opacity-60 disabled:cursor-not-allowed uppercase tracking-widest">
               {loading ? <><Loader2 className="w-4 h-4 animate-spin" /> Saving...</> : 'Save Changes'}
             </motion.button>
           </div>

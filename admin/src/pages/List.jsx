@@ -70,25 +70,25 @@ const PropertyGridCard = ({ property, onRemove }) => (
       <div className="flex items-center gap-3 text-xs text-[#5A5856] mb-4">
         {property.type !== 'Plot' ? (
           <>
-            <span className="flex items-center gap-1"><BedDouble className="w-3.5 h-3.5 text-[#D4755B]" />{property.beds} Beds</span>
-            <span className="flex items-center gap-1"><Bath className="w-3.5 h-3.5 text-[#D4755B]" />{property.baths} Baths</span>
+            <span className="flex items-center gap-1"><BedDouble className="w-3.5 h-3.5 text-[#C5A059]" />{property.beds} Beds</span>
+            <span className="flex items-center gap-1"><Bath className="w-3.5 h-3.5 text-[#C5A059]" />{property.baths} Baths</span>
           </>
         ) : (
-          <span className="flex items-center gap-1"><Maximize className="w-3.5 h-3.5 text-[#D4755B]" />{property.length || 0}x{property.breadth || 0}</span>
+          <span className="flex items-center gap-1"><Maximize className="w-3.5 h-3.5 text-[#C5A059]" />{property.length || 0}x{property.breadth || 0}</span>
         )}
-        <span className="flex items-center gap-1"><Maximize className="w-3.5 h-3.5 text-[#D4755B]" />{property.sqft} sqft</span>
+        <span className="flex items-center gap-1"><Maximize className="w-3.5 h-3.5 text-[#C5A059]" />{property.sqft} sqft</span>
       </div>
 
       {/* Price + Actions */}
       <div className="flex items-center justify-between pt-3 border-t border-[#F5F1E8]">
         <div>
-          <span className="text-lg font-bold text-[#D4755B]">{formatPrice(property.price)}</span>
+          <span className="text-lg font-bold text-[#C5A059]">{formatPrice(property.price)}</span>
 
         </div>
         <div className="flex items-center gap-1.5">
           <Link to={`/update/${property._id}`}>
             <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-              className="p-2 bg-[#FAF8F4] border border-[#E6D5C3] text-[#5A5856] rounded-lg hover:border-[#D4755B] hover:text-[#D4755B] transition-all duration-200">
+              className="p-2 bg-[#FAF8F4] border border-[#E6D5C3] text-[#5A5856] rounded-lg hover:border-[#C5A059] hover:text-[#C5A059] transition-all duration-200">
               <Edit3 className="w-4 h-4" />
             </motion.button>
           </Link>
@@ -110,7 +110,7 @@ const PropertyListRow = ({ property, onRemove }) => (
     initial={{ opacity: 0, x: -10 }}
     animate={{ opacity: 1, x: 0 }}
     exit={{ opacity: 0, x: -10 }}
-    className="flex items-center gap-4 p-4 bg-white rounded-xl border border-[#E6D5C3] hover:border-[#D4755B]/30 hover:shadow-card transition-all duration-200"
+    className="flex items-center gap-4 p-4 bg-white rounded-xl border border-[#E6D5C3] hover:border-[#C5A059]/30 hover:shadow-card transition-all duration-200"
   >
     {/* Thumbnail */}
     <div className="w-16 h-16 rounded-xl overflow-hidden bg-[#F5F1E8] flex-shrink-0">
@@ -139,25 +139,25 @@ const PropertyListRow = ({ property, onRemove }) => (
     <div className="hidden md:flex items-center gap-4 text-xs text-[#5A5856]">
       {property.type !== 'Plot' ? (
         <>
-          <span className="flex items-center gap-1"><BedDouble className="w-3.5 h-3.5 text-[#D4755B]" />{property.beds}</span>
-          <span className="flex items-center gap-1"><Bath className="w-3.5 h-3.5 text-[#D4755B]" />{property.baths}</span>
+          <span className="flex items-center gap-1"><BedDouble className="w-3.5 h-3.5 text-[#C5A059]" />{property.beds}</span>
+          <span className="flex items-center gap-1"><Bath className="w-3.5 h-3.5 text-[#C5A059]" />{property.baths}</span>
         </>
       ) : (
-        <span className="flex items-center gap-1"><Maximize className="w-3.5 h-3.5 text-[#D4755B]" />{property.length || 0}x{property.breadth || 0}</span>
+        <span className="flex items-center gap-1"><Maximize className="w-3.5 h-3.5 text-[#C5A059]" />{property.length || 0}x{property.breadth || 0}</span>
       )}
-      <span className="flex items-center gap-1"><Maximize className="w-3.5 h-3.5 text-[#D4755B]" />{property.sqft}</span>
+      <span className="flex items-center gap-1"><Maximize className="w-3.5 h-3.5 text-[#C5A059]" />{property.sqft}</span>
     </div>
 
     {/* Price */}
     <div className="text-right flex-shrink-0">
-      <div className="font-bold text-[#D4755B] text-sm">{formatPrice(property.price)}</div>
+      <div className="font-bold text-[#C5A059] text-sm">{formatPrice(property.price)}</div>
 
     </div>
 
     {/* Actions */}
     <div className="flex items-center gap-1.5 flex-shrink-0">
       <Link to={`/update/${property._id}`}>
-        <button className="p-2 text-[#5A5856] hover:text-[#D4755B] hover:bg-[#D4755B]/10 rounded-lg transition-all duration-200">
+        <button className="p-2 text-[#5A5856] hover:text-[#C5A059] hover:bg-[#C5A059]/10 rounded-lg transition-all duration-200">
           <Edit3 className="w-4 h-4" />
         </button>
       </Link>
@@ -242,7 +242,7 @@ const PropertyListings = () => {
     return (
       <div className="min-h-screen pt-8 flex items-center justify-center bg-[#FAF8F4]">
         <div className="text-center">
-          <div className="w-12 h-12 border-3 border-[#D4755B] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+          <div className="w-12 h-12 border-3 border-[#C5A059] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
           <p className="text-[#5A5856] font-medium">Loading properties...</p>
         </div>
       </div>
@@ -259,19 +259,19 @@ const PropertyListings = () => {
           <div>
             <h1 className="text-3xl font-bold text-[#1C1B1A] mb-1">Properties</h1>
             <p className="text-[#5A5856] text-sm">
-              <span className="font-semibold text-[#D4755B]">{filteredProperties.length}</span> listings found
+              <span className="font-semibold text-[#C5A059]">{filteredProperties.length}</span> listings found
             </p>
           </div>
           <div className="flex items-center gap-2">
             <motion.button onClick={handleRefresh} disabled={refreshing}
               whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
-              className="flex items-center gap-2 px-4 py-2.5 bg-white border border-[#E6D5C3] text-[#1C1B1A] rounded-xl text-sm font-medium hover:border-[#D4755B] hover:text-[#D4755B] transition-all shadow-card disabled:opacity-60">
+              className="flex items-center gap-2 px-4 py-2.5 bg-white border border-[#E6D5C3] text-[#1C1B1A] rounded-xl text-sm font-medium hover:border-[#C5A059] hover:text-[#C5A059] transition-all shadow-card disabled:opacity-60">
               <RefreshCw className={cn("w-4 h-4", refreshing && "animate-spin")} />
               <span className="hidden sm:inline">Refresh</span>
             </motion.button>
             <Link to="/add">
               <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
-                className="flex items-center gap-2 px-5 py-2.5 bg-[#D4755B] hover:bg-[#C05E44] text-white rounded-xl text-sm font-semibold transition-all shadow-lg hover:shadow-terracotta">
+                className="flex items-center gap-2 px-5 py-2.5 bg-[#C5A059] hover:bg-[#C05E44] text-white rounded-xl text-sm font-semibold transition-all shadow-lg hover:shadow-terracotta">
                 <Plus className="w-4 h-4" />
                 Add Property
               </motion.button>
@@ -288,7 +288,7 @@ const PropertyListings = () => {
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#9CA3AF]" />
               <input type="text" placeholder="Search properties..."
                 value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-9 pr-4 py-2.5 bg-[#FAF8F4] border border-[#E6D5C3] rounded-xl text-sm text-[#1C1B1A] placeholder-[#9CA3AF] outline-none focus:border-[#D4755B] focus:ring-2 focus:ring-[#D4755B]/15 transition-all" />
+                className="w-full pl-9 pr-4 py-2.5 bg-[#FAF8F4] border border-[#E6D5C3] rounded-xl text-sm text-[#1C1B1A] placeholder-[#9CA3AF] outline-none focus:border-[#C5A059] focus:ring-2 focus:ring-[#C5A059]/15 transition-all" />
             </div>
 
             {/* Type Filter */}
@@ -309,7 +309,7 @@ const PropertyListings = () => {
             {/* Sort + View Toggle */}
             <div className="flex items-center gap-2 flex-shrink-0">
               <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}
-                className="px-3 py-2.5 bg-[#FAF8F4] border border-[#E6D5C3] rounded-xl text-xs text-[#5A5856] outline-none focus:border-[#D4755B] transition-all cursor-pointer">
+                className="px-3 py-2.5 bg-[#FAF8F4] border border-[#E6D5C3] rounded-xl text-xs text-[#5A5856] outline-none focus:border-[#C5A059] transition-all cursor-pointer">
                 {SORT_OPTIONS.map((opt) => (
                   <option key={opt.value} value={opt.value}>{opt.label}</option>
                 ))}
@@ -343,7 +343,7 @@ const PropertyListings = () => {
               </p>
               {!searchTerm && filterType === "all" && (
                 <Link to="/add">
-                  <button className="px-6 py-3 bg-[#D4755B] text-white rounded-xl font-semibold text-sm hover:bg-[#C05E44] transition-colors">
+                  <button className="px-6 py-3 bg-[#C5A059] text-white rounded-xl font-semibold text-sm hover:bg-[#C05E44] transition-colors">
                     Add First Property
                   </button>
                 </Link>

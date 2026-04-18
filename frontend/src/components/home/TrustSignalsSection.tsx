@@ -8,7 +8,7 @@ const TrustSignalsSection: React.FC = () => {
         {/* Section Header */}
         <div className="text-center mb-12">
           <h2 className="font-fraunces text-5xl text-[#111827] mb-6">Redefining Real Estate</h2>
-          <div className="w-24 h-1 bg-[#D4755B] mx-auto" />
+          <div className="w-24 h-1 bg-[#C5A059] mx-auto" />
         </div>
 
         {/* Content Grid */}
@@ -30,7 +30,7 @@ const TrustSignalsSection: React.FC = () => {
             <div className="flex gap-4">
               <div className="flex-shrink-0">
                 <div className="w-12 h-12 bg-white rounded-lg shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1)] flex items-center justify-center">
-                  <span className="font-material-icons text-2xl text-[#D4755B]">verified_user</span>
+                  <span className="font-material-icons text-2xl text-[#C5A059]">verified_user</span>
                 </div>
               </div>
               <div>
@@ -46,7 +46,7 @@ const TrustSignalsSection: React.FC = () => {
             <div className="flex gap-4">
               <div className="flex-shrink-0">
                 <div className="w-12 h-12 bg-white rounded-lg shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1)] flex items-center justify-center">
-                  <span className="font-material-icons text-2xl text-[#D4755B]">support_agent</span>
+                  <span className="font-material-icons text-2xl text-[#C5A059]">support_agent</span>
                 </div>
               </div>
               <div>
@@ -62,7 +62,7 @@ const TrustSignalsSection: React.FC = () => {
             <div className="flex gap-4">
               <div className="flex-shrink-0">
                 <div className="w-12 h-12 bg-white rounded-lg shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.1)] flex items-center justify-center">
-                  <span className="font-material-icons text-2xl text-[#D4755B]">savings</span>
+                  <span className="font-material-icons text-2xl text-[#C5A059]">savings</span>
                 </div>
               </div>
               <div>

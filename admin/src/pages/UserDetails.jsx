@@ -169,7 +169,7 @@ const UserDetailsPage = () => {
           <p className="text-[#5A5856] mb-6 text-sm">{error}</p>
           <button
             onClick={() => navigate('/admin/users')}
-            className="px-6 py-3 bg-[#D4755B] text-white rounded-xl font-semibold text-sm hover:bg-[#C05E44] transition-colors"
+            className="px-6 py-3 bg-[#C5A059] text-white rounded-xl font-semibold text-sm hover:bg-[#C05E44] transition-colors"
           >
             Back to Users
           </button>
@@ -208,8 +208,8 @@ const UserDetailsPage = () => {
           <div className="flex flex-col lg:flex-row lg:items-start gap-6">
             {/* Avatar & Basic Info */}
             <div className="flex items-center gap-6">
-              <div className="w-20 h-20 bg-[#D4755B]/10 rounded-full flex items-center justify-center flex-shrink-0">
-                <Users className="w-10 h-10 text-[#D4755B]" />
+              <div className="w-20 h-20 bg-[#C5A059]/10 rounded-full flex items-center justify-center flex-shrink-0">
+                <Users className="w-10 h-10 text-[#C5A059]" />
               </div>
               <div>
                 <h2 className="text-2xl font-bold text-[#1C1B1A] mb-2">{user.name}</h2>
@@ -325,7 +325,7 @@ const UserDetailsPage = () => {
                     className={cn(
                       "flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all",
                       activeTab === tab.key
-                        ? "bg-[#D4755B] text-white"
+                        ? "bg-[#C5A059] text-white"
                         : "bg-[#F5F1E8] text-[#5A5856] hover:bg-[#E6D5C3]"
                     )}
                   >

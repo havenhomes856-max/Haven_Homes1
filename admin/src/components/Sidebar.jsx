@@ -104,7 +104,7 @@ const Sidebar = ({ isOpen, setIsOpen, isCollapsed, setIsCollapsed }) => {
         {/* Desktop Collapse Toggle */}
         <button
           onClick={toggleCollapse}
-          className="hidden lg:flex absolute -right-3 top-20 w-6 h-6 bg-[#D4755B] border-2 border-[#1C1B1A] rounded-full items-center justify-center text-white hover:bg-[#C05E44] transition-colors z-10"
+          className="hidden lg:flex absolute -right-3 top-20 w-6 h-6 bg-[#C5A059] border-2 border-[#1C1B1A] rounded-full items-center justify-center text-white hover:bg-[#C05E44] transition-colors z-10"
         >
           {isCollapsed ? (
             <ChevronRight className="h-3 w-3" />
@@ -136,7 +136,7 @@ const Sidebar = ({ isOpen, setIsOpen, isCollapsed, setIsCollapsed }) => {
                       'relative flex items-center gap-3 rounded-xl text-sm font-bold font-red-hat transition-all duration-200 group',
                       isCollapsed ? 'px-3 py-2.5 justify-center' : 'px-3 py-3',
                       isActive(item.path)
-                        ? 'bg-[#D4755B] text-white shadow-md'
+                        ? 'bg-[#C5A059] text-white shadow-md'
                         : 'text-[#9CA3AF] hover:text-[#FAF8F4] hover:bg-white/10'
                     )}
                     title={isCollapsed ? item.label : ''} // Tooltip on hover when collapsed
@@ -149,7 +149,7 @@ const Sidebar = ({ isOpen, setIsOpen, isCollapsed, setIsCollapsed }) => {
                     {isActive(item.path) && (
                       <motion.div
                         layoutId="activeSidebarItem"
-                        className="absolute inset-0 bg-[#D4755B] rounded-lg"
+                        className="absolute inset-0 bg-[#C5A059] rounded-lg"
                         style={{ zIndex: -1 }}
                         transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                       />
@@ -168,14 +168,14 @@ const Sidebar = ({ isOpen, setIsOpen, isCollapsed, setIsCollapsed }) => {
             <button className="w-full flex items-center gap-3 px-3 py-2.5 mb-2 text-[#9CA3AF] hover:text-[#FAF8F4] hover:bg-white/10 rounded-lg transition-all duration-200 text-sm font-medium">
               <Bell className="h-5 w-5" />
               <span className="flex-1 text-left">Notifications</span>
-              <span className="h-5 w-5 bg-[#D4755B] text-white text-xs flex items-center justify-center rounded-full">
+              <span className="h-5 w-5 bg-[#C5A059] text-white text-xs flex items-center justify-center rounded-full">
                 3
               </span>
             </button>
           ) : (
             <button className="w-full flex items-center justify-center px-3 py-2.5 mb-2 text-[#9CA3AF] hover:text-[#FAF8F4] hover:bg-white/10 rounded-lg transition-all duration-200 relative">
               <Bell className="h-5 w-5" />
-              <span className="absolute -top-1 -right-1 h-4 w-4 bg-[#D4755B] text-white text-[10px] flex items-center justify-center rounded-full">
+              <span className="absolute -top-1 -right-1 h-4 w-4 bg-[#C5A059] text-white text-[10px] flex items-center justify-center rounded-full">
                 3
               </span>
             </button>
@@ -184,7 +184,7 @@ const Sidebar = ({ isOpen, setIsOpen, isCollapsed, setIsCollapsed }) => {
           {/* Profile */}
           {!isCollapsed ? (
             <div className="flex items-center gap-3 px-3 py-2.5 mb-2 bg-white/5 rounded-lg">
-              <div className="h-9 w-9 bg-[#D4755B] rounded-lg flex items-center justify-center flex-shrink-0">
+              <div className="h-9 w-9 bg-[#C5A059] rounded-lg flex items-center justify-center flex-shrink-0">
                 <User className="h-4 w-4 text-white" />
               </div>
               <div className="flex-1 min-w-0">
@@ -194,7 +194,7 @@ const Sidebar = ({ isOpen, setIsOpen, isCollapsed, setIsCollapsed }) => {
             </div>
           ) : (
             <div className="flex items-center justify-center px-3 py-2.5 mb-2 bg-white/5 rounded-lg">
-              <div className="h-9 w-9 bg-[#D4755B] rounded-lg flex items-center justify-center">
+              <div className="h-9 w-9 bg-[#C5A059] rounded-lg flex items-center justify-center">
                 <User className="h-4 w-4 text-white" />
               </div>
             </div>

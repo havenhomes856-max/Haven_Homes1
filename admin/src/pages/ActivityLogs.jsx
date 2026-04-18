@@ -214,7 +214,7 @@ const ActivityLogs = () => {
               onClick={() => setShowFilters(!showFilters)}
               className={`px-4 py-2 rounded-lg border transition-colors duration-200 ${
                 showFilters
-                  ? 'bg-[#D4755B] text-white border-[#D4755B]'
+                  ? 'bg-[#C5A059] text-white border-[#C5A059]'
                   : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
               }`}
             >
@@ -225,7 +225,7 @@ const ActivityLogs = () => {
             <button
               onClick={handleExport}
               disabled={exporting || logs.length === 0}
-              className="px-4 py-2 bg-[#D4755B] text-white rounded-lg hover:bg-[#C06549]
+              className="px-4 py-2 bg-[#C5A059] text-white rounded-lg hover:bg-[#C06549]
                        disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors duration-200"
             >
               <ArrowDownTrayIcon className="w-4 h-4 inline mr-2" />
@@ -255,7 +255,7 @@ const ActivityLogs = () => {
                   value={filters.action}
                   onChange={(e) => handleFilterChange('action', e.target.value)}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2
-                           focus:ring-[#D4755B] focus:border-transparent"
+                           focus:ring-[#C5A059] focus:border-transparent"
                 >
                   {actionOptions.map(option => (
                     <option key={option.value} value={option.value}>
@@ -274,7 +274,7 @@ const ActivityLogs = () => {
                   value={filters.targetType}
                   onChange={(e) => handleFilterChange('targetType', e.target.value)}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2
-                           focus:ring-[#D4755B] focus:border-transparent"
+                           focus:ring-[#C5A059] focus:border-transparent"
                 >
                   {targetTypeOptions.map(option => (
                     <option key={option.value} value={option.value}>
@@ -295,7 +295,7 @@ const ActivityLogs = () => {
                   onChange={(e) => handleFilterChange('adminEmail', e.target.value)}
                   placeholder="admin@Haven Homes.com"
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2
-                           focus:ring-[#D4755B] focus:border-transparent"
+                           focus:ring-[#C5A059] focus:border-transparent"
                 />
               </div>
 
@@ -309,7 +309,7 @@ const ActivityLogs = () => {
                   value={filters.startDate}
                   onChange={(e) => handleFilterChange('startDate', e.target.value)}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2
-                           focus:ring-[#D4755B] focus:border-transparent"
+                           focus:ring-[#C5A059] focus:border-transparent"
                 />
               </div>
 
@@ -323,7 +323,7 @@ const ActivityLogs = () => {
                   value={filters.endDate}
                   onChange={(e) => handleFilterChange('endDate', e.target.value)}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2
-                           focus:ring-[#D4755B] focus:border-transparent"
+                           focus:ring-[#C5A059] focus:border-transparent"
                 />
               </div>
 
@@ -365,7 +365,7 @@ const ActivityLogs = () => {
             <p className="text-gray-600 mb-4">{error}</p>
             <button
               onClick={() => fetchLogs()}
-              className="px-4 py-2 bg-[#D4755B] text-white rounded-lg hover:bg-[#C06549]
+              className="px-4 py-2 bg-[#C5A059] text-white rounded-lg hover:bg-[#C06549]
                        transition-colors duration-200"
             >
               Try Again
@@ -386,7 +386,7 @@ const ActivityLogs = () => {
             {Object.values(filters).some(v => v && v !== 1 && v !== 20) && (
               <button
                 onClick={clearFilters}
-                className="px-4 py-2 bg-[#D4755B] text-white rounded-lg hover:bg-[#C06549]
+                className="px-4 py-2 bg-[#C5A059] text-white rounded-lg hover:bg-[#C06549]
                          transition-colors duration-200"
               >
                 Clear Filters
@@ -462,7 +462,7 @@ const ActivityLogs = () => {
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                       <button
                         onClick={() => setSelectedLog(log)}
-                        className="text-[#D4755B] hover:text-[#C06549] font-medium"
+                        className="text-[#C5A059] hover:text-[#C06549] font-medium"
                       >
                         <EyeIcon className="w-4 h-4 inline mr-1" />
                         View Details

@@ -32,7 +32,7 @@ const AILocationTrends: React.FC<Props> = ({
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,117,91,0.02)_0%,transparent_100%)] pointer-events-none" />
         <div className="max-w-[1200px] mx-auto px-6 relative z-10 text-center animate-pulse">
           <div className="inline-flex items-center gap-3 bg-[#FAF8F4] border border-[#E6E0DA] shadow-sm rounded-full px-5 py-2.5 mb-8">
-            <div className="w-2 h-2 rounded-full bg-[#D4755B] animate-ping" />
+            <div className="w-2 h-2 rounded-full bg-[#C5A059] animate-ping" />
             <span className="font-space-mono text-xs text-[#6B7280] font-bold uppercase tracking-wider">
               AI is analyzing {city} trends...
             </span>
@@ -77,8 +77,8 @@ const AILocationTrends: React.FC<Props> = ({
         {/* ── Header ─────────────────────────────── */}
         <div className="flex items-center gap-4 mb-10">
           <div className="w-12 h-12 bg-white border border-[#E6E0DA] shadow-sm rounded-full flex items-center justify-center relative">
-            <div className="absolute inset-0 bg-[#D4755B]/5 rounded-full" />
-            <BarChart3 className="w-5 h-5 text-[#D4755B] relative z-10" />
+            <div className="absolute inset-0 bg-[#C5A059]/5 rounded-full" />
+            <BarChart3 className="w-5 h-5 text-[#C5A059] relative z-10" />
           </div>
           <div>
             <h2 className="font-syne text-3xl font-bold text-[#221410] mb-1">
@@ -119,7 +119,7 @@ const AILocationTrends: React.FC<Props> = ({
                     >
                       <td className="px-8 py-5">
                         <div className="flex items-center gap-3">
-                          <MapPin className="w-4 h-4 text-[#D4755B]/60 group-hover:text-[#D4755B] transition-colors" />
+                          <MapPin className="w-4 h-4 text-[#C5A059]/60 group-hover:text-[#C5A059] transition-colors" />
                           <span className="font-manrope text-[15px] text-[#221410] font-semibold">
                             {loc.location}
                           </span>
@@ -162,7 +162,7 @@ const AILocationTrends: React.FC<Props> = ({
             {analysis.trends?.length > 0 && (
               <div className="bg-white border border-[#E6E0DA] shadow-sm rounded-2xl p-8">
                 <h3 className="font-syne text-xl font-bold text-[#221410] mb-6 flex items-center gap-2.5">
-                  <TrendingUp className="w-5 h-5 text-[#D4755B]" />
+                  <TrendingUp className="w-5 h-5 text-[#C5A059]" />
                   AI Trend Analysis
                 </h3>
 
@@ -178,7 +178,7 @@ const AILocationTrends: React.FC<Props> = ({
                       outlookLower.includes('declin');
 
                     return (
-                      <div key={i} className="bg-[#FAF8F4] border border-[#E6E0DA]/60 rounded-xl p-5 hover:border-[#D4755B]/30 transition-colors">
+                      <div key={i} className="bg-[#FAF8F4] border border-[#E6E0DA]/60 rounded-xl p-5 hover:border-[#C5A059]/30 transition-colors">
                         <div className="flex items-start justify-between mb-4">
                           {/* Location name */}
                           <h4 className="font-syne text-[17px] font-bold text-[#221410]">
@@ -284,7 +284,7 @@ const AILocationTrends: React.FC<Props> = ({
                     {analysis.investment_tips.map((tip, i) => (
                       <li key={i} className="flex items-start gap-3">
                         <div className="mt-1 bg-[#FAF8F4] p-1 rounded-full border border-[#E6E0DA] shrink-0">
-                          <ChevronRight className="w-3 h-3 text-[#D4755B]" />
+                          <ChevronRight className="w-3 h-3 text-[#C5A059]" />
                         </div>
                         <span className="font-manrope font-medium text-[15px] text-[#4B5563] leading-relaxed">
                           {tip}

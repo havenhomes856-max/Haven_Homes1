@@ -112,8 +112,8 @@ const AIApiKeyModal: React.FC<AIApiKeyModalProps> = ({ isOpen, onClose, onKeysCh
         {/* Header */}
         <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-white/10">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 bg-[#D4755B]/20 rounded-xl flex items-center justify-center">
-              <Key className="w-4 h-4 text-[#D4755B]" />
+            <div className="w-9 h-9 bg-[#C5A059]/20 rounded-xl flex items-center justify-center">
+              <Key className="w-4 h-4 text-[#C5A059]" />
             </div>
             <div>
               <h2 className="font-syne font-bold text-white text-lg">Your API Keys</h2>
@@ -170,7 +170,7 @@ const AIApiKeyModal: React.FC<AIApiKeyModalProps> = ({ isOpen, onClose, onKeysCh
 
         {/* Note */}
         <div className="mx-6 mb-4 flex items-start gap-2 bg-white/[0.04] border border-white/10 rounded-xl px-4 py-3">
-          <AlertCircle className="w-4 h-4 text-[#D4755B] shrink-0 mt-0.5" />
+          <AlertCircle className="w-4 h-4 text-[#C5A059] shrink-0 mt-0.5" />
           <p className="font-manrope text-xs text-white/50 leading-relaxed">
             Your keys are stored only in <strong className="text-white/70">this browser</strong>. They are sent directly to our backend with each request and used only to call the AI services on your behalf.
           </p>
@@ -181,7 +181,7 @@ const AIApiKeyModal: React.FC<AIApiKeyModalProps> = ({ isOpen, onClose, onKeysCh
           <button
             onClick={handleSave}
             disabled={saving || (!githubKey.trim() && !firecrawlKey.trim())}
-            className="flex-1 flex items-center justify-center gap-2 bg-[#1C1B1A] hover:bg-[#D4755B] disabled:opacity-40 disabled:cursor-not-allowed text-white font-manrope font-semibold text-sm py-3 rounded-xl transition-all uppercase tracking-widest shadow-lg"
+            className="flex-1 flex items-center justify-center gap-2 bg-[#1C1B1A] hover:bg-[#C5A059] disabled:opacity-40 disabled:cursor-not-allowed text-white font-manrope font-semibold text-sm py-3 rounded-xl transition-all uppercase tracking-widest shadow-lg"
           >
             <Save className="w-4 h-4" />
             {saving ? 'Verifying...' : 'Save Keys'}
@@ -230,12 +230,12 @@ const KeyInput: React.FC<KeyInputProps> = ({
     <div className="flex items-center justify-between mb-1.5">
       <label className="font-space-mono text-[10px] text-white/50 uppercase tracking-widest">{label}</label>
       <a href={linkHref} target="_blank" rel="noopener noreferrer"
-        className="flex items-center gap-1 font-manrope text-[11px] text-[#D4755B] hover:text-[#e88a6f] transition-colors">
+        className="flex items-center gap-1 font-manrope text-[11px] text-[#C5A059] hover:text-[#e88a6f] transition-colors">
         {linkText} <ExternalLink className="w-3 h-3" />
       </a>
     </div>
-    <div className="relative bg-white/[0.07] border border-white/10 rounded-xl px-4 py-3 flex items-center gap-3 focus-within:border-[#D4755B]/50 transition-all">
-      <Key className="w-4 h-4 text-[#D4755B]/60 shrink-0" />
+    <div className="relative bg-white/[0.07] border border-white/10 rounded-xl px-4 py-3 flex items-center gap-3 focus-within:border-[#C5A059]/50 transition-all">
+      <Key className="w-4 h-4 text-[#C5A059]/60 shrink-0" />
       <input
         type={show ? 'text' : 'password'}
         value={value}

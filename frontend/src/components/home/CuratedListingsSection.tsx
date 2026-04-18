@@ -60,11 +60,11 @@ const CuratedListingsSection: React.FC = () => {
         <div className="flex items-center justify-between mb-10">
           <div>
             <p className="font-red-hat text-xs uppercase tracking-[2px] text-[#6B7280] mb-2 font-bold">Featured Listings</p>
-            <h2 className="font-fraunces font-bold text-3xl sm:text-4xl lg:text-5xl text-[#111827]">Our Premium Selection</h2>
+            <h2 className="font-fraunces font-bold text-3xl sm:text-4xl lg:text-5xl text-[#C5A059]">Our Premium Selection</h2>
           </div>
           <Link
             to="/properties"
-            className="hidden sm:inline-flex items-center gap-2 font-red-hat text-sm font-bold text-[#111827] border-b-2 border-[#111827] pb-1 hover:text-[#4B5563] hover:border-[#4B5563] transition-colors uppercase tracking-widest"
+            className="hidden sm:inline-flex items-center gap-2 font-red-hat text-sm font-bold text-[#C5A059] border-b-2 border-[#C5A059] pb-1 hover:text-[#4B5563] hover:border-[#4B5563] transition-colors uppercase tracking-widest"
           >
             Explore All
             <ArrowRight className="w-4 h-4" />
@@ -74,7 +74,7 @@ const CuratedListingsSection: React.FC = () => {
         {/* Mobile Explore link */}
         <Link
           to="/properties"
-          className="sm:hidden flex items-center gap-2 font-red-hat text-sm font-bold text-[#111827] mb-8 uppercase tracking-widest"
+          className="sm:hidden flex items-center gap-2 font-red-hat text-sm font-bold text-[#C5A059] mb-8 uppercase tracking-widest"
         >
           Explore All Properties
           <ArrowRight className="w-4 h-4" />

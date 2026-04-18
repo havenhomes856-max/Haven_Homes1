@@ -171,7 +171,7 @@ const ListingCard = ({ listing, onApprove, onReject, actionLoading }) => {
               {listing.title}
             </h3>
             <div className="flex items-center gap-2 flex-shrink-0">
-              <span className="bg-[#F3EDE8] text-[#D4755B] text-xs font-semibold px-2.5 py-1 rounded-full">
+              <span className="bg-[#F3EDE8] text-[#C5A059] text-xs font-semibold px-2.5 py-1 rounded-full">
                 {listing.type}
               </span>
               <span className="bg-amber-50 text-amber-700 border border-amber-200 text-xs font-semibold px-2.5 py-1 rounded-full">
@@ -182,13 +182,13 @@ const ListingCard = ({ listing, onApprove, onReject, actionLoading }) => {
 
           {/* Location */}
           <p className="text-sm text-[#6B7280] flex items-center gap-1.5">
-            <MapPin className="w-3.5 h-3.5 flex-shrink-0 text-[#D4755B]" />
+            <MapPin className="w-3.5 h-3.5 flex-shrink-0 text-[#C5A059]" />
             <span className="line-clamp-1">{listing.location}</span>
           </p>
 
           {/* Stats row */}
           <div className="flex flex-wrap items-center gap-4 text-sm text-[#374151]">
-            <span className="font-semibold text-[#D4755B] text-base">{formatPrice(listing.price)}</span>
+            <span className="font-semibold text-[#C5A059] text-base">{formatPrice(listing.price)}</span>
             {listing.type !== 'Plot' ? (
               <>
                 <span className="flex items-center gap-1 text-xs text-[#6B7280]">
@@ -455,7 +455,7 @@ const PendingListings = () => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search by title, location or submitter..."
-            className="w-full pl-10 pr-4 py-2.5 border border-[#E6E0DA] rounded-xl text-sm text-[#221410] bg-white focus:outline-none focus:ring-2 focus:ring-[#D4755B]/30 focus:border-[#D4755B]"
+            className="w-full pl-10 pr-4 py-2.5 border border-[#E6E0DA] rounded-xl text-sm text-[#221410] bg-white focus:outline-none focus:ring-2 focus:ring-[#C5A059]/30 focus:border-[#C5A059]"
           />
         </div>
       )}

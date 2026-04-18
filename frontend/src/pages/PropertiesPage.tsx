@@ -47,6 +47,7 @@ const PropertiesPage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [sortBy, setSortBy] = useState('featured');
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
+  const [isPending, startTransition] = React.useTransition();
   
   // Track location search separately for the header search bar
   const [locationSearch, setLocationSearch] = useState(urlSearch);
@@ -128,17 +129,28 @@ const PropertiesPage: React.FC = () => {
 
     if (filters.priceRange) {
       const [min, max] = filters.priceRange;
-      const minPrice = min * 1000000;
-      const maxPrice = max * 1000000;
       result = result.filter((p) => {
-        if (p.price < minPrice) return false;
-        if (max >= 200) return true;
-        return p.price <= maxPrice;
+        const priceStr = String(p.price);
+        const rawNum = parseFloat(priceStr.replace(/,/g, '').replace(/₹/g, ''));
+        
+        let priceInLakhs = rawNum;
+        if (priceStr.toUpperCase().includes('CR')) {
+          priceInLakhs = rawNum * 100;
+        } else if (rawNum > 100000) {
+          priceInLakhs = rawNum / 100000;
+        }
+
+        if (priceInLakhs < min) return false;
+        if (max < 1000 && priceInLakhs > max) return false;
+        return true;
       });
     }
 
-    if (filters.bedrooms && filters.bedrooms > 0) {
-      result = result.filter(p => p.beds >= filters.bedrooms!);
+    if (filters.bedrooms) {
+      const beds = Number(filters.bedrooms);
+      if (beds > 0) {
+        result = result.filter(p => p.beds >= beds);
+      }
     }
 
     if (filters.bathrooms && filters.bathrooms > 0) {
@@ -186,9 +198,11 @@ const PropertiesPage: React.FC = () => {
     }
   };
 
-  const handleFilterChange = (newFilters: any) => {
-    setFilters({ ...newFilters, location: locationSearch });
-  };
+  const handleFilterChange = React.useCallback((newFilters: any) => {
+    startTransition(() => {
+      setFilters(prev => ({ ...newFilters, location: locationSearch }));
+    });
+  }, [locationSearch]);
 
   const handleSortChange = (sort: string) => {
     setSortBy(sort);
@@ -230,11 +244,11 @@ const PropertiesPage: React.FC = () => {
           {error && !loading && (
             <div className="flex items-center justify-center py-24">
               <div className="text-center px-4">
-                <span className="material-icons text-4xl text-[#D4755B] mb-4">error_outline</span>
+                <span className="material-icons text-4xl text-[#C5A059] mb-4">error_outline</span>
                 <p className="font-manrope text-[#374151] mb-4">{error}</p>
                 <button
                   onClick={() => window.location.reload()}
-                  className="bg-[#D4755B] text-white font-manrope font-bold px-6 py-2 rounded-lg hover:bg-[#B86851] transition-all"
+                  className="bg-[#C5A059] text-white font-manrope font-bold px-6 py-2 rounded-lg hover:bg-[#B86851] transition-all"
                 >
                   Retry
                 </button>

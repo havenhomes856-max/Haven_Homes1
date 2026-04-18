@@ -32,7 +32,7 @@ const PropertyCard: React.FC<PropertyCardProps> = ({
       <div className="relative h-64">
         <img src={image} alt={title} className="w-full h-full object-cover" />
         {featured && (
-          <div className="absolute top-4 left-4 bg-[#D4755B] text-white px-3 py-1 rounded-lg font-manrope font-bold text-xs">
+          <div className="absolute top-4 left-4 bg-[#C5A059] text-white px-3 py-1 rounded-lg font-manrope font-bold text-xs">
             FEATURED
           </div>
         )}

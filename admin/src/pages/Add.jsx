@@ -9,13 +9,13 @@ import { convertToWebP } from '../lib/imageUtils';
 
 const PROPERTY_TYPES = ['House', 'Apartment', 'Office', 'Villa', 'Plot'];
 
-const inputClass = "w-full px-4 py-3 bg-white border border-[#E6D5C3] rounded-xl text-[#1C1B1A] placeholder-[#9CA3AF] text-sm font-red-hat transition-all duration-200 outline-none focus:border-[#D4755B] focus:ring-2 focus:ring-[#D4755B]/15";
+const inputClass = "w-full px-4 py-3 bg-white border border-[#E6D5C3] rounded-xl text-[#1C1B1A] placeholder-[#9CA3AF] text-sm font-red-hat transition-all duration-200 outline-none focus:border-[#C5A059] focus:ring-2 focus:ring-[#C5A059]/15";
 const labelClass = "block text-sm font-bold font-red-hat text-[#1C1B1A] mb-2 uppercase tracking-wide";
 
 const SectionHeader = ({ icon: Icon, title, subtitle }) => (
   <div className="flex items-center gap-3 mb-5">
-    <div className="w-9 h-9 bg-[#D4755B]/10 rounded-xl flex items-center justify-center">
-      <Icon className="w-4.5 h-4.5 text-[#D4755B]" />
+    <div className="w-9 h-9 bg-[#C5A059]/10 rounded-xl flex items-center justify-center">
+      <Icon className="w-4.5 h-4.5 text-[#C5A059]" />
     </div>
     <div>
       <h3 className="text-lg font-bold font-fraunces text-[#1C1B1A]">{title}</h3>
@@ -263,7 +263,7 @@ const PropertyForm = () => {
                         toast.error('Failed to resolve map link', { id: t });
                       }
                     }}
-                    className="px-4 py-2 bg-[#1C1B1A] text-white rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-[#D4755B] transition-colors"
+                    className="px-4 py-2 bg-[#1C1B1A] text-white rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-[#C5A059] transition-colors"
                   >
                     Verify
                   </button>
@@ -354,7 +354,7 @@ const PropertyForm = () => {
             {/* Auto-calculated sqft display */}
             {formData.length && formData.breadth && (
               <div className="mt-3 px-4 py-2 bg-[#FAF8F4] border border-[#E6D5C3] rounded-xl flex items-center gap-2">
-                <Maximize className="w-4 h-4 text-[#D4755B]" />
+                <Maximize className="w-4 h-4 text-[#C5A059]" />
                 <span className="text-sm font-red-hat text-[#5A5856]">
                   Auto sqft: <span className="font-bold font-space-mono text-[#1C1B1A]">{Number(formData.length) * Number(formData.breadth)}</span> sq ft
                 </span>
@@ -386,8 +386,8 @@ const PropertyForm = () => {
                         className={cn(
                           'flex flex-col items-center gap-1 py-3 px-2 rounded-xl border text-sm font-semibold transition-all duration-200',
                           selected
-                            ? 'bg-[#D4755B] text-white border-[#D4755B] shadow-sm'
-                            : 'bg-[#FAF8F4] text-[#5A5856] border-[#E6D5C3] hover:border-[#D4755B] hover:text-[#D4755B]'
+                            ? 'bg-[#C5A059] text-white border-[#C5A059] shadow-sm'
+                            : 'bg-[#FAF8F4] text-[#5A5856] border-[#E6D5C3] hover:border-[#C5A059] hover:text-[#C5A059]'
                         )}
                       >
                         <span className="text-lg">{dir}</span>
@@ -397,7 +397,7 @@ const PropertyForm = () => {
                   })}
                 </div>
                 {formData.facing && (
-                  <p className="mt-3 text-sm text-[#D4755B] font-medium">
+                  <p className="mt-3 text-sm text-[#C5A059] font-medium">
                     ✓ Selected: {FACING_LABELS[formData.facing]} facing
                   </p>
                 )}
@@ -416,8 +416,8 @@ const PropertyForm = () => {
                     className={cn(
                       'flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200',
                       selected
-                        ? 'bg-[#D4755B] text-white shadow-sm'
-                        : 'bg-[#FAF8F4] text-[#5A5856] border border-[#E6D5C3] hover:border-[#D4755B] hover:text-[#D4755B]'
+                        ? 'bg-[#C5A059] text-white shadow-sm'
+                        : 'bg-[#FAF8F4] text-[#5A5856] border border-[#E6D5C3] hover:border-[#C5A059] hover:text-[#C5A059]'
                     )}
                   >
                     {selected ? <CheckSquare className="w-3.5 h-3.5" /> : <Square className="w-3.5 h-3.5" />}
@@ -434,7 +434,7 @@ const PropertyForm = () => {
                 placeholder="Add custom amenity..."
                 className={cn(inputClass, 'flex-1')} />
               <button type="button" onClick={handleAddAmenity}
-                className="flex items-center gap-1.5 px-4 py-2.5 bg-[#1C1B1A] text-white rounded-xl text-sm font-medium hover:bg-[#D4755B] transition-colors">
+                className="flex items-center gap-1.5 px-4 py-2.5 bg-[#1C1B1A] text-white rounded-xl text-sm font-medium hover:bg-[#C5A059] transition-colors">
                 <Plus className="w-4 h-4" />
                 Add
               </button>
@@ -445,7 +445,7 @@ const PropertyForm = () => {
               <div className="mt-3 flex flex-wrap gap-2">
                 {formData.amenities.filter((a) => !AMENITIES_LIST.includes(a)).map((amenity) => (
                   <span key={amenity}
-                    className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#D4755B]/10 text-[#D4755B] rounded-full text-sm font-medium">
+                    className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#C5A059]/10 text-[#C5A059] rounded-full text-sm font-medium">
                     {amenity}
                     <button type="button" onClick={() => handleAmenityToggle(amenity)}
                       className="hover:text-[#C05E44] transition-colors">
@@ -482,9 +482,9 @@ const PropertyForm = () => {
 
             {previewUrls.length < 4 && (
               <label htmlFor="images"
-                className="flex flex-col items-center justify-center w-full h-36 border-2 border-dashed border-[#E6D5C3] rounded-xl cursor-pointer bg-[#FAF8F4] hover:border-[#D4755B] hover:bg-[#D4755B]/5 transition-all duration-200 group">
-                <Upload className="w-8 h-8 text-[#9CA3AF] group-hover:text-[#D4755B] mb-2 transition-colors" />
-                <span className="text-sm font-medium text-[#5A5856] group-hover:text-[#D4755B] transition-colors">
+                className="flex flex-col items-center justify-center w-full h-36 border-2 border-dashed border-[#E6D5C3] rounded-xl cursor-pointer bg-[#FAF8F4] hover:border-[#C5A059] hover:bg-[#C5A059]/5 transition-all duration-200 group">
+                <Upload className="w-8 h-8 text-[#9CA3AF] group-hover:text-[#C5A059] mb-2 transition-colors" />
+                <span className="text-sm font-medium text-[#5A5856] group-hover:text-[#C5A059] transition-colors">
                   Click to upload images
                 </span>
                 <span className="text-xs text-[#9CA3AF] mt-1">PNG, JPG up to 10MB each</span>
@@ -500,7 +500,7 @@ const PropertyForm = () => {
             disabled={loading}
             whileHover={{ scale: loading ? 1 : 1.01 }}
             whileTap={{ scale: loading ? 1 : 0.99 }}
-            className="w-full py-4 bg-[#1C1B1A] hover:bg-[#D4755B] text-[#FAF8F4] rounded-xl font-bold font-red-hat text-base transition-all duration-300 shadow-lg hover:shadow-terracotta disabled:opacity-60 disabled:cursor-not-allowed uppercase tracking-widest"
+            className="w-full py-4 bg-[#1C1B1A] hover:bg-[#C5A059] text-[#FAF8F4] rounded-xl font-bold font-red-hat text-base transition-all duration-300 shadow-lg hover:shadow-terracotta disabled:opacity-60 disabled:cursor-not-allowed uppercase tracking-widest"
           >
             {loading ? 'Adding Property...' : 'Add Property'}
           </motion.button>

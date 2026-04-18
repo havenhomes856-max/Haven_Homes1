@@ -77,7 +77,7 @@ const HeroSection: React.FC = () => {
             </div>
             <button
               type="submit"
-              className="bg-white text-[#1C1B1A] font-red-hat text-xs sm:text-sm font-bold uppercase tracking-widest px-6 sm:px-10 py-4 sm:py-5 rounded-xl sm:rounded-[1.5rem] hover:bg-[#D4755B] hover:text-white transition-all duration-300 shadow-lg active:scale-95"
+              className="bg-white text-[#1C1B1A] font-red-hat text-xs sm:text-sm font-bold uppercase tracking-widest px-6 sm:px-10 py-4 sm:py-5 rounded-xl sm:rounded-[1.5rem] hover:bg-[#C5A059] hover:text-white transition-all duration-300 shadow-lg active:scale-95"
             >
               Search
             </button>

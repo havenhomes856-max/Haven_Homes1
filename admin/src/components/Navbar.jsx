@@ -115,7 +115,7 @@ const Navbar = () => {
                 className={cn(
                   'relative flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200',
                   isActive(item.path)
-                    ? 'text-[#FAF8F4] bg-[#D4755B]'
+                    ? 'text-[#FAF8F4] bg-[#C5A059]'
                     : 'text-[#9CA3AF] hover:text-[#FAF8F4] hover:bg-white/10'
                 )}
               >
@@ -124,7 +124,7 @@ const Navbar = () => {
                 {isActive(item.path) && (
                   <motion.div
                     layoutId="activeNavTab"
-                    className="absolute inset-0 bg-[#D4755B] rounded-lg"
+                    className="absolute inset-0 bg-[#C5A059] rounded-lg"
                     style={{ zIndex: -1 }}
                     transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                   />
@@ -177,7 +177,7 @@ const Navbar = () => {
               className="relative p-2 text-[#9CA3AF] hover:text-[#FAF8F4] hover:bg-white/10 rounded-lg transition-all duration-200"
             >
               <Bell className="h-5 w-5" />
-              <span className="absolute top-1.5 right-1.5 h-2 w-2 bg-[#D4755B] rounded-full" />
+              <span className="absolute top-1.5 right-1.5 h-2 w-2 bg-[#C5A059] rounded-full" />
             </motion.button>
 
             {/* Profile Dropdown */}
@@ -188,7 +188,7 @@ const Navbar = () => {
                 whileTap={{ scale: 0.98 }}
                 className="flex items-center gap-2.5 pl-2 pr-3 py-1.5 rounded-lg hover:bg-white/10 transition-all duration-200"
               >
-                <div className="h-8 w-8 bg-[#D4755B] rounded-lg flex items-center justify-center">
+                <div className="h-8 w-8 bg-[#C5A059] rounded-lg flex items-center justify-center">
                   <User className="h-4 w-4 text-white" />
                 </div>
                 <div className="text-left hidden lg:block">
@@ -276,7 +276,7 @@ const Navbar = () => {
                   className={cn(
                     'flex items-center gap-3 px-4 py-3 rounded-xl text-base font-medium transition-all duration-200',
                     isActive(item.path)
-                      ? 'bg-[#D4755B] text-white'
+                      ? 'bg-[#C5A059] text-white'
                       : 'text-[#9CA3AF] hover:text-[#FAF8F4] hover:bg-white/10'
                   )}
                 >
@@ -295,7 +295,7 @@ const Navbar = () => {
                     className={cn(
                       'flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200',
                       isActive(item.path)
-                        ? 'bg-[#D4755B] text-white'
+                        ? 'bg-[#C5A059] text-white'
                         : 'text-[#9CA3AF] hover:text-[#FAF8F4] hover:bg-white/10'
                     )}
                   >
@@ -308,7 +308,7 @@ const Navbar = () => {
               {/* Mobile Profile */}
               <div className="pt-3 mt-3 border-t border-white/10">
                 <div className="flex items-center gap-3 px-4 py-3 mb-1">
-                  <div className="h-10 w-10 bg-[#D4755B] rounded-xl flex items-center justify-center">
+                  <div className="h-10 w-10 bg-[#C5A059] rounded-xl flex items-center justify-center">
                     <User className="h-5 w-5 text-white" />
                   </div>
                   <div>

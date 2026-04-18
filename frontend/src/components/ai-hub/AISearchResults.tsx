@@ -75,9 +75,9 @@ const PropertyCard: React.FC<{
   const hasMatchScore = insight?.match_score != null;
 
   return (
-    <div className={`bg-white rounded-2xl overflow-hidden hover:shadow-[0_20px_40px_-15px_rgba(212,117,91,0.15)] hover:-translate-y-1 transition-all duration-300 group flex flex-col relative border ${isComparing ? 'border-[#D4755B] ring-2 ring-[#D4755B]/20' : 'border-[#E6E0DA]/60'}`}>
+    <div className={`bg-white rounded-2xl overflow-hidden hover:shadow-[0_20px_40px_-15px_rgba(212,117,91,0.15)] hover:-translate-y-1 transition-all duration-300 group flex flex-col relative border ${isComparing ? 'border-[#C5A059] ring-2 ring-[#C5A059]/20' : 'border-[#E6E0DA]/60'}`}>
       {/* Accent bar */}
-      <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#D4755B] to-amber-500 opacity-60 group-hover:opacity-100 transition-opacity" />
+      <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#C5A059] to-amber-500 opacity-60 group-hover:opacity-100 transition-opacity" />
 
       <div className="p-6 flex flex-col flex-1">
 
@@ -94,7 +94,7 @@ const PropertyCard: React.FC<{
         </div>
 
         {/* Building name */}
-        <h3 className="font-syne text-[20px] font-bold text-[#221410] mb-1 leading-tight line-clamp-2 group-hover:text-[#D4755B] transition-colors">
+        <h3 className="font-syne text-[20px] font-bold text-[#221410] mb-1 leading-tight line-clamp-2 group-hover:text-[#C5A059] transition-colors">
           {property.building_name || 'Premium Property'}
         </h3>
 
@@ -110,7 +110,7 @@ const PropertyCard: React.FC<{
 
         {/* Location */}
         <div className="flex items-start gap-1.5 mb-4">
-          <MapPin className="w-3.5 h-3.5 text-[#D4755B]/60 mt-0.5 shrink-0" />
+          <MapPin className="w-3.5 h-3.5 text-[#C5A059]/60 mt-0.5 shrink-0" />
           <span className="font-manrope text-sm text-[#6B7280] leading-snug line-clamp-1">
             {property.location_address || 'Location not specified'}
           </span>
@@ -122,7 +122,7 @@ const PropertyCard: React.FC<{
             <p className="font-space-mono text-[9px] text-[#9CA3AF] font-bold tracking-widest uppercase mb-0.5">
               Price
             </p>
-            <p className="font-manrope font-extrabold text-[#D4755B] text-xl leading-none">
+            <p className="font-manrope font-extrabold text-[#C5A059] text-xl leading-none">
               {property.price || 'Contact for price'}
             </p>
           </div>
@@ -194,7 +194,7 @@ const PropertyCard: React.FC<{
         {property.amenities && property.amenities.length > 0 && (
           <div className="mb-4">
             <div className="flex items-center gap-1.5 mb-2">
-              <Sparkles className="w-3.5 h-3.5 text-[#D4755B]" />
+              <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
               <span className="font-space-mono text-[10px] text-[#9CA3AF] uppercase tracking-wider font-bold">Amenities</span>
             </div>
             <div className="flex flex-wrap gap-1.5">
@@ -215,7 +215,7 @@ const PropertyCard: React.FC<{
         {/* Nearby Landmarks */}
         {property.nearby_landmarks && property.nearby_landmarks.length > 0 && (
           <div className="flex items-start gap-2 mb-4">
-            <MapPin className="w-3.5 h-3. 5 text-[#D4755B] mt-0.5 shrink-0" />
+            <MapPin className="w-3.5 h-3. 5 text-[#C5A059] mt-0.5 shrink-0" />
             <div>
               <span className="font-space-mono text-[10px] text-[#9CA3AF] uppercase tracking-wider font-bold block mb-1">
                 Nearby
@@ -239,16 +239,16 @@ const PropertyCard: React.FC<{
 
         {/* AI insight block */}
         {insight?.one_line_insight && (
-          <div className="bg-[#FAF8F4] border border-[#D4755B]/20 rounded-xl px-4 py-3 mb-3">
+          <div className="bg-[#FAF8F4] border border-[#C5A059]/20 rounded-xl px-4 py-3 mb-3">
             <p className="font-manrope text-[12px] text-[#C05621] font-medium leading-snug">
-              <span className="font-bold text-[#D4755B]">AI </span>
+              <span className="font-bold text-[#C5A059]">AI </span>
               &ldquo;{insight.one_line_insight}&rdquo;
             </p>
             {hasMatchScore && (
               <div className="flex items-center gap-2 mt-2">
                 <div className="flex-1 h-1.5 bg-[#E6E0DA] rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-gradient-to-r from-[#D4755B] to-amber-400 rounded-full transition-all duration-700"
+                    className="h-full bg-gradient-to-r from-[#C5A059] to-amber-400 rounded-full transition-all duration-700"
                     style={{ width: `${insight.match_score}%` }}
                   />
                 </div>
@@ -304,7 +304,7 @@ const PropertyCard: React.FC<{
               target="_blank"
               rel="noopener noreferrer"
               onClick={e => e.stopPropagation()}
-              className="flex-1 inline-flex items-center justify-center gap-1.5 bg-[#D4755B] hover:bg-[#C05621] text-white font-manrope font-semibold text-sm py-2.5 rounded-xl transition-all shadow-sm shadow-[#D4755B]/20"
+              className="flex-1 inline-flex items-center justify-center gap-1.5 bg-[#C5A059] hover:bg-[#C05621] text-white font-manrope font-semibold text-sm py-2.5 rounded-xl transition-all shadow-sm shadow-[#C5A059]/20"
             >
               View listing <ExternalLink className="w-3.5 h-3.5" />
             </a>
@@ -319,9 +319,9 @@ const PropertyCard: React.FC<{
             disabled={!isComparing && !canCompare}
             className={`px-4 py-2.5 font-manrope font-semibold text-sm rounded-xl transition-all border ${
               isComparing
-                ? 'bg-[#D4755B] border-[#D4755B] text-white hover:bg-[#C05621]'
+                ? 'bg-[#C5A059] border-[#C5A059] text-white hover:bg-[#C05621]'
                 : canCompare
-                  ? 'border-[#E6E0DA] text-[#6B7280] hover:border-[#D4755B]/50 hover:text-[#D4755B]'
+                  ? 'border-[#E6E0DA] text-[#6B7280] hover:border-[#C5A059]/50 hover:text-[#C5A059]'
                   : 'border-[#E6E0DA]/50 text-[#C4C4C4] cursor-not-allowed opacity-50'
             }`}
           >
@@ -345,7 +345,7 @@ const ComparisonModal: React.FC<{
     const insight = insightMap.get((property.building_name || '').toLowerCase().trim());
     switch (key) {
       case 'price':
-        return <span className="font-bold text-[#D4755B]">{property.price || '—'}</span>;
+        return <span className="font-bold text-[#C5A059]">{property.price || '—'}</span>;
       case 'price_per_sqft':
         return property.price_per_sqft || '—';
       case 'area_sqft':
@@ -409,7 +409,7 @@ const ComparisonModal: React.FC<{
         <div className="flex items-center justify-between px-6 py-4 border-b border-[#E6E0DA] shrink-0">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 bg-[#FAF8F4] border border-[#E6E0DA] rounded-full flex items-center justify-center">
-              <BarChart2 className="w-4 h-4 text-[#D4755B]" />
+              <BarChart2 className="w-4 h-4 text-[#C5A059]" />
             </div>
             <h2 className="font-syne text-xl font-bold text-[#221410]">Compare Properties</h2>
           </div>
@@ -500,7 +500,7 @@ const AISearchResults: React.FC<Props> = ({ properties, loading, error, city, an
       <div>
         <div className="text-center mb-10">
           <div className="inline-flex items-center gap-3 bg-white border border-[#E6E0DA] shadow-sm rounded-full px-5 py-2.5 mb-6 animate-pulse">
-            <div className="w-2 h-2 rounded-full bg-[#D4755B] animate-ping" />
+            <div className="w-2 h-2 rounded-full bg-[#C5A059] animate-ping" />
             <span className="font-space-mono text-xs text-[#6B7280] font-bold uppercase tracking-wider">
               AI is searching the market...
             </span>
@@ -525,7 +525,7 @@ const AISearchResults: React.FC<Props> = ({ properties, loading, error, city, an
                 <div className="h-7 bg-[#E6E0DA]/40 rounded-lg w-24" />
               </div>
               <div className="flex gap-2 pt-4 border-t border-[#E6E0DA]/30">
-                <div className="flex-1 h-10 bg-[#D4755B]/20 rounded-xl" />
+                <div className="flex-1 h-10 bg-[#C5A059]/20 rounded-xl" />
                 <div className="h-10 w-24 bg-[#E6E0DA]/40 rounded-xl" />
               </div>
             </div>
@@ -552,8 +552,8 @@ const AISearchResults: React.FC<Props> = ({ properties, loading, error, city, an
   if (properties.length === 0) {
     return (
       <div className="py-10 text-center">
-        <div className="w-16 h-16 bg-[#D4755B]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-          <Home className="w-8 h-8 text-[#D4755B]" />
+        <div className="w-16 h-16 bg-[#C5A059]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+          <Home className="w-8 h-8 text-[#C5A059]" />
         </div>
         <h3 className="font-syne text-2xl text-[#221410] mb-2">No Properties Found</h3>
         <p className="font-manrope font-light text-[#6b7280]">
@@ -575,8 +575,8 @@ const AISearchResults: React.FC<Props> = ({ properties, loading, error, city, an
         {/* Header */}
         <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <div className="font-space-mono text-[11px] text-[#D4755B] font-bold uppercase tracking-widest mb-2 flex items-center gap-2">
-              <div className="w-1.5 h-1.5 rounded-full bg-[#D4755B] animate-pulse" />
+            <div className="font-space-mono text-[11px] text-[#C5A059] font-bold uppercase tracking-widest mb-2 flex items-center gap-2">
+              <div className="w-1.5 h-1.5 rounded-full bg-[#C5A059] animate-pulse" />
               Live AI Results
             </div>
             <h2 className="font-syne text-3xl font-bold text-[#221410] mb-1.5">
@@ -587,7 +587,7 @@ const AISearchResults: React.FC<Props> = ({ properties, loading, error, city, an
               <strong className="text-[#221410]">{properties.length}</strong>{' '}
               {properties.length === 1 ? 'match' : 'matches'}
               {aiMatchCount > 0 && (
-                <> · <strong className="text-[#D4755B]">{aiMatchCount}</strong> with AI insights</>
+                <> · <strong className="text-[#C5A059]">{aiMatchCount}</strong> with AI insights</>
               )}
             </p>
           </div>
@@ -636,7 +636,7 @@ const AISearchResults: React.FC<Props> = ({ properties, loading, error, city, an
                   <button
                     type="button"
                     onClick={() => toggleCompare(p)}
-                    className="shrink-0 text-[#9CA3AF] hover:text-[#D4755B] transition-colors"
+                    className="shrink-0 text-[#9CA3AF] hover:text-[#C5A059] transition-colors"
                   >
                     <X className="w-3.5 h-3.5" />
                   </button>
@@ -652,7 +652,7 @@ const AISearchResults: React.FC<Props> = ({ properties, loading, error, city, an
               <button
                 type="button"
                 onClick={() => setShowModal(true)}
-                className="inline-flex items-center gap-2 bg-[#D4755B] hover:bg-[#C05621] text-white font-manrope font-semibold text-sm px-5 py-2.5 rounded-xl transition-all shadow-sm shadow-[#D4755B]/25"
+                className="inline-flex items-center gap-2 bg-[#C5A059] hover:bg-[#C05621] text-white font-manrope font-semibold text-sm px-5 py-2.5 rounded-xl transition-all shadow-sm shadow-[#C5A059]/25"
               >
                 <BarChart2 className="w-4 h-4" />
                 Compare Now

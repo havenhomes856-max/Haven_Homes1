@@ -46,7 +46,7 @@ const AboutHeritageSection: React.FC = () => {
             </div>
 
             {/* Blockquote */}
-            <blockquote className="border-l-[3px] border-[#D4755B] pl-6 mb-10">
+            <blockquote className="border-l-[3px] border-[#C5A059] pl-6 mb-10">
               <p className="font-fraunces italic text-xl leading-8 text-[#1C1B1A]">
                 "We believe finding a home should be inspiring,
                 not exhausting."

@@ -58,7 +58,7 @@ const PropertyCard: React.FC<PropertyCardProps> = ({
         {/* Badge */}
         {badge && (
           <div className={`absolute top-3 left-3 px-3 py-1 rounded-full text-white font-red-hat text-[9px] font-bold shadow-md ${
-            badge === 'HOT' ? 'bg-[#D4755B]' :
+            badge === 'HOT' ? 'bg-[#C5A059]' :
             badge === 'SOLD' ? 'bg-[#1C1B1A]' :
             badge === 'FOR RENT' ? 'bg-blue-600' :
             'bg-[#059669]'
@@ -91,22 +91,22 @@ const PropertyCard: React.FC<PropertyCardProps> = ({
            {type !== 'Plot' ? (
              <>
                <div className="flex items-center gap-1 text-[#5A5856]">
-                  <Bed className="w-3.5 h-3.5 text-[#D4755B]" />
+                  <Bed className="w-3.5 h-3.5 text-[#C5A059]" />
                   <span className="font-red-hat text-[10px] sm:text-xs font-bold">{beds || 0}</span>
                </div>
                <div className="flex items-center gap-1 text-[#5A5856]">
-                  <Bath className="w-3.5 h-3.5 text-[#D4755B]" />
+                  <Bath className="w-3.5 h-3.5 text-[#C5A059]" />
                   <span className="font-red-hat text-[10px] sm:text-xs font-bold">{baths || 0}</span>
                </div>
              </>
            ) : (
              <div className="flex items-center gap-1 text-[#5A5856]">
-                <Move className="w-3.5 h-3.5 text-[#D4755B]" />
+                <Move className="w-3.5 h-3.5 text-[#C5A059]" />
                 <span className="font-red-hat text-[10px] sm:text-xs font-bold">{length || 0}x{breadth || 0}</span>
              </div>
            )}
            <div className="flex items-center gap-1 text-[#5A5856]">
-              <Square className="w-3.5 h-3.5 text-[#D4755B]" />
+              <Square className="w-3.5 h-3.5 text-[#C5A059]" />
               <span className="font-red-hat text-[10px] sm:text-xs font-bold">{sqft} sqft</span>
            </div>
         </div>

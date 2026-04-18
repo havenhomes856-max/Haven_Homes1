@@ -7,7 +7,7 @@
 @layer base {
   :root {
     --color-cream: #faf8f4;
-    --color-terracotta: #d4755b;
+    --color-terracotta: #C5A059;
     --color-dark: #1c1b1a;
     --color-sand: #e6d5c3;
     --color-muted: #5a5856;
@@ -57,7 +57,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #d4755b;
+  background: #C5A059;
   border-radius: 10px;
   opacity: 0.6;
 }
@@ -70,7 +70,7 @@
 .focus-terracotta:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(212, 117, 91, 0.25);
-  border-color: #d4755b;
+  border-color: #C5A059;
 }
 
 /* Smooth transitions for interactive elements */

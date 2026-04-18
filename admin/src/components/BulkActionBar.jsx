@@ -83,7 +83,7 @@ const BulkActionBar = ({
       case 'danger':
         return `${base} bg-red-600 text-white hover:bg-red-700`;
       default:
-        return `${base} bg-[#D4755B] text-white hover:bg-[#C05E44]`;
+        return `${base} bg-[#C5A059] text-white hover:bg-[#C05E44]`;
     }
   };
 
@@ -101,8 +101,8 @@ const BulkActionBar = ({
             <div className="flex items-center gap-4">
               {/* Selection Info */}
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-[#D4755B]/10 rounded-xl flex items-center justify-center">
-                  <Users className="w-5 h-5 text-[#D4755B]" />
+                <div className="w-10 h-10 bg-[#C5A059]/10 rounded-xl flex items-center justify-center">
+                  <Users className="w-5 h-5 text-[#C5A059]" />
                 </div>
                 <div>
                   <p className="text-sm font-bold text-[#1C1B1A]">

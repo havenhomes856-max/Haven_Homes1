@@ -78,8 +78,8 @@ const ActivityLogDetailModal = ({
           {/* Header */}
           <div className="flex items-center justify-between p-6 border-b border-[#E6E0DA]">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-[#D4755B]/10 rounded-xl flex items-center justify-center">
-                <Info className="w-5 h-5 text-[#D4755B]" />
+              <div className="w-10 h-10 bg-[#C5A059]/10 rounded-xl flex items-center justify-center">
+                <Info className="w-5 h-5 text-[#C5A059]" />
               </div>
               <div>
                 <h3 className="text-lg font-bold text-[#1C1B1A]">Activity Details</h3>
@@ -196,7 +196,7 @@ const ActivityLogDetailModal = ({
           <div className="p-6 border-t border-[#E6E0DA] bg-[#FAF8F4]">
             <button
               onClick={onClose}
-              className="w-full px-4 py-3 bg-[#D4755B] text-white rounded-xl font-semibold text-sm hover:bg-[#C05E44] transition-colors"
+              className="w-full px-4 py-3 bg-[#C5A059] text-white rounded-xl font-semibold text-sm hover:bg-[#C05E44] transition-colors"
             >
               Close
             </button>

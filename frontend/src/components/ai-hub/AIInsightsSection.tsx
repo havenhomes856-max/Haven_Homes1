@@ -27,7 +27,7 @@ const AIInsightsSection: React.FC = () => {
         <div className="text-center mb-16">
           {/* Icon */}
           <div className="w-16 h-16 bg-[rgba(236,70,19,0.1)] rounded-full flex items-center justify-center mx-auto mb-6">
-            <Brain className="w-8 h-8 text-[#D4755B]" strokeWidth={1.5} />
+            <Brain className="w-8 h-8 text-[#C5A059]" strokeWidth={1.5} />
           </div>
 
           <h2 className="font-syne text-4xl text-[#221410] mb-4">
@@ -47,7 +47,7 @@ const AIInsightsSection: React.FC = () => {
             >
               {/* Icon */}
               <div className="w-12 h-12 bg-[rgba(236,70,19,0.1)] rounded-full flex items-center justify-center mb-6 group-hover:bg-[rgba(236,70,19,0.15)] transition-colors">
-                <insight.icon className="w-6 h-6 text-[#D4755B]" strokeWidth={1.5} />
+                <insight.icon className="w-6 h-6 text-[#C5A059]" strokeWidth={1.5} />
               </div>
 
               {/* Title */}

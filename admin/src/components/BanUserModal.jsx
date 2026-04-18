@@ -104,7 +104,7 @@ const BanUserModal = ({
                 className={`w-full px-4 py-3 border rounded-xl bg-white text-[#1C1B1A] placeholder:text-[#9CA3AF] focus:outline-none focus:ring-2 resize-none transition-all ${
                   errors.reason
                     ? 'border-red-300 focus:ring-red-500/20'
-                    : 'border-[#E6E0DA] focus:border-[#D4755B] focus:ring-[#D4755B]/20'
+                    : 'border-[#E6E0DA] focus:border-[#C5A059] focus:ring-[#C5A059]/20'
                 }`}
                 placeholder="Provide detailed explanation for the permanent ban..."
               />
@@ -125,7 +125,7 @@ const BanUserModal = ({
                 className={`w-full px-4 py-3 border rounded-xl bg-white text-[#1C1B1A] placeholder:text-[#9CA3AF] focus:outline-none focus:ring-2 transition-all ${
                   errors.confirmText
                     ? 'border-red-300 focus:ring-red-500/20'
-                    : 'border-[#E6E0DA] focus:border-[#D4755B] focus:ring-[#D4755B]/20'
+                    : 'border-[#E6E0DA] focus:border-[#C5A059] focus:ring-[#C5A059]/20'
                 }`}
                 placeholder="PERMANENTLY BAN"
               />
