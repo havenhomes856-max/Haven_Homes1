@@ -30,10 +30,12 @@ const Footer: React.FC = () => {
           
           {/* Logo & Vision */}
           <div className="lg:col-span-2 space-y-8">
-            <Link to="/" className="flex items-center gap-2 group">
-              <div className="w-10 h-10 bg-white flex items-center justify-center rounded-xl group-hover:bg-[#D4755B] transition-colors duration-300">
-                <span className="font-fraunces text-[#1C1B1A] font-bold text-2xl group-hover:text-white transition-colors">H</span>
-              </div>
+            <Link to="/" className="flex items-center gap-3">
+              <img 
+                src="https://res.cloudinary.com/dp4xt0bve/image/upload/f_webp,q_auto/v1776491805/logo-Photoroom.png" 
+                alt="Haven Homes Logo" 
+                className="h-20 w-auto object-contain brightness-0 invert"
+              />
               <span className="font-fraunces font-bold text-3xl tracking-tight">Haven Homes</span>
             </Link>
             <p className="font-red-hat text-base text-gray-400 max-w-sm leading-relaxed">
