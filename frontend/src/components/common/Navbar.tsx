@@ -31,15 +31,18 @@ const Navbar: React.FC = () => {
     <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
       scrolled ? 'bg-[#1C1B1A]/95 backdrop-blur-md shadow-lg h-16' : 'bg-[#1C1B1A] h-20'
     }`}>
-      <div className="max-w-[1440px] mx-auto h-full px-4 sm:px-8 flex items-center justify-between">
+      <div className="max-w-[1440px] mx-auto h-full px-4 sm:px-8 flex items-center justify-between relative">
         {/* Brand Logo */}
-        <Link to="/" className="flex items-center gap-3 h-full py-0">
+        <Link 
+          to="/" 
+          className="flex items-center gap-3 h-full py-0 lg:static absolute left-1/2 -translate-x-1/2 lg:left-0 lg:translate-x-0"
+        >
            <img 
              src="https://res.cloudinary.com/dp4xt0bve/image/upload/f_webp,q_auto/v1776491805/logo-Photoroom.png" 
              alt="Haven Homes Logo" 
              className="h-full w-auto object-contain brightness-0 invert"
            />
-           <span className="font-fraunces font-bold text-xl sm:text-2xl text-white tracking-tight">Haven Homes</span>
+           <span className="font-fraunces font-bold text-xl sm:text-2xl text-white tracking-tight hidden lg:block">Haven Homes</span>
         </Link>
 
         {/* Desktop Nav */}
