@@ -27,7 +27,7 @@ const SocialFloatingDrawer: React.FC = () => {
   ];
 
   return (
-    <div className="fixed bottom-[166px] sm:bottom-[98px] right-6 z-[9999] flex flex-col items-center gap-4 pr-[2px] pb-[2px]">
+    <div className="fixed bottom-[166px] sm:bottom-[98px] right-6 z-[9999] flex flex-col items-center gap-4 pr-[2px] pb-[4px] sm:pb-[2px]">
       <AnimatePresence>
         {isOpen && (
           <motion.div
