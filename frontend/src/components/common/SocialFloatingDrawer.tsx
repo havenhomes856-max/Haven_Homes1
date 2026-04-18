@@ -34,7 +34,7 @@ const SocialFloatingDrawer: React.FC = () => {
             initial={{ opacity: 0, y: 20, scale: 0.8 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.8 }}
-            className="flex flex-col gap-3 mb-2"
+            className="flex flex-col gap-3 mb-4 "
           >
             {socials.map((social, index) => (
               <motion.a
