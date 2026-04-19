@@ -133,7 +133,7 @@ propertySchema.index({ postedBy: 1 }); // User's own listings
 propertySchema.index({ status: 1, createdAt: -1 }); // Compound: status + sort
 propertySchema.index({ postedBy: 1, createdAt: -1 }); // Compound: user listings + sort
 propertySchema.index({ expiresAt: 1 }); // Expiry cleanup queries
-propertySchema.index({ location: "text", title: "text", description: "text" }); // Text search
+propertySchema.index({ location: "text", title: "text", city: "text" }); // Text search
 propertySchema.index({ price: 1, beds: 1, type: 1, location: 1 }); // Property filters
 
 const Property = mongoose.model("Property", propertySchema);

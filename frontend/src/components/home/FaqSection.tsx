@@ -31,38 +31,47 @@ const FaqSection: React.FC = () => {
   return (
     <section id="faqs" className="bg-white py-24 border-t border-[#E5E7EB]">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
-          
-          {/* Left Column */}
-          <div className="lg:col-span-5">
-            <h2 className="font-inter font-bold text-5xl sm:text-[64px] leading-none text-[#111827] tracking-tighter mb-6">
+
+        {/* Container for the split layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 overflow-hidden rounded-3xl border border-[#E5E7EB] shadow-sm">
+
+          {/* Left Column - Your Custom Gold #C5A059 */}
+          <div className="lg:col-span-5 bg-[#C5A059] p-10 sm:p-16 flex flex-col justify-center relative">
+            <h2 className="font-inter font-bold text-5xl sm:text-[64px] leading-tight text-white tracking-tighter mb-8">
               Frequently Asked<br />Question
             </h2>
-            <p className="font-inter font-medium text-sm text-[#6B7280] leading-relaxed max-w-sm">
+            <p className="font-inter font-medium text-base text-white/90 leading-relaxed max-w-sm">
               Whether you're looking for a modern apartment in the city or a peaceful home in the suburbs, our listings offer something for everyone.
             </p>
+
+            {/* Vertical Separator Line - Using white/20 to divide by / the sections elegantly */}
+            <div className="hidden lg:block absolute right-0 top-0 bottom-0 w-[1px] bg-white/20" />
           </div>
 
-          {/* Right Column - Accordion */}
-          <div className="lg:col-span-7">
-            <div>
+          {/* Right Column - Accordion Section */}
+          <div className="lg:col-span-7 bg-white p-6 sm:p-12 lg:p-16">
+            <div className="space-y-4">
               {faqs.map((faq, index) => (
-                <div key={index} className="mb-4 bg-[#F8F9FA] hover:bg-[#F3F4F6] rounded-xl overflow-hidden transition-colors duration-200">
+                <div
+                  key={index}
+                  className="bg-[#F8F9FA] hover:bg-[#F3F4F6] rounded-2xl overflow-hidden transition-all duration-300 border border-transparent hover:border-[#E5E7EB]"
+                >
                   <button
                     onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                    className="w-full px-6 py-6 flex items-center justify-between text-left group"
+                    className="w-full px-8 py-7 flex items-center justify-between text-left group"
                   >
-                    <span className="font-inter font-semibold text-base sm:text-lg text-[#111827] pr-8">
+                    <span className="font-inter font-semibold text-lg sm:text-xl text-[#111827] pr-8">
                       {faq.question}
                     </span>
                     <motion.div
                       animate={{ rotate: openIndex === index ? 180 : 0 }}
                       transition={{ duration: 0.3 }}
-                      className="text-[#6B7280] flex-shrink-0 group-hover:text-[#111827] transition-colors"
+                      className="text-[#9CA3AF] flex-shrink-0 group-hover:text-[#C5A059] transition-colors"
                     >
-                      <ChevronDown className="w-5 h-5" />
+                      <ChevronDown className="w-6 h-6" />
                     </motion.div>
                   </button>
+
                   <AnimatePresence>
                     {openIndex === index && (
                       <motion.div
@@ -70,11 +79,12 @@ const FaqSection: React.FC = () => {
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.3 }}
-                        className="overflow-hidden"
                       >
-                        <p className="font-inter text-sm text-[#6B7280] leading-relaxed px-6 pb-6 pr-12">
-                          {faq.answer}
-                        </p>
+                        <div className="px-8 pb-8 pr-16">
+                          <p className="font-inter text-base text-[#6B7280] leading-relaxed">
+                            {faq.answer}
+                          </p>
+                        </div>
                       </motion.div>
                     )}
                   </AnimatePresence>

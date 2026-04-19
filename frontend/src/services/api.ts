@@ -71,8 +71,8 @@ export const userAPI = {
 
 // Properties (CRUD — admin-managed listings)
 export const propertiesAPI = {
-  getAll: () =>
-    apiClient.get('/products/list'),
+  getAll: (params?: any, config?: { signal?: AbortSignal }) =>
+    apiClient.get('/products/list', { params, ...config }),
 
   getById: (id: string) =>
     apiClient.get(`/products/single/${id}`),

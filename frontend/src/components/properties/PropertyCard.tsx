@@ -47,8 +47,21 @@ const PropertyCard: React.FC<PropertyCardProps> = ({
       {/* Image Container — compact on mobile, full on desktop */}
       <div className="relative rounded-xl sm:rounded-3xl overflow-hidden mb-2 sm:mb-4 h-[220px] sm:h-[350px] shadow-[0px_4px_20px_rgba(0,0,0,0.05)] border border-gray-100">
         <img 
-          src={image}
+          src={(() => {
+            if (!image) return '';
+            try {
+              if (image.includes('ik.imagekit.io')) {
+                const url = new URL(image);
+                url.searchParams.set("tr", "w-400,q-70");
+                return url.toString();
+              }
+            } catch (e) {
+              return image;
+            }
+            return image;
+          })()}
           alt={name}
+          loading="lazy"
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out"
         />
 

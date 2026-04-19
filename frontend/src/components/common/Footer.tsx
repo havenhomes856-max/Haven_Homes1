@@ -13,14 +13,8 @@ const Footer: React.FC = () => {
     ],
     services: [
       { name: 'Buy Property', path: '/properties' },
-      { name: 'Rent Property', path: '/properties' },
-      { name: 'Sell Property', path: '/contact' },
     ],
-    support: [
-      { name: 'FAQ', path: '/#faqs' },
-      { name: 'Privacy Policy', path: '/' },
-      { name: 'Terms of Service', path: '/' },
-    ]
+
   };
 
   return (

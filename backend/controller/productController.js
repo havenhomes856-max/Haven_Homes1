@@ -77,31 +77,163 @@ const addproperty = async (req, res) => {
     }
 };
 
+// --- Memory Cache Layer ---
+const lruCache = new Map();
+const MAX_CACHE_SIZE = 100;
+
+function setCache(key, value, ttlMinutes = 5) {
+  if (lruCache.size >= MAX_CACHE_SIZE) {
+    const firstKey = lruCache.keys().next().value;
+    lruCache.delete(firstKey);
+  }
+  lruCache.set(key, {
+    data: value,
+    expiry: Date.now() + ttlMinutes * 60 * 1000
+  });
+}
+
+function getCache(key) {
+  const item = lruCache.get(key);
+  if (!item) return null;
+  if (Date.now() > item.expiry) {
+    lruCache.delete(key);
+    return null;
+  }
+  return item.data;
+}
+// --------------------------
+
+const featuredproperty = async (req, res) => {
+    try {
+        const cacheKey = "featured_properties";
+        const cached = getCache(cacheKey);
+        if (cached) {
+            return res.json(cached);
+        }
+
+        const property = await Property.find({
+            $or: [{ status: 'active' }, { status: { $exists: false } }]
+        }, {
+            title: 1, location: 1, city: 1, price: 1, beds: 1, baths: 1,
+            sqft: 1, type: 1, length: 1, breadth: 1, facing: 1, 
+            image: { $slice: 1 }, status: 1
+        })
+        .sort({ createdAt: -1 })
+        .limit(6)
+        .lean(); // Faster responses
+
+        const payload = { property, success: true };
+        setCache(cacheKey, payload, 10); // Cache for 10 mins
+
+        res.json(payload);
+    } catch (error) {
+        console.log("Error fetching featured properties: ", error);
+        res.status(500).json({ message: "Server Error", success: false });
+    }
+};
+
 const listproperty = async (req, res) => {
     try {
+        // Generate stable cache key by sorting parameters
+        const cacheKeyRaw = Object.keys(req.query).sort().reduce((acc, k) => {
+            acc[k] = req.query[k];
+            return acc;
+        }, {});
+        const cacheKey = `list:${JSON.stringify(cacheKeyRaw)}`;
+
+        const cached = getCache(cacheKey);
+        if (cached) {
+            return res.json(cached);
+        }
+
         // Pagination parameters
         const page = parseInt(req.query.page) || 1;
-        const limit = parseInt(req.query.limit) || 20; // Default 20 per page
+        const limit = Math.min(parseInt(req.query.limit) || 12, 50); // Hard cap at 50
         const skip = (page - 1) * limit;
 
-        // Only return active properties publicly.
-        // Legacy admin-added documents that pre-date the status field are also
-        // included via the $exists check so they are not accidentally hidden.
+        const { search, minPrice, maxPrice, propertyType, bedrooms, bathrooms, facing, amenities } = req.query;
+
+        // Base query: Only return active properties publicly.
         const query = {
             $or: [{ status: 'active' }, { status: { $exists: false } }],
         };
 
-        // Get total count for pagination metadata
-        const totalProperties = await Property.countDocuments(query);
+        // Hybrid Search implementation
+        if (search) {
+            if (search.length >= 3) {
+                query.$text = { $search: search };
+            } else {
+                query.$or = [
+                    { location: { $regex: search, $options: "i" } },
+                    { city: { $regex: search, $options: "i" } }
+                ];
+            }
+        }
+
+        // Exact numeric boundary handling for price
+        if (minPrice !== undefined || maxPrice !== undefined) {
+            query.price = {};
+            if (minPrice !== undefined && minPrice !== '') {
+                query.price.$gte = Number(minPrice);
+            }
+            if (maxPrice !== undefined && maxPrice !== '') {
+                query.price.$lte = Number(maxPrice);
+            }
+            // Clean up if no boundaries were actually added
+            if (Object.keys(query.price).length === 0) {
+                delete query.price;
+            }
+        }
+
+        if (propertyType) {
+            if (Array.isArray(propertyType)) {
+                // If multiple types provided
+                query.type = { $in: propertyType.map(t => new RegExp(`^${t}$`, 'i')) };
+            } else {
+                // Ignore case
+                query.type = new RegExp(`^${propertyType}$`, 'i');
+            }
+        }
+
+        if (bedrooms) {
+            query.beds = { $gte: Number(bedrooms) };
+        }
+
+        if (bathrooms) {
+            query.baths = { $gte: Number(bathrooms) };
+        }
+
+        if (facing) {
+            query.facing = new RegExp(`^${facing}$`, 'i');
+        }
+
+        if (amenities) {
+            if (Array.isArray(amenities)) {
+                query.amenities = { $all: amenities.map(a => new RegExp(`^${a}$`, 'i')) };
+            } else {
+                query.amenities = new RegExp(`^${amenities}$`, 'i');
+            }
+        }
+
+        // Parallel execution for count and fetch to improve throughput
+        // Projection limits the heavy fields and truncates the image array to 1 element (thumbnail)
+        const [property, totalProperties] = await Promise.all([
+            Property.find(query, {
+                title: 1, location: 1, city: 1, price: 1, beds: 1, baths: 1,
+                sqft: 1, type: 1, length: 1, breadth: 1, facing: 1, 
+                image: { $slice: 1 }, status: 1,
+                instagramLink: 1, youtubeLink: 1
+            })
+                .sort({ createdAt: -1 })
+                .skip(skip)
+                .limit(limit)
+                .lean(),
+            Property.countDocuments(query)
+        ]);
+
         const totalPages = Math.ceil(totalProperties / limit);
 
-        // Get properties with pagination
-        const property = await Property.find(query)
-            .sort({ createdAt: -1 }) // Most recent first
-            .limit(limit)
-            .skip(skip);
-
-        res.json({
+        const payload = {
             property,
             success: true,
             pagination: {
@@ -112,7 +244,11 @@ const listproperty = async (req, res) => {
                 hasPreviousPage: page > 1,
                 limit
             }
-        });
+        };
+
+        setCache(cacheKey, payload, 5); // Cache for 5 mins
+        
+        res.json(payload);
     } catch (error) {
         console.log("Error listing products: ", error);
         res.status(500).json({ message: "Server Error", success: false });
@@ -300,4 +436,4 @@ const singleproperty = async (req, res) => {
     }
 };
 
-export { addproperty, listproperty, removeproperty, updateproperty , singleproperty};
+export { addproperty, listproperty, removeproperty, updateproperty, singleproperty, featuredproperty };
