@@ -3,8 +3,8 @@ FROM node:22-alpine AS build
 WORKDIR /app
 
 # Add build arguments for Vite environment variables
-ARG VITE_BACKEND_URL
-ENV VITE_BACKEND_URL=$VITE_BACKEND_URL
+ARG VITE_API_BASE_URL
+ENV VITE_API_BASE_URL=$VITE_API_BASE_URL
 
 COPY package*.json ./
 RUN npm ci
