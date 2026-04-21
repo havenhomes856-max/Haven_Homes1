@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-// API Base URL - uses env variable or falls back to localhost
+// API Base URL - uses env variable or falls back to current hostname
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
   ? `${import.meta.env.VITE_API_BASE_URL}/api`
-  : 'http://localhost:4000/api';
+  : `http://${window.location.hostname}:4000/api`;
 
 // Create axios instance
 const apiClient = axios.create({
