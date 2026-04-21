@@ -7,7 +7,9 @@ ENV RATE_LIMIT_STORE_PATH=/tmp/.rate-limit-store
 
 # Install only production dependencies for a smaller runtime image.
 COPY package.json package-lock.json ./
-RUN npm ci --omit=dev --no-audit --no-fund && mkdir -p /tmp/.rate-limit-store
+RUN npm ci --omit=dev --no-audit --no-fund
+RUN mkdir -p /tmp/.rate-limit-store ./uploads && \
+    chown -R node:node /tmp/.rate-limit-store ./uploads
 
 # Copy application files after deps to preserve layer cache.
 COPY --chown=node:node . .
