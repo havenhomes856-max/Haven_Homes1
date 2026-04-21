@@ -1,18 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #faf8f4;
+  --color-terracotta: #C5A059;
+  --color-dark: #1c1b1a;
+  --color-sand: #e6d5c3;
+  --color-muted: #5a5856;
+}
 
 @layer base {
-  :root {
-    --color-cream: #faf8f4;
-    --color-terracotta: #C5A059;
-    --color-dark: #1c1b1a;
-    --color-sand: #e6d5c3;
-    --color-muted: #5a5856;
-  }
-
   html {
     scroll-behavior: smooth;
     font-family: "Red Hat Display", sans-serif;
