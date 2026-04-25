@@ -17,6 +17,7 @@ import {
   Building2,
   Menu,
   KeyRound,
+  Settings as SettingsIcon,
 
 } from 'lucide-react';
 import { cn } from '../lib/utils';
