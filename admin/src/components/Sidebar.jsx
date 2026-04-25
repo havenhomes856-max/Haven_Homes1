@@ -87,9 +87,9 @@ const Sidebar = ({ isOpen, setIsOpen, isCollapsed, setIsCollapsed }) => {
         <div className="h-16 flex items-center justify-between px-6 border-b border-white/10 flex-shrink-0">
           {!isCollapsed ? (
             <Link to="/dashboard" className="flex items-center gap-3 group">
-              <img src="/logo.png" alt="Haven Homes" className="h-9 w-auto filter brightness-0 invert" />
+              <img src="https://res.cloudinary.com/dp4xt0bve/image/upload/f_auto,q_auto/v1776492125/logo-Photoroom.png" alt="Haven Homes" className="h-9 w-auto" />
               <div>
-                <span className="text-lg font-bold font-fraunces text-[#FAF8F4] tracking-tight">
+                <span className="text-lg font-bold font-fraunces text-[#C5A059] tracking-tight">
                   Haven Homes
                 </span>
                 <div className="text-[10px] text-[#9CA3AF] font-bold font-red-hat uppercase tracking-widest leading-none">
@@ -99,7 +99,7 @@ const Sidebar = ({ isOpen, setIsOpen, isCollapsed, setIsCollapsed }) => {
             </Link>
           ) : (
             <Link to="/dashboard" className="flex items-center justify-center w-full">
-              <img src="/logo.png" alt="Haven Homes" className="h-9 w-auto filter brightness-0 invert" />
+              <img src="https://res.cloudinary.com/dp4xt0bve/image/upload/f_auto,q_auto/v1776492125/logo-Photoroom.png" alt="Haven Homes" className="h-9 w-auto" />
             </Link>
           )}
         </div>
@@ -166,23 +166,7 @@ const Sidebar = ({ isOpen, setIsOpen, isCollapsed, setIsCollapsed }) => {
 
         {/* Profile & Logout */}
         <div className="border-t border-white/10 p-4 flex-shrink-0">
-          {/* Notifications */}
-          {!isCollapsed ? (
-            <button className="w-full flex items-center gap-3 px-3 py-2.5 mb-2 text-[#9CA3AF] hover:text-[#FAF8F4] hover:bg-white/10 rounded-lg transition-all duration-200 text-sm font-medium">
-              <Bell className="h-5 w-5" />
-              <span className="flex-1 text-left">Notifications</span>
-              <span className="h-5 w-5 bg-[#C5A059] text-white text-xs flex items-center justify-center rounded-full">
-                3
-              </span>
-            </button>
-          ) : (
-            <button className="w-full flex items-center justify-center px-3 py-2.5 mb-2 text-[#9CA3AF] hover:text-[#FAF8F4] hover:bg-white/10 rounded-lg transition-all duration-200 relative">
-              <Bell className="h-5 w-5" />
-              <span className="absolute -top-1 -right-1 h-4 w-4 bg-[#C5A059] text-white text-[10px] flex items-center justify-center rounded-full">
-                3
-              </span>
-            </button>
-          )}
+
 
           {/* Profile */}
           {!isCollapsed ? (

@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronRight, Home, Building, Info, MessageCircle, Phone, User, LogOut, KeyRound, ChevronDown } from 'lucide-react';
-import { useAuth } from '../../hooks/useAuth';
-import ChangePasswordModal from '../auth/ChangePasswordModal';
+import { Menu, X, ChevronRight, Home, Building, Info, MessageCircle, Phone } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [isProfileOpen, setIsProfileOpen] = useState(false);
-  const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
-  const { user, isAuthenticated, logout } = useAuth();
   const location = useLocation();
 
   useEffect(() => {
@@ -84,71 +79,6 @@ const Navbar: React.FC = () => {
             Explore Listings
           </Link>
 
-          {/* Auth Button/Profile */}
-          <div className="relative ml-4">
-            {isAuthenticated ? (
-              <div className="relative">
-                <motion.button
-                  onClick={() => setIsProfileOpen(!isProfileOpen)}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="flex items-center gap-2.5 pl-2 pr-3 py-1.5 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300"
-                >
-                  <div className="h-8 w-8 bg-[#C5A059] rounded-lg flex items-center justify-center">
-                    <User className="h-4 w-4 text-[#1C1B1A]" />
-                  </div>
-                  <div className="text-left hidden lg:block">
-                    <div className="text-[10px] text-gray-500 uppercase tracking-widest leading-none mb-1">Welcome</div>
-                    <div className="text-sm font-bold text-[#C5A059]">{user?.name.split(' ')[0]}</div>
-                  </div>
-                  <ChevronDown className={`w-4 h-4 text-[#C5A059] transition-transform duration-300 ${isProfileOpen ? 'rotate-180' : ''}`} />
-                </motion.button>
-
-                <AnimatePresence>
-                  {isProfileOpen && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                      className="absolute right-0 mt-3 w-56 bg-[#1C1B1A] border border-white/10 rounded-2xl shadow-2xl py-3 overflow-hidden z-[110]"
-                    >
-                      <div className="px-5 py-3 border-b border-white/5 mb-2">
-                        <p className="text-[10px] text-gray-500 uppercase tracking-widest mb-1">Logged in as</p>
-                        <p className="text-sm font-bold text-[#FAF8F4] truncate">{user?.email}</p>
-                      </div>
-                      
-                      <button
-                        onClick={() => {
-                          setIsPasswordModalOpen(true);
-                          setIsProfileOpen(false);
-                        }}
-                        className="w-full flex items-center gap-3 px-5 py-3 text-sm text-gray-400 hover:text-[#C5A059] hover:bg-white/5 transition-all"
-                      >
-                        <KeyRound className="w-4 h-4" />
-                        Change Password
-                      </button>
-
-                      <button
-                        onClick={logout}
-                        className="w-full flex items-center gap-3 px-5 py-3 text-sm text-red-400 hover:bg-red-500/10 transition-all mt-1"
-                      >
-                        <LogOut className="w-4 h-4" />
-                        Sign Out
-                      </button>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            ) : (
-              <Link
-                to="/signin"
-                className="flex items-center gap-2 text-[#C5A059] font-red-hat text-xs font-bold uppercase tracking-widest hover:text-white transition-all"
-              >
-                <User className="w-4 h-4" />
-                Sign In
-              </Link>
-            )}
-          </div>
         </div>
 
         {/* Rightmost Decorative Image */}
@@ -234,11 +164,6 @@ const Navbar: React.FC = () => {
           </>
         )}
       </AnimatePresence>
-
-      <ChangePasswordModal 
-        isOpen={isPasswordModalOpen} 
-        onClose={() => setIsPasswordModalOpen(false)} 
-      />
     </nav>
   );
 };

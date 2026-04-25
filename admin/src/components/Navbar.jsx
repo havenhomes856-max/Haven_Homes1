@@ -98,9 +98,9 @@ const Navbar = () => {
 
           {/* Logo */}
           <Link to="/dashboard" className="flex items-center gap-3 group">
-            <img src="/logo.png" alt="Haven Homes" className="h-9 w-auto filter brightness-0 invert" />
+            <img src="https://res.cloudinary.com/dp4xt0bve/image/upload/f_auto,q_auto/v1776492125/logo-Photoroom.png" alt="Haven Homes" className="h-9 w-auto" />
             <div>
-              <span className="text-lg font-bold text-[#FAF8F4] tracking-tight">
+              <span className="text-lg font-bold text-[#C5A059] tracking-tight">
                 Haven Homes
               </span>
               <div className="text-[10px] text-[#9CA3AF] font-medium uppercase tracking-widest leading-none">
@@ -173,15 +173,7 @@ const Navbar = () => {
 
           {/* Desktop Right Actions */}
           <div className="hidden md:flex items-center gap-2">
-            {/* Notifications */}
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="relative p-2 text-[#9CA3AF] hover:text-[#FAF8F4] hover:bg-white/10 rounded-lg transition-all duration-200"
-            >
-              <Bell className="h-5 w-5" />
-              <span className="absolute top-1.5 right-1.5 h-2 w-2 bg-[#C5A059] rounded-full" />
-            </motion.button>
+
 
             {/* Profile Dropdown */}
             <div className="relative">

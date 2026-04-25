@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Eye, EyeOff, Mail, Lock, Shield, ArrowRight, Loader2, Home, Building2, Users, TrendingUp } from "lucide-react";
+import { Eye, EyeOff, Mail, Lock, Shield, ArrowRight, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import apiClient from "../services/apiClient";
 import { cn } from "../lib/utils";
@@ -41,11 +41,7 @@ const Login = () => {
     }
   };
 
-  const stats = [
-    { icon: Building2, label: "Properties", value: "500+" },
-    { icon: Users, label: "Happy Clients", value: "2,000+" },
-    { icon: TrendingUp, label: "Deals Closed", value: "1,200+" },
-  ];
+
 
   return (
     <div className="min-h-screen flex">
@@ -72,9 +68,9 @@ const Login = () => {
         {/* Logo */}
         <div className="relative z-10">
           <div className="flex items-center gap-3 mb-16">
-            <img src="/logo.png" alt="Haven Homes" className="h-10 w-auto filter brightness-0 invert" />
+            <img src="https://res.cloudinary.com/dp4xt0bve/image/upload/f_auto,q_auto/v1776492125/logo-Photoroom.png" alt="Haven Homes" className="h-10 w-auto" />
             <div>
-              <div className="text-xl font-bold font-fraunces text-[#FAF8F4]">Haven Homes</div>
+              <div className="text-xl font-bold font-fraunces text-[#C5A059]">Haven Homes</div>
               <div className="text-xs text-[#9CA3AF] font-bold font-red-hat uppercase tracking-widest">Admin Panel</div>
             </div>
           </div>
@@ -91,16 +87,7 @@ const Login = () => {
           </p>
         </div>
 
-        {/* Stats */}
-        <div className="relative z-10 grid grid-cols-3 gap-4">
-          {stats.map(({ icon: Icon, label, value }) => (
-            <div key={label} className="bg-white/5 border border-white/10 rounded-2xl p-4">
-              <Icon className="w-5 h-5 text-[#C5A059] mb-2" />
-              <div className="text-xl font-bold font-space-mono text-[#FAF8F4]">{value}</div>
-              <div className="text-xs text-[#9CA3AF] font-bold font-red-hat uppercase tracking-wider">{label}</div>
-            </div>
-          ))}
-        </div>
+
 
         {/* Footer */}
         <div className="relative z-10 flex items-center gap-2 text-xs text-[#5A5856]">
@@ -119,7 +106,7 @@ const Login = () => {
         <div className="w-full max-w-md">
           {/* Mobile Logo */}
           <div className="flex items-center gap-3 mb-10 lg:hidden">
-            <img src="/logo.png" alt="Haven Homes Admin" className="h-9 w-auto" />
+            <img src="https://res.cloudinary.com/dp4xt0bve/image/upload/f_auto,q_auto/v1776492125/logo-Photoroom.png" alt="Haven Homes Admin" className="h-9 w-auto" />
             <div className="text-lg font-bold font-fraunces text-[#1C1B1A]">Haven Homes Admin</div>
           </div>
 
