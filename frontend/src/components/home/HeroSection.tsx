@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { Search, MapPin } from 'lucide-react';
-import coastalRetreat from '../../images/Coastal Retreat.jpg';
 
 const HeroSection: React.FC = () => {
   const navigate = useNavigate();

@@ -1,7 +1,6 @@
 import React from 'react';
-import mainAboutImage from '../../images/Main about image.jpg';
-
 const AboutHeroSection: React.FC = () => {
+  const mainAboutImage = "https://ik.imagekit.io/kceia4cyw/havenhome_assets/frontend_images/Main_about_image__Ko32s5BNE.jpg?tr=f-auto";
   return (
     <section className="relative bg-[#111827] h-[480px] overflow-hidden">
       {/* Background Image */}

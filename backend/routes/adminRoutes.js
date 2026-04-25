@@ -26,6 +26,7 @@ import {
   getUserStats,
   getPropertyStats,
   getEnhancedOverview,
+  changeAdminPasswordController,
 } from '../controller/adminController.js';
 import { resolveMapLink } from '../controller/mapController.js';
 import { adminProtect } from '../middleware/authMiddleware.js';
@@ -73,6 +74,9 @@ router.get('/stats/overview', getEnhancedOverview);
 
 // Map Utilities
 router.post('/resolve-map', resolveMapLink);
+
+// Profile/Security
+router.put('/change-password', changeAdminPasswordController);
 
 // Circuit breaker monitoring endpoint
 router.get('/circuit-breakers', (req, res) => {

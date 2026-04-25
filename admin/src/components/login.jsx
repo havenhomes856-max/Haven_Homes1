@@ -68,7 +68,11 @@ const Login = () => {
         {/* Logo */}
         <div className="relative z-10">
           <div className="flex items-center gap-3 mb-16">
+<<<<<<< HEAD
             <img src="https://res.cloudinary.com/dp4xt0bve/image/upload/f_auto,q_auto/v1776492125/logo-Photoroom.png" alt="Haven Homes" className="h-10 w-auto" />
+=======
+            <img src="https://res.cloudinary.com/dp4xt0bve/image/upload/f_auto,q_auto/v1776492125/logo-Photoroom.png" alt="Haven Homes" className="h-10 w-auto filter brightness-0 invert" />
+>>>>>>> cdcc8922699eb172cb6edc752368d69c74a7e8a0
             <div>
               <div className="text-xl font-bold font-fraunces text-[#C5A059]">Haven Homes</div>
               <div className="text-xs text-[#9CA3AF] font-bold font-red-hat uppercase tracking-widest">Admin Panel</div>

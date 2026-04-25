@@ -1,8 +1,11 @@
 import axios from 'axios';
 import { APP_CONSTANTS } from '../config/constants';
 
+// API Base URL - uses env variable with a dynamic fallback to the current hostname
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || `http://${window.location.hostname}:4000`;
+
 const apiClient = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL,
+  baseURL: API_BASE_URL,
 });
 
 apiClient.interceptors.request.use(

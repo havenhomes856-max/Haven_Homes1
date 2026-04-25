@@ -17,7 +17,7 @@ const formatRecentProperties = (properties) => {
 const formatRecentAppointments = (appointments) => {
   return appointments.map(appointment => ({
     type: 'appointment',
-    description: `${appointment.userId.name} scheduled viewing for ${appointment.propertyId.title}`,
+    description: `${appointment.userId?.name || appointment.guestInfo?.name || 'Unknown'} scheduled viewing for ${appointment.propertyId.title}`,
     timestamp: appointment.createdAt
   }));
 };
@@ -237,13 +237,11 @@ export const updateAppointmentStatus = async (req, res) => {
   }
 };
 
-// Schedule viewing — supports both authenticated and guest bookings
+// Schedule viewing — supports only guest bookings
 export const scheduleViewing = async (req, res) => {
   try {
     const { propertyId, date, time, notes, name, email, phone, message } = req.body;
 
-    // req.user is set by protect middleware (may be undefined for guest route)
-    const userId = req.user?._id;
     const guestEmail = email;
     const guestName = name;
 
@@ -256,27 +254,23 @@ export const scheduleViewing = async (req, res) => {
       });
     }
 
-    // Build appointment data — link user if logged in, else store guest info
+    // Build appointment data — store guest info
     const appointmentData = {
       propertyId,
       ...(date && { date }),
       ...(time && { time }),
       notes: notes || message || '',
       status: 'pending',
-      ...(userId && { userId }),
-      ...(!userId && { guestInfo: { name: guestName, email: guestEmail, phone } })
+      guestInfo: { name: guestName, email: guestEmail, phone }
     };
 
     const appointment = new Appointment(appointmentData);
     await appointment.save();
 
-    // Populate what we can — userId may not exist for guests
-    const populateFields = ['propertyId'];
-    if (userId) populateFields.push('userId');
-    await appointment.populate(populateFields);
+    await appointment.populate('propertyId');
 
     // Send confirmation email
-    const recipientEmail = userId ? req.user.email : guestEmail;
+    const recipientEmail = guestEmail;
     if (recipientEmail) {
       try {
         const mailOptions = {
@@ -295,7 +289,6 @@ export const scheduleViewing = async (req, res) => {
         });
       } catch (emailErr) {
         console.error('Confirmation email dispatch error:', emailErr.message);
-        // Don't fail the request if email fails
       }
     }
 
@@ -309,85 +302,6 @@ export const scheduleViewing = async (req, res) => {
     res.status(500).json({
       success: false,
       message: 'Error scheduling viewing'
-    });
-  }
-};
-
-// Add this with other exports
-export const cancelAppointment = async (req, res) => {
-  try {
-    const appointmentId = req.params.id;
-    const appointment = await Appointment.findById(appointmentId)
-      .populate('propertyId', 'title')
-      .populate('userId', 'email');
-
-    if (!appointment) {
-      return res.status(404).json({
-        success: false,
-        message: 'Appointment not found'
-      });
-    }
-
-    // Verify user owns this appointment (skip for guest bookings cancelled by admin)
-    if (appointment.userId && req.user && appointment.userId._id.toString() !== req.user._id.toString()) {
-      return res.status(403).json({
-        success: false,
-        message: 'Not authorized to cancel this appointment'
-      });
-    }
-
-    appointment.status = 'cancelled';
-    appointment.cancelReason = req.body.reason || 'Cancelled by user';
-    await appointment.save();
-
-    // Send cancellation email
-    const recipientEmail = appointment.userId?.email || appointment.guestInfo?.email;
-    if (recipientEmail) {
-      try {
-        const mailOptions = {
-          from: process.env.EMAIL,
-          to: recipientEmail,
-          subject: 'Appointment Cancelled - Haven Homes',
-          html: getEmailTemplate(appointment, 'cancelled')
-        };
-
-        transporter.sendMail(mailOptions).catch(emailErr => {
-          console.error('Background cancellation email failed:', emailErr.message);
-        });
-      } catch (emailErr) {
-        console.error('Cancellation email dispatch error:', emailErr.message);
-      }
-    }
-
-    res.json({
-      success: true,
-      message: 'Appointment cancelled successfully'
-    });
-  } catch (error) {
-    console.error('Error cancelling appointment:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Error cancelling appointment'
-    });
-  }
-};
-
-// Add this function to get user's appointments
-export const getAppointmentsByUser = async (req, res) => {
-  try {
-    const appointments = await Appointment.find({ userId: req.user._id })
-      .populate('propertyId', 'title location image')
-      .sort({ date: 1 });
-
-    res.json({
-      success: true,
-      appointments
-    });
-  } catch (error) {
-    console.error('Error fetching user appointments:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Error fetching appointments'
     });
   }
 };
@@ -442,9 +356,6 @@ export const updateAppointmentMeetingLink = async (req, res) => {
   }
 };
 
-
-// Add at the end of the file
-
 export const getAppointmentStats = async (req, res) => {
   try {
     const [pending, confirmed, cancelled, completed] = await Promise.all([
@@ -491,69 +402,6 @@ export const getAppointmentStats = async (req, res) => {
     res.status(500).json({
       success: false,
       message: 'Error fetching appointment statistics'
-    });
-  }
-};
-
-export const submitAppointmentFeedback = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const { rating, comment } = req.body;
-
-    const appointment = await Appointment.findById(id);
-
-    if (!appointment) {
-      return res.status(404).json({
-        success: false,
-        message: 'Appointment not found'
-      });
-    }
-
-    if (appointment.userId.toString() !== req.user._id.toString()) {
-      return res.status(403).json({
-        success: false,
-        message: 'Not authorized to submit feedback for this appointment'
-      });
-    }
-
-    appointment.feedback = { rating, comment };
-    appointment.status = 'completed';
-    await appointment.save();
-
-    res.json({
-      success: true,
-      message: 'Feedback submitted successfully'
-    });
-  } catch (error) {
-    console.error('Error submitting feedback:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Error submitting feedback'
-    });
-  }
-};
-
-export const getUpcomingAppointments = async (req, res) => {
-  try {
-    const now = new Date();
-    const appointments = await Appointment.find({
-      userId: req.user._id,
-      date: { $gte: now },
-      status: { $in: ['pending', 'confirmed'] }
-    })
-    .populate('propertyId', 'title location image')
-    .sort({ date: 1, time: 1 })
-    .limit(5);
-
-    res.json({
-      success: true,
-      appointments
-    });
-  } catch (error) {
-    console.error('Error fetching upcoming appointments:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Error fetching upcoming appointments'
     });
   }
 };

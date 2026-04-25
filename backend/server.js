@@ -41,8 +41,8 @@ if (process.env.NODE_ENV === 'production') {
 
 // Enhanced rate limiting configuration
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: process.env.NODE_ENV === 'production' ? 500 : 1000, // More lenient in development
+  windowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS) || 60000, // Default 1 minute
+  max: parseInt(process.env.RATE_LIMIT_MAX_REQUESTS) || 200, // Default 200 requests
   standardHeaders: true,
   legacyHeaders: false,
   message: { success: false, message: 'Too many requests, please try again later.' },

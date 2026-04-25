@@ -1,7 +1,6 @@
 import React from 'react';
-import mapLocationImage from '../../images/Map_Location.jpg';
-
 const ContactMapSection: React.FC = () => {
+  const mapLocationImage = "https://ik.imagekit.io/kceia4cyw/havenhome_assets/frontend_images/Map_Location_8foHsfo15V.jpg?tr=f-auto";
   return (
     <section className="bg-[#F2EFE9] py-16">
       <div className="max-w-[1280px] mx-auto px-8">

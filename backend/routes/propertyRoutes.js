@@ -1,8 +1,7 @@
 import express from 'express';
 import rateLimit from 'express-rate-limit';
-import { searchProperties, getLocationTrends, createUserListing, getUserListings, updateUserListing, deleteUserListing, validateApiKeys, getCacheStats } from '../controller/propertyController.js';
+import { searchProperties, getLocationTrends, validateApiKeys, getCacheStats } from '../controller/propertyController.js';
 import { transformAISearchRequest } from '../middleware/transformRequest.js';
-import { protect } from '../middleware/authMiddleware.js';
 import upload from '../middleware/multer.js';
 import { createDistributedRateLimiter } from '../utils/distributedRateLimiter.js';
 
@@ -40,12 +39,6 @@ router.post('/ai/validate-keys', validateApiKeys);
 
 // Location trends — same rate limit (shares the 10/hr budget)
 router.get('/locations/:city/trends', aiLimiter, getLocationTrends);
-
-// ── User listing routes (auth required) ──────────────────────────────────────
-router.post('/user/properties', protect, upload.array('images', 4), createUserListing);
-router.get('/user/properties', protect, getUserListings);
-router.put('/user/properties/:id', protect, upload.array('images', 4), updateUserListing);
-router.delete('/user/properties/:id', protect, deleteUserListing);
 
 // ── Rate limiter stats (for monitoring) ──────────────────────────────────────
 router.get('/rate-limit/stats', async (req, res) => {

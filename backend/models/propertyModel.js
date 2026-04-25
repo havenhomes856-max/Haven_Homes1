@@ -86,38 +86,12 @@ const propertySchema = new mongoose.Schema(
       default: "",
     },
 
-    // ── User listing fields ──────────────────────────────────────────────────
-    // Listings added via the admin panel leave these at their defaults.
-    // Listings submitted by users go through an approval workflow.
-
-    // 'pending'  — awaiting admin review (default for user submissions)
-    // 'active'   — approved and visible on the site
-    // 'rejected' — not approved; rejectionReason is set
-    // 'expired'  — was active but passed expiresAt date
-    // Admin-panel listings are saved directly as 'active' (no review needed).
+    // 'active'   — visible on the site
+    // 'expired'  — passed its listing date
     status: {
       type: String,
-      enum: ["pending", "active", "rejected", "expired"],
-      default: "active", // admin-added properties go live immediately
-    },
-
-    // Reference to the User who submitted this listing (null for admin entries)
-    postedBy: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-      default: null,
-    },
-
-    // Filled by admin when status is set to 'rejected'
-    rejectionReason: {
-      type: String,
-      default: "",
-    },
-
-    // When the listing should automatically expire (null = never, for admin entries)
-    expiresAt: {
-      type: Date,
-      default: null,
+      enum: ["active", "expired"],
+      default: "active",
     },
   },
   {
@@ -127,12 +101,9 @@ const propertySchema = new mongoose.Schema(
 );
 
 // Database indexes for common query patterns
-propertySchema.index({ status: 1 }); // Status filtering (active, pending, etc.)
+propertySchema.index({ status: 1 }); // Status filtering
 propertySchema.index({ createdAt: -1 }); // Sorting by creation date
-propertySchema.index({ postedBy: 1 }); // User's own listings
 propertySchema.index({ status: 1, createdAt: -1 }); // Compound: status + sort
-propertySchema.index({ postedBy: 1, createdAt: -1 }); // Compound: user listings + sort
-propertySchema.index({ expiresAt: 1 }); // Expiry cleanup queries
 propertySchema.index({ location: "text", title: "text", city: "text" }); // Text search
 propertySchema.index({ price: 1, beds: 1, type: 1, location: 1 }); // Property filters
 

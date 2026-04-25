@@ -1,3 +1,5 @@
+import { Admin } from '../models/userModel.js';
+import bcrypt from 'bcryptjs';
 import Stats from "../models/statsModel.js";
 import Property from "../models/propertyModel.js";
 import Appointment from "../models/appointmentModel.js";
@@ -1582,5 +1584,40 @@ export const getEnhancedOverview = async (req, res) => {
     if (!res.headersSent) {
       res.status(500).json({ success: false, message: "Error fetching enhanced overview" });
     }
+  }
+};
+
+/** PUT /api/admin/change-password — Self-service password update */
+export const changeAdminPasswordController = async (req, res) => {
+  try {
+    const { oldPassword, newPassword } = req.body;
+    
+    const admin = await Admin.findOne({ email: req.admin.email });
+    if (!admin) {
+      return res.status(404).json({ success: false, message: 'Admin not found' });
+    }
+
+    const isMatch = await bcrypt.compare(oldPassword, admin.password);
+    if (!isMatch) {
+      return res.status(400).json({ success: false, message: 'Incorrect current password' });
+    }
+
+    admin.password = newPassword;
+    await admin.save();
+
+    await logAdminActivity(
+      req.admin.email,
+      'change_password',
+      'admin',
+      admin._id,
+      'Password updated',
+      {},
+      req
+    );
+
+    res.json({ success: true, message: 'Password updated successfully' });
+  } catch (error) {
+    console.error('Change password error:', error);
+    res.status(500).json({ success: false, message: error.message });
   }
 };

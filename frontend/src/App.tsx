@@ -2,7 +2,6 @@ import React, { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { Toaster } from 'sonner';
-import { AuthProvider } from './contexts/AuthContext';
 import PageTransition from './components/common/PageTransition';
 import ScrollToTop from './components/common/ScrollToTop';
 import StructuredData from './components/common/StructuredData';
@@ -66,14 +65,12 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <AuthProvider>
-        <Suspense fallback={<PageLoader />}>
-          <AnimatedRoutes />
-        </Suspense>
-        <SocialFloatingDrawer />
-        <WhatsAppButton />
-        <Toaster position="top-center" richColors />
-      </AuthProvider>
+      <Suspense fallback={<PageLoader />}>
+        <AnimatedRoutes />
+      </Suspense>
+      <SocialFloatingDrawer />
+      <WhatsAppButton />
+      <Toaster position="top-center" richColors />
     </BrowserRouter>
   );
 }

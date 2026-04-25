@@ -41,7 +41,7 @@ const StructuredData: React.FC<StructuredDataProps> = ({ type, data }) => {
       '@type': 'Organization',
       name: 'Haven Homes',
       url: SITE_URL,
-      logo: `${SITE_URL}/logo.png`,
+      logo: "https://ik.imagekit.io/kceia4cyw/havenhome_assets/frontend_images/logo_KpUMgcQ9eP.png?tr=f-auto",
       sameAs: [
         'https://github.com/AAYUSH412/Real-Estate-Website',
         'https://linkedin.com/in/AAYUSH412',

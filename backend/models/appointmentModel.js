@@ -6,11 +6,6 @@ const appointmentSchema = new mongoose.Schema({
     ref: 'Property',
     required: true
   },
-  userId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: false  // Optional — supports guest bookings
-  },
   guestInfo: {
     name: { type: String },
     email: { type: String },
@@ -47,21 +42,12 @@ const appointmentSchema = new mongoose.Schema({
   reminderSent: {
     type: Boolean,
     default: false
-  },
-  feedback: {
-    rating: {
-      type: Number,
-      min: 1,
-      max: 5
-    },
-    comment: String
   }
 }, {
   timestamps: true
 });
 
 // Add indexes for better query performance
-appointmentSchema.index({ userId: 1, date: -1 });
 appointmentSchema.index({ propertyId: 1, date: -1 });
 appointmentSchema.index({ status: 1 });
 

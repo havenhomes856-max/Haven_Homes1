@@ -20,6 +20,7 @@ import PropertyListings from "./pages/List";
 import Add from "./pages/Add";
 import Update from "./pages/Update";
 import Appointments from "./pages/Appointments";
+import Settings from "./pages/Settings";
 
 // Page transition variants
 const pageVariants = {
@@ -78,6 +79,7 @@ const AppLayout = () => {
                 <Route path="/add" element={<Add />} />
                 <Route path="/update/:id" element={<Update />} />
                 <Route path="/appointments" element={<Appointments />} />
+                <Route path="/settings" element={<Settings />} />
               </Route>
 
               {/* 404 Route */}

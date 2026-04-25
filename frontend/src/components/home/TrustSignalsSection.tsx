@@ -1,7 +1,6 @@
 import React from 'react';
-import teamImage from '../../images/Team section.jpg';
-
 const TrustSignalsSection: React.FC = () => {
+  const teamImage = "https://ik.imagekit.io/kceia4cyw/havenhome_assets/frontend_images/Team_section_zyo33oYhVa.jpg?tr=f-auto";
   return (
     <section className="bg-[#F8F6F6] py-24">
       <div className="max-w-[1280px] mx-auto px-8">
