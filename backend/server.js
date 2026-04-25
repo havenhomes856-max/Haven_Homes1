@@ -280,7 +280,7 @@ app.get('/', (req, res) => {
 });
 
 // 404 handler - must be after all other routes
-app.use('*', (req, res) => {
+app.all('/:path*', (req, res) => {
   res.status(404).json({
     success: false,
     message: `Route ${req.originalUrl} not found`,
