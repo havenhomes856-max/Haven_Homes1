@@ -459,7 +459,7 @@ const PropertyForm = () => {
 
           {/* Image Upload */}
           <div className="bg-white rounded-2xl p-6 border border-[#E6D5C3] shadow-card">
-            <SectionHeader icon={Upload} title="Property Images" subtitle={`${previewUrls.length}/4 images uploaded`} />
+            <SectionHeader icon={Upload} title="Property Images" subtitle={`${previewUrls.length}/10 images uploaded`} />
 
             {previewUrls.length > 0 && (
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
@@ -480,14 +480,14 @@ const PropertyForm = () => {
               </div>
             )}
 
-            {previewUrls.length < 4 && (
+            {previewUrls.length < 10 && (
               <label htmlFor="images"
                 className="flex flex-col items-center justify-center w-full h-36 border-2 border-dashed border-[#E6D5C3] rounded-xl cursor-pointer bg-[#FAF8F4] hover:border-[#C5A059] hover:bg-[#C5A059]/5 transition-all duration-200 group">
                 <Upload className="w-8 h-8 text-[#9CA3AF] group-hover:text-[#C5A059] mb-2 transition-colors" />
                 <span className="text-sm font-medium text-[#5A5856] group-hover:text-[#C5A059] transition-colors">
                   Click to upload images
                 </span>
-                <span className="text-xs text-[#9CA3AF] mt-1">PNG, JPG up to 10MB each</span>
+                <span className="text-xs text-[#9CA3AF] mt-1">PNG, JPG, WEBP, GIF up to 20MB each</span>
                 <input id="images" name="images" type="file" multiple accept="image/*"
                   onChange={handleImageChange} className="sr-only" />
               </label>
