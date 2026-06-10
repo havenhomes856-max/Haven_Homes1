@@ -66,8 +66,8 @@ const PropertyForm = () => {
 
   const handleImageChange = async (e) => {
     const files = Array.from(e.target.files);
-    if (files.length + previewUrls.length > 4) {
-      toast.error('Maximum 4 images allowed');
+    if (files.length + previewUrls.length > 10) {
+      toast.error('Maximum 10 images allowed');
       return;
     }
 
