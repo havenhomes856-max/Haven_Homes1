@@ -18,6 +18,12 @@ propertyrouter.post('/add', upload.fields([
     { name: "image2", maxCount: 1 },
     { name: "image3", maxCount: 1 },
     { name: "image4", maxCount: 1 },
+    { name: "image5", maxCount: 1 },
+    { name: "image6", maxCount: 1 },
+    { name: "image7", maxCount: 1 },
+    { name: "image8", maxCount: 1 },
+    { name: "image9", maxCount: 1 },
+    { name: "image10", maxCount: 1 },
 ]), addproperty);
 propertyrouter.get('/list', listproperty);
 propertyrouter.get('/featured', featuredproperty);
@@ -27,6 +33,12 @@ propertyrouter.post('/update', upload.fields([
     { name: "image2", maxCount: 1 },
     { name: "image3", maxCount: 1 },
     { name: "image4", maxCount: 1 },
+    { name: "image5", maxCount: 1 },
+    { name: "image6", maxCount: 1 },
+    { name: "image7", maxCount: 1 },
+    { name: "image8", maxCount: 1 },
+    { name: "image9", maxCount: 1 },
+    { name: "image10", maxCount: 1 },
 ]), updateproperty);
 propertyrouter.get('/single/:id', singleproperty);
 
