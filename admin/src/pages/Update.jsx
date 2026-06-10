@@ -96,8 +96,8 @@ const Update = () => {
 
   const handleImageChange = async (e) => {
     const files = Array.from(e.target.files);
-    if (files.length + previewUrls.length > 4) {
-      toast.error('Maximum 4 images allowed');
+    if (files.length + previewUrls.length > 10) {
+      toast.error('Maximum 10 images allowed');
       e.target.value = '';
       return;
     }
@@ -458,7 +458,7 @@ const Update = () => {
 
           {/* Image Upload */}
           <div className="bg-white rounded-2xl p-6 border border-[#E6D5C3] shadow-card">
-            <SectionHeader icon={Upload} title="Property Images" subtitle={`${previewUrls.length}/4 images`} />
+            <SectionHeader icon={Upload} title="Property Images" subtitle={`${previewUrls.length}/10 images`} />
             {previewUrls.length > 0 && (
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
                 {previewUrls.map((url, index) => (
@@ -474,15 +474,17 @@ const Update = () => {
                 ))}
               </div>
             )}
-            <label htmlFor="images"
-              className="flex flex-col items-center justify-center w-full h-28 border-2 border-dashed border-[#E6D5C3] rounded-xl cursor-pointer bg-[#FAF8F4] hover:border-[#C5A059] hover:bg-[#C5A059]/5 transition-all duration-200 group">
-              <Upload className="w-6 h-6 text-[#9CA3AF] group-hover:text-[#C5A059] mb-1.5 transition-colors" />
-              <span className="text-sm font-medium text-[#5A5856] group-hover:text-[#C5A059] transition-colors">
-                Add more images
-              </span>
-              <input id="images" name="images" type="file" multiple accept="image/*"
-                onChange={handleImageChange} className="sr-only" />
-            </label>
+            {previewUrls.length < 10 && (
+              <label htmlFor="images"
+                className="flex flex-col items-center justify-center w-full h-28 border-2 border-dashed border-[#E6D5C3] rounded-xl cursor-pointer bg-[#FAF8F4] hover:border-[#C5A059] hover:bg-[#C5A059]/5 transition-all duration-200 group">
+                <Upload className="w-6 h-6 text-[#9CA3AF] group-hover:text-[#C5A059] mb-1.5 transition-colors" />
+                <span className="text-sm font-medium text-[#5A5856] group-hover:text-[#C5A059] transition-colors">
+                  Add more images (up to 20MB each)
+                </span>
+                <input id="images" name="images" type="file" multiple accept="image/*"
+                  onChange={handleImageChange} className="sr-only" />
+              </label>
+            )}
           </div>
 
           {/* Submit */}
